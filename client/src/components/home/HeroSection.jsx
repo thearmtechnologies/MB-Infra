@@ -129,7 +129,7 @@ export default function HeroSection() {
         </AnimatePresence>
 
         {/* Cinematic Dark Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20 min-[1200px]:to-transparent z-10"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/60 to-black/20 min-[1200px]:to-transparent z-10"></div>
       </div>
 
       {/* 2. Main Content Container */}
@@ -150,7 +150,7 @@ export default function HeroSection() {
                 variants={textVariants}
                 className="flex items-center gap-3 mb-6"
               >
-                <div className="h-[2px] w-12 bg-[#f25810]"></div>
+                <div className="h-0.5 w-12 bg-[#f25810]"></div>
                 <span className="text-[#f25810] font-bold tracking-[0.2em] uppercase text-xs md:text-sm shadow-black drop-shadow-md">
                   {slide.subtitle}
                 </span>
@@ -162,7 +162,7 @@ export default function HeroSection() {
                 className="text-4xl md:text-6xl min-[1800px]:text-7xl font-black text-white leading-[1.1] tracking-tighter uppercase mb-6 drop-shadow-lg"
               >
                 {slide.title} <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f25810] to-[#ff8c54]">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">
                   {slide.highlight}
                 </span>
               </motion.h1>

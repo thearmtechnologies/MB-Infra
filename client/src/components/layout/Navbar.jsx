@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import ContactPage from "../../pages/ContactPage.jsx";
 
 // Desktop Dropdown Navigation Item
 const NavItem = ({ title, items }) => {
@@ -76,7 +78,7 @@ const MobileNavItem = ({ title, items }) => {
           />
         </svg>
       </button>
-      
+
       {isOpen && (
         <div className="bg-gray-50 pl-4 transition-all duration-200">
           {items.map((item, idx) => (
@@ -99,26 +101,25 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white w-full border-b border-gray-200 sticky top-0 z-100 shadow-sm">
-      {/* Changed max-w-[1400px] to w-full to allow full stretching on 2400px+ monitors */}
       <div className="w-full px-6 xl:px-12">
-        <div className="flex justify-between items-center h-24 gap-4 md:gap-8">
-          
-          {/* 1. Logo Section - Scaled dynamically for massive screens */}
-          <div className="flex flex-col cursor-pointer shrink-0">
+        {/* Adjusted Height: h-16 for mobile, h-24 for desktop */}
+        <div className="flex justify-between items-center h-16 min-[1000px]:h-24 gap-4 md:gap-8">
+          {/* 1. Logo Section */}
+          <Link to="/" className="flex flex-col cursor-pointer shrink-0">
             <div className="flex items-center">
-              <span className="text-2xl min-[1200px]:text-3xl min-[1800px]:text-4xl font-black tracking-tighter text-black">
+              <span className="text-xl min-[1000px]:text-2xl min-[1200px]:text-3xl min-[1800px]:text-4xl font-black tracking-tighter text-black">
                 MB
               </span>
-              <span className="text-2xl min-[1200px]:text-3xl min-[1800px]:text-4xl font-black tracking-tighter text-[#f25810]">
+              <span className="text-xl min-[1000px]:text-2xl min-[1200px]:text-3xl min-[1800px]:text-4xl font-black tracking-tighter text-[#f25810]">
                 INFRA
               </span>
             </div>
-            <span className="text-[9px] min-[1200px]:text-[10px] min-[1800px]:text-[12px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-1">
+            <span className="text-[7px] min-[1000px]:text-[9px] min-[1200px]:text-[10px] min-[1800px]:text-[12px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-1">
               Projects Pvt. Ltd.
             </span>
-          </div>
+          </Link>
 
-          {/* 2. Middle Search Bar Section - Expands nicely on wide screens */}
+          {/* 2. Middle Search Bar Section */}
           <div className="flex-1 max-w-xl mx-4 hidden min-[600px]:block">
             <div className="relative">
               <input
@@ -142,7 +143,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* 3. Desktop Navigation Links - Pushed fully to the right, fluid layout scaling */}
+          {/* 3. Desktop Navigation Links */}
           <div className="hidden min-[1000px]:flex items-center space-x-4 min-[1200px]:space-x-5 min-[1600px]:space-x-8 h-full ml-auto">
             <NavItem
               title="About Us"
@@ -153,7 +154,6 @@ export default function Navbar() {
                 "Quality Policy",
               ]}
             />
-
             <NavItem
               title="Projects & Services"
               items={[
@@ -163,26 +163,22 @@ export default function Navbar() {
                 "Machinery Fleet",
               ]}
             />
-
             <a
               href="#"
               className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] uppercase tracking-wider transition-colors"
             >
               Events
             </a>
-
             <a
               href="#"
               className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] uppercase tracking-wider transition-colors"
             >
               World Record
             </a>
-
             <NavItem
               title="News & Media"
               items={["Press Releases", "Image Gallery", "Video Gallery"]}
             />
-
             <NavItem
               title="Investors Relation"
               items={[
@@ -192,57 +188,81 @@ export default function Navbar() {
               ]}
             />
 
-            <a
-              href="#"
+            {/* Fixed Desktop Careers Link styling */}
+            <Link
+              to="/careers"
               className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] uppercase tracking-wider transition-colors"
             >
-              Career
-            </a>
+              Careers
+            </Link>
 
-            {/* Contact Us Button - Automatically gets wider/larger typography on displays above 1800px */}
-            <button className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-4 min-[1200px]:px-6 min-[1800px]:px-8 py-2.5 min-[1800px]:py-3.5 font-bold uppercase tracking-widest text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-all shadow-lg shadow-orange-200 whitespace-nowrap">
+            <Link to="/contact" className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-4 min-[1200px]:px-6 min-[1800px]:px-8 py-2.5 min-[1800px]:py-3.5 font-bold uppercase tracking-widest text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-all shadow-lg shadow-orange-200 whitespace-nowrap">
               Contact Us
-            </button>
+            </Link>
           </div>
 
           {/* Hamburger Icon Toggle Button (Visible under 1000px) */}
           <div className="min-[1000px]:hidden flex items-center">
-            <button 
-              onClick={() => setIsMobileOpen(true)} 
-              className="text-black focus:outline-none p-2"
+            <button
+              onClick={() => setIsMobileOpen(true)}
+              className="text-black focus:outline-none p-2 -mr-2"
             >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                className="w-7 h-7"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             </button>
           </div>
         </div>
       </div>
 
-      {/* --- Left Side Slide-in Mobile Drawer Layout Component --- */}
-      <div 
+      {/* --- Left Side Slide-in Mobile Drawer --- */}
+      <div
         className={`fixed inset-0 bg-black/50 transition-opacity duration-300 z-150 ${isMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         onClick={() => setIsMobileOpen(false)}
       />
 
-      <div 
-        className={`fixed top-0 left-0 h-full w-75 sm:w-87.5 bg-white z-200 shadow-2xl transition-transform duration-300 ease-in-out transform ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}
+      <div
+        className={`fixed top-0 left-0 h-full w-[280px] sm:w-[350px] bg-white z-200 shadow-2xl transition-transform duration-300 ease-in-out transform ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex flex-col h-full">
-          {/* Mobile Menu Header Frame */}
-          <div className="p-6 border-b border-gray-100 flex justify-between items-center">
+          {/* Mobile Menu Header Frame - Reduced padding for mobile */}
+          <div className="p-4 border-b border-gray-100 flex justify-between items-center">
             <div className="flex flex-col">
               <div className="flex items-center">
-                <span className="text-xl font-black tracking-tighter text-black">MB</span>
-                <span className="text-xl font-black tracking-tighter text-[#f25810]">INFRA</span>
+                <span className="text-xl font-black tracking-tighter text-black">
+                  MB
+                </span>
+                <span className="text-xl font-black tracking-tighter text-[#f25810]">
+                  INFRA
+                </span>
               </div>
             </div>
-            <button 
+            <button
               onClick={() => setIsMobileOpen(false)}
-              className="text-gray-500 hover:text-black focus:outline-none"
+              className="text-gray-500 hover:text-black focus:outline-none p-1"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
@@ -255,8 +275,18 @@ export default function Navbar() {
                 placeholder="Search..."
                 className="w-full bg-gray-50 text-sm border border-gray-200 rounded-lg px-4 py-2 pl-9 focus:outline-none focus:border-[#f25810]"
               />
-              <svg className="w-4 h-4 text-gray-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              <svg
+                className="w-4 h-4 text-gray-400 absolute left-3 top-3"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
               </svg>
             </div>
           </div>
@@ -272,7 +302,6 @@ export default function Navbar() {
                 "Quality Policy",
               ]}
             />
-
             <MobileNavItem
               title="Projects & Services"
               items={[
@@ -282,26 +311,24 @@ export default function Navbar() {
                 "Machinery Fleet",
               ]}
             />
-
             <a
               href="#"
+              onClick={() => setIsMobileOpen(false)}
               className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] uppercase tracking-wider transition-colors"
             >
               Events
             </a>
-
             <a
               href="#"
+              onClick={() => setIsMobileOpen(false)}
               className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] uppercase tracking-wider transition-colors"
             >
               World Record
             </a>
-
             <MobileNavItem
               title="News & Media"
               items={["Press Releases", "Image Gallery", "Video Gallery"]}
             />
-
             <MobileNavItem
               title="Investors Relation"
               items={[
@@ -311,18 +338,23 @@ export default function Navbar() {
               ]}
             />
 
-            <a
-              href="#"
+            {/* Added Mobile Careers Link */}
+            <Link
+              to="/careers"
+              onClick={() => setIsMobileOpen(false)}
               className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] uppercase tracking-wider transition-colors"
             >
-              Career
-            </a>
+              Careers
+            </Link>
 
             {/* Mobile Contact Action Button */}
             <div className="pt-6 pb-8">
-              <button className="w-full bg-[#f25810] hover:bg-[#d44a0d] text-white py-3 font-bold uppercase tracking-widest text-[13px] transition-all shadow-lg shadow-orange-200">
-                Contact Us
-              </button>
+              <Link
+                to="/contact"
+                className="w-full bg-[#f25810] hover:bg-[#d44a0d] text-white py-3 font-bold uppercase tracking-widest text-[13px] transition-all shadow-lg shadow-orange-200"
+              >
+                Contact us
+              </Link>
             </div>
           </div>
         </div>

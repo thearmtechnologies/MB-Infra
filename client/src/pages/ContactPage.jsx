@@ -48,15 +48,35 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    
-    // Simulate API Call / Nodemailer integration
+
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      toast.success("Message sent successfully! Our team will contact you soon.");
-      setFormData({ fullName: "", email: "", phone: "", company: "", inquiryType: "", message: "" });
-      e.target.reset();
+      // Point this to your backend API contact route
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (response.ok) {
+        toast.success("Message sent successfully! Our team will contact you soon.");
+        setFormData({ 
+          fullName: "", 
+          email: "", 
+          phone: "", 
+          company: "", 
+          inquiryType: "", 
+          message: "" 
+        });
+        e.target.reset();
+      } else {
+        toast.error(result?.error || "Failed to send message. Please try again.");
+      }
     } catch (error) {
-      toast.error("Failed to send message. Please try again.");
+      toast.error(error instanceof Error ? error.message : "Server error. Please check your connection.");
     } finally {
       setLoading(false);
     }
@@ -75,21 +95,21 @@ export default function ContactPage() {
             className="w-full h-full object-cover opacity-30"
           />
           {/* Engineering blueprint grid pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/50 to-transparent"></div>
         </div>
         
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-16">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
             <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="h-[2px] w-12 bg-[#f25810]"></div>
+              <div className="h-0.5 w-12 bg-[#f25810]"></div>
               <span className="text-[#f25810] font-black tracking-[0.25em] uppercase text-xs md:text-sm shadow-black drop-shadow-md">
                 Get In Touch
               </span>
-              <div className="h-[2px] w-12 bg-[#f25810]"></div>
+              <div className="h-0.5 w-12 bg-[#f25810]"></div>
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter mb-6 leading-tight drop-shadow-lg">
-              Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f25810] to-[#ff8c54]">MB Infraprojects</span>
+              Contact <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">MB Infraprojects</span>
             </h1>
             <p className="text-gray-300 text-base md:text-lg font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-md">
               Whether you are a government entity, private stakeholder, or a prospective partner, we are ready to discuss your next mega-project.
@@ -100,7 +120,7 @@ export default function ContactPage() {
 
       {/* 2. Contact Information Cards */}
       <section className="py-20 bg-white relative z-20 -mt-10">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
+        <div className="max-w-350 mx-auto px-6 xl:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {contactDetails.map((item, idx) => (
               <motion.div 
@@ -128,7 +148,7 @@ export default function ContactPage() {
 
       {/* 3. Main Form & Map Section */}
       <section className="py-20 bg-gray-50 flex-1">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
+        <div className="max-w-350 mx-auto px-6 xl:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             
             {/* Left: Contact Form */}
@@ -214,10 +234,9 @@ export default function ContactPage() {
               </div>
 
               {/* Map Container */}
-              <div className="flex-1 bg-gray-300 min-h-[300px] border border-gray-200 relative group overflow-hidden">
-                {/* Embed a generic Google Map for Mumbai */}
+              <div className="flex-1 bg-gray-300 min-h-75 border border-gray-200 relative group overflow-hidden">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.11609939634!2d72.74109995!3d19.08219785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.793284065271!2d72.89736857602492!3d19.072813152061073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c627a20bcaa9%3A0x12a637fa329ac56f!2sIndustrial+Estate%2C+Ghatkopar+West%2C+Mumbai%2C+Maharashtra!5e0!3m2!1sen!2sin!4v1715893000000!5m2!1sen!2sin" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0, filter: "grayscale(100%) contrast(1.2)" }} 

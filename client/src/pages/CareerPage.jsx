@@ -29,22 +29,22 @@ export default function CareerPage() {
             className="w-full h-full object-cover opacity-30"
           />
           {/* Engineering blueprint grid pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/50 to-transparent"></div>
         </div>
         
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-16">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
             <div className="flex items-center justify-center gap-4 mb-6">
-              <div className="h-[2px] w-12 bg-[#f25810]"></div>
+              <div className="h-0.5 w-12 bg-[#f25810]"></div>
               <span className="text-[#f25810] font-black tracking-[0.25em] uppercase text-xs md:text-sm shadow-black drop-shadow-md">
                 Join Our Fleet
               </span>
-              <div className="h-[2px] w-12 bg-[#f25810]"></div>
+              <div className="h-0.5 w-12 bg-[#f25810]"></div>
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter mb-6 leading-tight drop-shadow-lg">
               Build Your Career With <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f25810] to-[#ff8c54]">MB Infraprojects</span>
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">MB Infraprojects</span>
             </h1>
             <p className="text-gray-300 text-base md:text-lg font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-md">
               We are engineering the future. Join a team of dedicated professionals building India's most critical infrastructure, highways, and mega-structures.
@@ -55,7 +55,7 @@ export default function CareerPage() {
 
       {/* 2. Why Join Us Section - Premium Cards */}
       <section className="py-24 bg-white relative">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
+        <div className="max-w-350 mx-auto px-6 xl:px-12">
           <div className="flex flex-col items-center text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tighter mb-4">
               Why Work <span className="text-[#f25810]">With Us?</span>
@@ -89,11 +89,11 @@ export default function CareerPage() {
 
       {/* 3. Open Positions - Corporate Docket Style */}
       <section className="py-24 bg-gray-50 border-t border-gray-200">
-        <div className="max-w-[1400px] mx-auto px-6 xl:px-12">
+        <div className="h-0.5 mx-auto px-6 xl:px-12">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-[2px] w-8 bg-[#f25810]"></div>
+                <div className="h-0.5 w-8 bg-[#f25810]"></div>
                 <span className="text-[#f25810] font-bold tracking-[0.2em] uppercase text-xs">Explore Opportunities</span>
               </div>
               <h2 className="text-3xl md:text-5xl font-black text-gray-900 uppercase tracking-tighter">

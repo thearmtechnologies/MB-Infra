@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { navigationLinks } from "../../constants/navigation";
 // Desktop Dropdown Navigation Item
-const NavItem = ({ title, items }) => {
+const NavItem = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -11,73 +11,93 @@ const NavItem = ({ title, items }) => {
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <button className="flex items-center gap-1 text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors py-8">
-        {title}
-        {items && (
-          <svg
-            className={`w-3 h-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        )}
-      </button>
-
-      {items && (
-        <div
-          className={`absolute top-[85%] left-0 w-56 bg-white shadow-xl border-t-2 border-[#f25810] transition-all duration-300 z-50 ${isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"}`}
+      {/* NORMAL LINK */}
+      {!item.dropdown ? (
+        <Link
+          to={item.path}
+          className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors whitespace-nowrap"
         >
-          <div className="py-1">
-            {items.map((item, idx) => {
-              // Direct routing fallback rule for the leadership template item
-              if (item.name === "Leadership") {
-                return (
-                  <Link
-                    key={idx}
-                    to="/leadership"
-                    className="block px-5 py-3 text-[13px] text-gray-700 font-bold hover:bg-gray-50 hover:text-[#f25810] border-b border-gray-100 last:border-0 transition-all"
-                  >
-                    {item.name}
-                  </Link>
-                );
-              }
-              return (
-                <a
+          {item.title}
+        </Link>
+      ) : (
+        <>
+          {/* DROPDOWN BUTTON */}
+          <button className="flex items-center gap-1 text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors py-8 whitespace-nowrap">
+            {item.title}
+
+            <svg
+              className={`w-3 h-3 transition-transform duration-200 ${
+                isOpen ? "rotate-180" : ""
+              }`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          {/* DROPDOWN MENU */}
+          <div
+            className={`absolute top-[85%] left-0 w-64 bg-white shadow-xl border-t-2 border-[#f25810] transition-all duration-300 z-50 ${
+              isOpen
+                ? "opacity-100 visible translate-y-0"
+                : "opacity-0 invisible -translate-y-2"
+            }`}
+          >
+            <div className="py-1">
+              {item.dropdown.map((subItem, idx) => (
+                <Link
                   key={idx}
-                  href="#"
+                  to={subItem.path}
                   className="block px-5 py-3 text-[13px] text-gray-700 font-bold hover:bg-gray-50 hover:text-[#f25810] border-b border-gray-100 last:border-0 transition-all"
                 >
-                  {item.name}
-                </a>
-              );
-            })}
+                  {subItem.name}
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
 };
 
 // Mobile Dropdown Navigation Item
-const MobileNavItem = ({ title, items, closeDrawer }) => {
+const MobileNavItem = ({ item, closeDrawer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  // NORMAL LINK
+  if (!item.dropdown) {
+    return (
+      <Link
+        to={item.path}
+        onClick={closeDrawer}
+        className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
+      >
+        {item.title}
+      </Link>
+    );
+  }
+
+  // DROPDOWN
   return (
     <div className="border-b border-gray-100 py-1">
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex justify-between items-center w-full py-3 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
       >
-        <span>{title}</span>
+        <span>{item.title}</span>
+
         <svg
-          className={`w-4 h-4 transition-transform duration-200 text-gray-500 ${isOpen ? "rotate-180" : ""}`}
+          className={`w-4 h-4 transition-transform duration-200 text-gray-500 ${
+            isOpen ? "rotate-180" : ""
+          }`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -93,65 +113,23 @@ const MobileNavItem = ({ title, items, closeDrawer }) => {
 
       {isOpen && (
         <div className="bg-gray-50 pl-4 transition-all duration-200">
-          {items.map((item, idx) => {
-            if (item.name === "Leadership") {
-              return (
-                <Link
-                  key={idx}
-                  to="/leadership"
-                  onClick={closeDrawer}
-                  className="block py-2.5 text-[13px] text-gray-600 font-semibold hover:text-[#f25810]"
-                >
-                  {item.name}
-                </Link>
-              );
-            }
-            return (
-              <a
-                key={idx}
-                href="#"
-                onClick={closeDrawer}
-                className="block py-2.5 text-[13px] text-gray-600 font-semibold hover:text-[#f25810]"
-              >
-                {item.name}
-              </a>
-            );
-          })}
+          {item.dropdown.map((subItem, idx) => (
+            <Link
+              key={idx}
+              to={subItem.path}
+              onClick={closeDrawer}
+              className="block py-2.5 text-[13px] text-gray-600 font-semibold hover:text-[#f25810]"
+            >
+              {subItem.name}
+            </Link>
+          ))}
         </div>
       )}
     </div>
   );
 };
-
 export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-
-  // Modular Title Case Datasets
-  const aboutItems = [
-    { name: "Company Profile" },
-    { name: "Vision & Mission" },
-    { name: "Leadership" },
-    { name: "Quality Policy" },
-  ];
-
-  const projectItems = [
-    { name: "Highways & Roads" },
-    { name: "Bridges & Flyovers" },
-    { name: "Industrial Infra" },
-    { name: "Machinery Fleet" },
-  ];
-
-  const mediaItems = [
-    { name: "Press Releases" },
-    { name: "Image Gallery" },
-    { name: "Video Gallery" },
-  ];
-
-  const investorItems = [
-    { name: "Annual Reports" },
-    { name: "Financial Results" },
-    { name: "Shareholding Pattern" },
-  ];
 
   return (
     <nav className="bg-white w-full border-b border-gray-200 sticky top-0 z-100 shadow-sm">
@@ -172,8 +150,8 @@ export default function Navbar() {
             </span>
           </Link>
           {/* 2. Middle Search Bar Section */}
-         <div className="flex-1 hidden min-[700px]:flex justify-center px-2 xl:px-4 min-w-65">
-     <div className="relative group w-full min-w-65 max-w-[320px] min-[1350px]:max-w-95min-[1600px]:max-w-xl">
+          <div className="flex-1 hidden min-[700px]:flex justify-center px-2 xl:px-4 min-w-65">
+            <div className="relative group w-full min-w-65 max-w-[320px] min-[1350px]:max-w-95min-[1600px]:max-w-xl">
               {/* Search Icon */}
               <svg
                 className="
@@ -227,40 +205,12 @@ export default function Navbar() {
               />
             </div>
           </div>
-          {/* 3. Desktop Title Case Navigation Links */}
+
+          {/* 3. Desktop Navigation */}
           <div className="hidden min-[1000px]:flex items-center space-x-4 min-[1200px]:space-x-5 min-[1600px]:space-x-8 h-full ml-auto">
-            <NavItem title="About Us" items={aboutItems} />
-            <NavItem title="Projects & Services" items={projectItems} />
-
-            <a
-              href="#"
-              className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors"
-            >
-              Events
-            </a>
-            <a
-              href="#"
-              className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors"
-            >
-              World Record
-            </a>
-
-            <NavItem title="News & Media" items={mediaItems} />
-            <NavItem title="Investors Relation" items={investorItems} />
-
-            <Link
-              to="/careers"
-              className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors"
-            >
-              Careers
-            </Link>
-
-            <Link
-              to="/contact"
-              className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-4 min-[1200px]:px-6 min-[1800px]:px-8 py-2.5 min-[1800px]:py-3.5 font-bold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-all shadow-lg shadow-orange-200 whitespace-nowrap rounded-sm"
-            >
-              Contact Us
-            </Link>
+            {navigationLinks.map((item, idx) => (
+              <NavItem key={idx} item={item} />
+            ))}
           </div>
 
           {/* Hamburger Menu Trigger */}
@@ -352,64 +302,18 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Drawer Navigation Content Links */}
-          <div className="flex-1 overflow-y-auto px-6 py-2">
-            <MobileNavItem
-              title="About Us"
-              items={aboutItems}
-              closeDrawer={() => setIsMobileOpen(false)}
-            />
-            <MobileNavItem
-              title="Projects & Services"
-              items={projectItems}
-              closeDrawer={() => setIsMobileOpen(false)}
-            />
+         {/* Mobile Drawer Navigation Content Links */}
+<div className="flex-1 overflow-y-auto px-6 py-2">
 
-            <a
-              href="#"
-              onClick={() => setIsMobileOpen(false)}
-              className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
-            >
-              Events
-            </a>
-            <a
-              href="#"
-              onClick={() => setIsMobileOpen(false)}
-              className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
-            >
-              World Record
-            </a>
+  {navigationLinks.map((item, idx) => (
+    <MobileNavItem
+      key={idx}
+      item={item}
+      closeDrawer={() => setIsMobileOpen(false)}
+    />
+  ))}
 
-            <MobileNavItem
-              title="News & Media"
-              items={mediaItems}
-              closeDrawer={() => setIsMobileOpen(false)}
-            />
-            <MobileNavItem
-              title="Investors Relation"
-              items={investorItems}
-              closeDrawer={() => setIsMobileOpen(false)}
-            />
-
-            <Link
-              to="/careers"
-              onClick={() => setIsMobileOpen(false)}
-              className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
-            >
-              Careers
-            </Link>
-
-            {/* Mobile Contact Framework Action Trigger */}
-            <div className="pt-6 pb-8">
-              <Link
-                to="/contact"
-                onClick={() => setIsMobileOpen(false)}
-                className="w-full bg-[#f25810] hover:bg-[#d44a0d] text-white py-3 font-bold text-[13px] transition-all shadow-lg shadow-orange-200 block text-center rounded-sm"
-              >
-                Contact Us
-              </Link>
-            </div>
-          </div>
+</div>
         </div>
       </div>
     </nav>

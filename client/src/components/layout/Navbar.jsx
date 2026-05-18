@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import ContactPage from "../../pages/ContactPage.jsx";
 
 // Desktop Dropdown Navigation Item
 const NavItem = ({ title, items }) => {
@@ -12,7 +11,7 @@ const NavItem = ({ title, items }) => {
       onMouseEnter={() => setIsOpen(true)}
       onMouseLeave={() => setIsOpen(false)}
     >
-      <button className="flex items-center gap-1 text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] uppercase tracking-wider transition-colors py-8">
+      <button className="flex items-center gap-1 text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors py-8">
         {title}
         {items && (
           <svg
@@ -31,21 +30,34 @@ const NavItem = ({ title, items }) => {
         )}
       </button>
 
-      {/* Dropdown Menu */}
       {items && (
         <div
           className={`absolute top-[85%] left-0 w-56 bg-white shadow-xl border-t-2 border-[#f25810] transition-all duration-300 z-50 ${isOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"}`}
         >
           <div className="py-1">
-            {items.map((item, idx) => (
-              <a
-                key={idx}
-                href="#"
-                className="block px-5 py-3 text-[12px] text-gray-700 font-bold uppercase hover:bg-gray-50 hover:text-[#f25810] border-b border-gray-100 last:border-0 transition-all"
-              >
-                {item}
-              </a>
-            ))}
+            {items.map((item, idx) => {
+              // Direct routing fallback rule for the leadership template item
+              if (item.name === "Leadership") {
+                return (
+                  <Link
+                    key={idx}
+                    to="/leadership"
+                    className="block px-5 py-3 text-[13px] text-gray-700 font-bold hover:bg-gray-50 hover:text-[#f25810] border-b border-gray-100 last:border-0 transition-all"
+                  >
+                    {item.name}
+                  </Link>
+                );
+              }
+              return (
+                <a
+                  key={idx}
+                  href="#"
+                  className="block px-5 py-3 text-[13px] text-gray-700 font-bold hover:bg-gray-50 hover:text-[#f25810] border-b border-gray-100 last:border-0 transition-all"
+                >
+                  {item.name}
+                </a>
+              );
+            })}
           </div>
         </div>
       )}
@@ -54,14 +66,14 @@ const NavItem = ({ title, items }) => {
 };
 
 // Mobile Dropdown Navigation Item
-const MobileNavItem = ({ title, items }) => {
+const MobileNavItem = ({ title, items, closeDrawer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="border-b border-gray-100 py-1">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-between items-center w-full py-3 text-[#333] hover:text-[#f25810] font-bold text-[13px] uppercase tracking-wider transition-colors"
+        className="flex justify-between items-center w-full py-3 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
       >
         <span>{title}</span>
         <svg
@@ -81,15 +93,30 @@ const MobileNavItem = ({ title, items }) => {
 
       {isOpen && (
         <div className="bg-gray-50 pl-4 transition-all duration-200">
-          {items.map((item, idx) => (
-            <a
-              key={idx}
-              href="#"
-              className="block py-2.5 text-[12px] text-gray-600 font-semibold uppercase hover:text-[#f25810]"
-            >
-              {item}
-            </a>
-          ))}
+          {items.map((item, idx) => {
+            if (item.name === "Leadership") {
+              return (
+                <Link
+                  key={idx}
+                  to="/leadership"
+                  onClick={closeDrawer}
+                  className="block py-2.5 text-[13px] text-gray-600 font-semibold hover:text-[#f25810]"
+                >
+                  {item.name}
+                </Link>
+              );
+            }
+            return (
+              <a
+                key={idx}
+                href="#"
+                onClick={closeDrawer}
+                className="block py-2.5 text-[13px] text-gray-600 font-semibold hover:text-[#f25810]"
+              >
+                {item.name}
+              </a>
+            );
+          })}
         </div>
       )}
     </div>
@@ -99,10 +126,36 @@ const MobileNavItem = ({ title, items }) => {
 export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
+  // Modular Title Case Datasets
+  const aboutItems = [
+    { name: "Company Profile" },
+    { name: "Vision & Mission" },
+    { name: "Leadership" },
+    { name: "Quality Policy" },
+  ];
+
+  const projectItems = [
+    { name: "Highways & Roads" },
+    { name: "Bridges & Flyovers" },
+    { name: "Industrial Infra" },
+    { name: "Machinery Fleet" },
+  ];
+
+  const mediaItems = [
+    { name: "Press Releases" },
+    { name: "Image Gallery" },
+    { name: "Video Gallery" },
+  ];
+
+  const investorItems = [
+    { name: "Annual Reports" },
+    { name: "Financial Results" },
+    { name: "Shareholding Pattern" },
+  ];
+
   return (
     <nav className="bg-white w-full border-b border-gray-200 sticky top-0 z-100 shadow-sm">
       <div className="w-full px-6 xl:px-12">
-        {/* Adjusted Height: h-16 for mobile, h-24 for desktop */}
         <div className="flex justify-between items-center h-16 min-[1000px]:h-24 gap-4 md:gap-8">
           {/* 1. Logo Section */}
           <Link to="/" className="flex flex-col cursor-pointer shrink-0">
@@ -111,24 +164,30 @@ export default function Navbar() {
                 MB
               </span>
               <span className="text-xl min-[1000px]:text-2xl min-[1200px]:text-3xl min-[1800px]:text-4xl font-black tracking-tighter text-[#f25810]">
-                INFRA
+                Infra
               </span>
             </div>
             <span className="text-[7px] min-[1000px]:text-[9px] min-[1200px]:text-[10px] min-[1800px]:text-[12px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-1">
               Projects Pvt. Ltd.
             </span>
           </Link>
-
           {/* 2. Middle Search Bar Section */}
-          <div className="flex-1 max-w-xl mx-4 hidden min-[600px]:block">
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search projects, services..."
-                className="w-full bg-gray-50 text-sm min-[1800px]:text-base border border-gray-200 rounded-lg px-4 py-2.5 pl-10 min-[1800px]:py-3.5 min-[1800px]:pl-12 focus:outline-none focus:border-[#f25810] focus:bg-white transition-colors"
-              />
+         <div className="flex-1 hidden min-[700px]:flex justify-center px-2 xl:px-4 min-w-65">
+     <div className="relative group w-full min-w-65 max-w-[320px] min-[1350px]:max-w-95min-[1600px]:max-w-xl">
+              {/* Search Icon */}
               <svg
-                className="w-4 h-4 text-gray-400 absolute left-3 top-3.5 min-[1800px]:top-4.5 min-[1800px]:w-5 min-[1800px]:h-5"
+                className="
+        absolute
+        left-3
+        top-1/2
+        -translate-y-1/2
+        w-4
+        h-4
+        text-gray-400
+        group-focus-within:text-[#f25810]
+        transition-colors
+        pointer-events-none
+      "
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -140,68 +199,71 @@ export default function Navbar() {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
+
+              {/* Input */}
+              <input
+                type="text"
+                placeholder="Search..."
+                className="
+        w-full
+        h-11
+        bg-gray-50
+        border
+        border-gray-200
+        rounded-xl
+        pl-10
+        pr-4
+        text-sm
+        text-gray-700
+        placeholder:text-gray-400
+        focus:outline-none
+        focus:border-[#f25810]
+        focus:ring-4
+        focus:ring-[#f25810]/10
+        focus:bg-white
+        transition-all
+        duration-300
+      "
+              />
             </div>
           </div>
-
-          {/* 3. Desktop Navigation Links */}
+          {/* 3. Desktop Title Case Navigation Links */}
           <div className="hidden min-[1000px]:flex items-center space-x-4 min-[1200px]:space-x-5 min-[1600px]:space-x-8 h-full ml-auto">
-            <NavItem
-              title="About Us"
-              items={[
-                "Company Profile",
-                "Vision & Mission",
-                "Leadership",
-                "Quality Policy",
-              ]}
-            />
-            <NavItem
-              title="Projects & Services"
-              items={[
-                "Highways & Roads",
-                "Bridges & Flyovers",
-                "Industrial Infra",
-                "Machinery Fleet",
-              ]}
-            />
+            <NavItem title="About Us" items={aboutItems} />
+            <NavItem title="Projects & Services" items={projectItems} />
+
             <a
               href="#"
-              className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] uppercase tracking-wider transition-colors"
+              className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors"
             >
               Events
             </a>
             <a
               href="#"
-              className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] uppercase tracking-wider transition-colors"
+              className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors"
             >
               World Record
             </a>
-            <NavItem
-              title="News & Media"
-              items={["Press Releases", "Image Gallery", "Video Gallery"]}
-            />
-            <NavItem
-              title="Investors Relation"
-              items={[
-                "Annual Reports",
-                "Financial Results",
-                "Shareholding Pattern",
-              ]}
-            />
 
-            {/* Fixed Desktop Careers Link styling */}
+            <NavItem title="News & Media" items={mediaItems} />
+            <NavItem title="Investors Relation" items={investorItems} />
+
             <Link
               to="/careers"
-              className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] uppercase tracking-wider transition-colors"
+              className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors"
             >
               Careers
             </Link>
 
-            <Link to="/contact" className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-4 min-[1200px]:px-6 min-[1800px]:px-8 py-2.5 min-[1800px]:py-3.5 font-bold uppercase tracking-widest text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-all shadow-lg shadow-orange-200 whitespace-nowrap">
+            <Link
+              to="/contact"
+              className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-4 min-[1200px]:px-6 min-[1800px]:px-8 py-2.5 min-[1800px]:py-3.5 font-bold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-all shadow-lg shadow-orange-200 whitespace-nowrap rounded-sm"
+            >
               Contact Us
             </Link>
           </div>
 
-          {/* Hamburger Icon Toggle Button (Visible under 1000px) */}
+          {/* Hamburger Menu Trigger */}
           <div className="min-[1000px]:hidden flex items-center">
             <button
               onClick={() => setIsMobileOpen(true)}
@@ -225,17 +287,16 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* --- Left Side Slide-in Mobile Drawer --- */}
+      {/* --- Mobile View Slide-in Overlay --- */}
       <div
         className={`fixed inset-0 bg-black/50 transition-opacity duration-300 z-150 ${isMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         onClick={() => setIsMobileOpen(false)}
       />
 
       <div
-        className={`fixed top-0 left-0 h-full w-[280px] sm:w-[350px] bg-white z-200 shadow-2xl transition-transform duration-300 ease-in-out transform ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed top-0 left-0 h-full w-70 sm:w-87.5 bg-white z-200 shadow-2xl transition-transform duration-300 ease-in-out transform ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="flex flex-col h-full">
-          {/* Mobile Menu Header Frame - Reduced padding for mobile */}
           <div className="p-4 border-b border-gray-100 flex justify-between items-center">
             <div className="flex flex-col">
               <div className="flex items-center">
@@ -243,7 +304,7 @@ export default function Navbar() {
                   MB
                 </span>
                 <span className="text-xl font-black tracking-tighter text-[#f25810]">
-                  INFRA
+                  Infra
                 </span>
               </div>
             </div>
@@ -267,7 +328,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Search Input for Mobile Viewports */}
+          {/* Search Bar Mobile Layout */}
           <div className="p-4 border-b border-gray-50 min-[600px]:hidden">
             <div className="relative">
               <input
@@ -291,69 +352,61 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile Menu Navigation Link Content Area */}
+          {/* Mobile Drawer Navigation Content Links */}
           <div className="flex-1 overflow-y-auto px-6 py-2">
             <MobileNavItem
               title="About Us"
-              items={[
-                "Company Profile",
-                "Vision & Mission",
-                "Leadership",
-                "Quality Policy",
-              ]}
+              items={aboutItems}
+              closeDrawer={() => setIsMobileOpen(false)}
             />
             <MobileNavItem
               title="Projects & Services"
-              items={[
-                "Highways & Roads",
-                "Bridges & Flyovers",
-                "Industrial Infra",
-                "Machinery Fleet",
-              ]}
+              items={projectItems}
+              closeDrawer={() => setIsMobileOpen(false)}
             />
+
             <a
               href="#"
               onClick={() => setIsMobileOpen(false)}
-              className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] uppercase tracking-wider transition-colors"
+              className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
             >
               Events
             </a>
             <a
               href="#"
               onClick={() => setIsMobileOpen(false)}
-              className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] uppercase tracking-wider transition-colors"
+              className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
             >
               World Record
             </a>
+
             <MobileNavItem
               title="News & Media"
-              items={["Press Releases", "Image Gallery", "Video Gallery"]}
+              items={mediaItems}
+              closeDrawer={() => setIsMobileOpen(false)}
             />
             <MobileNavItem
               title="Investors Relation"
-              items={[
-                "Annual Reports",
-                "Financial Results",
-                "Shareholding Pattern",
-              ]}
+              items={investorItems}
+              closeDrawer={() => setIsMobileOpen(false)}
             />
 
-            {/* Added Mobile Careers Link */}
             <Link
               to="/careers"
               onClick={() => setIsMobileOpen(false)}
-              className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] uppercase tracking-wider transition-colors"
+              className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
             >
               Careers
             </Link>
 
-            {/* Mobile Contact Action Button */}
+            {/* Mobile Contact Framework Action Trigger */}
             <div className="pt-6 pb-8">
               <Link
                 to="/contact"
-                className="w-full bg-[#f25810] hover:bg-[#d44a0d] text-white py-3 font-bold uppercase tracking-widest text-[13px] transition-all shadow-lg shadow-orange-200"
+                onClick={() => setIsMobileOpen(false)}
+                className="w-full bg-[#f25810] hover:bg-[#d44a0d] text-white py-3 font-bold text-[13px] transition-all shadow-lg shadow-orange-200 block text-center rounded-sm"
               >
-                Contact us
+                Contact Us
               </Link>
             </div>
           </div>

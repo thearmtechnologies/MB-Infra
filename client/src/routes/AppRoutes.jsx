@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import CareerPage from "../pages/CareerPage";
 import Navbar from "../components/layout/Navbar";
 import ContactPage from "../pages/ContactPage.jsx";
+import LeadershipPage from "../pages/LeadershipPage.jsx";
 
 export default function AppRoutes() {
   return (
@@ -13,6 +14,7 @@ export default function AppRoutes() {
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path='/leadership' element={<LeadershipPage />} />
       </Routes>
     </BrowserRouter>
   );

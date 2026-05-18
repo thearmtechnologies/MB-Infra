@@ -2,11 +2,11 @@
   "name": "mb",
   "version": "1.0.0",
   "description": "",
-  "main": "backend/index.js",
+  "main": "server/index.js",
   "type": "module",
   "scripts": {
-    "start": "node backend/index.js",
-    "dev": "nodemon backend/index.js"
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",

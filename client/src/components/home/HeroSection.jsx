@@ -5,75 +5,77 @@ import bridge from "../../assets/img/bridge.jpg";
 import industrial from "../../assets/img/industrial.jpg";
 import pavingRoad from "../../assets/img/pavingRoad.jpg";
 import dumpTruck from "../../assets/img/dumpTruck.jpg";
-// Slide Data representing the 5 different infrastructure categories
+
+// STRICTLY REAL DATA EXTRACTED FROM MBIPL C PROFILE 2025 PDF
 const slidesData = [
   {
     id: 1,
     image: bgImage,
-    subtitle: "Building India's Highway Future",
-    title: "Engineering The",
-    highlight: "Future Of Infrastructure",
+    subtitle: "Building India's Infrastructure",
+    title: "Leading Towards",
+    highlight: "Expansion",
     description:
-      "MB Infraprojects Pvt. Ltd. specializes in executing massive-scale highways and critical infrastructure projects with uncompromising quality and speed.",
+      "Founded in 2013, MB Infraprojects Pvt. Ltd. has evolved into a trusted name in India's infrastructure sector, specializing in critical road structures and major expressways.",
     stats: [
-      { number: "500", label: "KMs of Highway Built" },
-      { number: "150", label: "Heavy Machineries" },
-      { number: "25", label: "Years of Excellence" },
+      { number: "13", label: "Years of Excellence" },
+      { number: "13", label: "Mega Projects Executed" },
+      { number: "75", label: "Cr+ Turnover (FY24)" },
     ],
   },
   {
     id: 2,
     image: bridge,
     subtitle: "Structural Engineering Excellence",
-    title: "Connecting Nations With",
-    highlight: "Iconic Bridges",
+    title: "Mastering Complex",
+    highlight: "Structural Works",
     description:
-      "Delivering world-class bridge structures and flyovers utilizing state-of-the-art engineering practices to overcome the most complex geographic challenges.",
+      "Specializing in the construction of Major and Minor Bridges, VUPs, MUBs, LVUPs, and flyovers across challenging terrains in India.",
     stats: [
-      { number: "45", label: "Major Bridges" },
-      { number: "12", label: "States Covered" },
-      { number: "100", label: "Expert Engineers" },
+      { number: "6", label: "National Highways" },
+      { number: "3", label: "States Covered" },
+      { number: "ISO", label: "9001:2008 Certified" },
     ],
   },
   {
     id: 3,
     image: industrial,
-    subtitle: "Trusted EPC Construction Experts",
-    title: "Powering Growth Through",
-    highlight: "Industrial Infra",
+    subtitle: "End-To-End EPC Solutions",
+    title: "Executing Massive",
+    highlight: "Civil Contracts",
     description:
-      "Executing large-scale industrial layouts, manufacturing facilities, and heavy civil foundations designed to fuel the nation's economic powerhouse.",
+      "From continuous rigid concrete paving (PQC) to retaining walls and crash barriers, we deliver holistic, end-to-end civil engineering solutions.",
     stats: [
-      { number: "30", label: "Industrial Plants" },
-      { number: "2M", label: "Sq.Ft Constructed" },
-      { number: "0", label: "Safety Incidents" },
+      { number: "9", label: "Completed Mega Projects" },
+      { number: "4", label: "Ongoing Mega Projects" },
+      { number: "EPC", label: "Turnkey Execution" },
     ],
   },
   {
     id: 4,
-    image:dumpTruck,    subtitle: "Unmatched Execution Capacity",
-    title: "Deploying World-Class",
-    highlight: "Heavy Machinery",
+    image: dumpTruck,
+    subtitle: "Logistics & Heavy Equipment",
+    title: "Unmatched Execution",
+    highlight: "Capabilities",
     description:
-      "Equipped with an advanced fleet of earthmovers, cranes, and specialized road construction equipment to ensure timely and flawless project delivery.",
+      "We eliminate third-party delays by operating our own massive fleet including dumpers, transit mixers, RMC plants, and heavy-duty crawler cranes.",
     stats: [
-      { number: "300", label: "Total Fleet Size" },
-      { number: "50", label: "Cranes & Rigs" },
-      { number: "24/7", label: "Operational Capacity" },
+      { number: "100", label: "Heavy Machines" },
+      { number: "3", label: "In-House RMC Plants" },
+      { number: "25", label: "Earthmovers & Cranes" },
     ],
   },
   {
     id: 5,
-    image:pavingRoad,
-        subtitle: "Urban Development Partners",
-    title: "Paving The Way For",
-    highlight: "Modern Roads",
+    image: pavingRoad,
+    subtitle: "Trusted By Industry Giants",
+    title: "Partnering For",
+    highlight: "National Growth",
     description:
-      "Developing robust state highways, expressways, and urban road networks using advanced pavement technologies for lasting durability.",
+      "Collaborating seamlessly with India's largest infrastructure developers like PNC Infratech and H.G. Infra to build the Bharatmala Pariyojana corridors.",
     stats: [
-      { number: "10+", label: "Expressway Projects" },
-      { number: "5M", label: "Tons of Asphalt" },
-      { number: "100%", label: "On-Time Delivery" },
+      { number: "7", label: "Top-Tier Clients" },
+      { number: "2", label: "Mega Expressways" },
+      { number: "550", label: "Crores+ Order Book" },
     ],
   },
 ];
@@ -133,7 +135,7 @@ export default function HeroSection() {
       </div>
 
       {/* 2. Main Content Container */}
-      <div className="relative z-20 w-full px-6 xl:px-12 mx-auto mt-12 md:mt-0">
+      <div className="relative z-20 w-full px-6 xl:px-12 mx-auto mt-12 md:mt-0 max-w-350">
         <div className="max-w-4xl">
           <AnimatePresence mode="wait">
             <motion.div
@@ -223,7 +225,8 @@ export default function HeroSection() {
               >
                 <div className="text-4xl font-black text-white mb-1">
                   {stat.number}
-                  <span className="text-[#f25810]">+</span>
+                  {/* Safely adds '+' only to numeric values, ignoring text like "ISO" or "EPC" */}
+                  {!isNaN(stat.number) && stat.number !== "0" && <span className="text-[#f25810]">+</span>}
                 </div>
                 <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">
                   {stat.label}

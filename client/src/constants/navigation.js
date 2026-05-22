@@ -97,8 +97,8 @@ export const navigationLinks = [
   },
 
   {
-    title: "Equipment & Rentals",
-    path :"/eq"
+    title: "Equipment & Machinery",
+    path :"/equipment-machinery",
   },
 
   {

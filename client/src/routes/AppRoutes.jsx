@@ -18,6 +18,7 @@ import OngoingProjects from "../pages/projects/OnGoingProjects.jsx";
 import IndustrialRailways from "../pages/services/IndustrialRailways.jsx";
 import ProjectGallery from "../pages/projects/ProjectsGallery.jsx";
 import EquipementMachinary from "../pages/equipment&rental/EquipementMachinary.jsx";
+import VisionMission from "../pages/about/VisionMission.jsx";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -28,6 +29,7 @@ export default function AppRoutes() {
         {/* About */}
         <Route path="/about/company-profile" element={<CompanyProfile />} />
         <Route path="/about/leadership" element={<LeadershipPage />} />
+        <Route path="/about/vision-mission" element={<VisionMission />} />
         <Route path="/about/certifications" element={<CertificationsPage />} />
         <Route path="/about/quality-policy" element={<QualityPolicy />} />
 
@@ -42,7 +44,7 @@ export default function AppRoutes() {
           path="/services/bridges-flyovers"
           element={<BridgesFlyovers />}
         />
-        <Route path="/equipment" element={<EquipementMachinary />} />
+        <Route path="/equipment-machinery" element={<EquipementMachinary />} />
         <Route
           path="/services/industrial-railways"
           element={<IndustrialRailways />}

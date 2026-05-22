@@ -19,7 +19,11 @@ export const navigationLinks = [
       },
 
       { 
-        name: "Quality Policy",
+        name: "Certifications",
+        path: "/about/certifications",
+      },
+      { 
+        name: "Quality Policy ",
         path: "/about/quality-policy",
       },
     ],
@@ -30,18 +34,22 @@ export const navigationLinks = [
 
     dropdown: [
       {
-        name: "Highways & Roads",
-        path: "/projects/highways-roads",
+        name: "All Projects",
+        path: "/projects",
       },
 
       {
-        name: "Bridges & Flyovers",
-        path: "/projects/bridges-flyovers",
+        name: "Complete Projects",
+        path: "/projects/completed",
       },
 
       {
-        name: "Industrial Infra",
-        path: "/projects/industrial-infra",
+        name: "Ongoing  Projects",
+        path: "/projects/ongoing",
+      },
+      {
+        name: "Project Gallery",
+        path: "/projects/gallery",
       },
     ],
   },
@@ -51,18 +59,18 @@ export const navigationLinks = [
 
     dropdown: [
       {
-        name: "EPC Services",
-        path: "/services/epc",
+        name: "Highways & Roads",
+        path: "/services/roads-highways",
       },
 
       {
-        name: "Heavy Machinery",
-        path: "/services/heavy-machinery",
+        name: "Bridges & Flyovers",
+        path: "/services/bridges-flyovers",
       },
 
       {
-        name: "Crane Services",
-        path: "/services/crane-services",
+        name: "Industrial Railways",
+        path: "/services/industrial-railways",
       },
     ],
   },
@@ -89,24 +97,8 @@ export const navigationLinks = [
   },
 
   {
-    title: "News & Media",
-
-    dropdown: [
-      {
-        name: "Press Releases",
-        path: "/media/press-releases",
-      },
-
-      {
-        name: "Image Gallery",
-        path: "/media/gallery",
-      },
-
-      {
-        name: "Video Gallery",
-        path: "/media/videos",
-      },
-    ],
+    title: "Equipment & Rentals",
+    path :"/eq"
   },
 
   {

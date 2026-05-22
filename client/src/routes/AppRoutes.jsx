@@ -7,20 +7,46 @@ import ContactPage from "../pages/ContactPage.jsx";
 import LeadershipPage from "../pages/about/LeadershipPage.jsx";
 import CompanyProfile from "../pages/about/CompanyProfile.jsx";
 import Footer from "../components/layout/Footer.jsx";
-import HighwaysandRoads from "../pages/projects/HighwaysandRoads.jsx";
-
+import CertificationsPage from "../pages/about/CertificationsPage.jsx";
+import IndustrialInfra from "../pages/projects/IndustrialInfra.jsx";
+import QualityPolicy from "../pages/about/QualityPolicy.jsx";
+import RoadsHighways from "../pages/services/RoadsHighways.jsx";
+import CompletedProjects from "../pages/projects/CompletedProjects.jsx";
+import BridgesFlyovers from "../pages/services/BridgesFlyovers.jsx";
+import AllProjects from "../pages/projects/AllProjects.jsx";
+import OngoingProjects from "../pages/projects/OnGoingProjects.jsx";
+import IndustrialRailways from "../pages/services/IndustrialRailways.jsx";
+import ProjectGallery from "../pages/projects/ProjectsGallery.jsx";
+import EquipementMachinary from "../pages/equipment&rental/EquipementMachinary.jsx";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+
         {/* About */}
         <Route path="/about/company-profile" element={<CompanyProfile />} />
-        <Route path="//about/leadership" element={<LeadershipPage />} />
+        <Route path="/about/leadership" element={<LeadershipPage />} />
+        <Route path="/about/certifications" element={<CertificationsPage />} />
+        <Route path="/about/quality-policy" element={<QualityPolicy />} />
 
         {/* Projects */}
-        <Route path="/projects/highways-roads" element={<HighwaysandRoads />} />
+        <Route path="/projects" element={<AllProjects />} />
+        <Route path="/projects/completed" element={<CompletedProjects />} />
+        <Route path="/projects/ongoing" element={<OngoingProjects />} />
+        <Route path="/projects/gallery" element={<ProjectGallery />} />
+        {/* Services */}
+        <Route path="/services/roads-highways" element={<RoadsHighways />} />
+        <Route
+          path="/services/bridges-flyovers"
+          element={<BridgesFlyovers />}
+        />
+        <Route path="/equipment" element={<EquipementMachinary />} />
+        <Route
+          path="/services/industrial-railways"
+          element={<IndustrialRailways />}
+        />
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>

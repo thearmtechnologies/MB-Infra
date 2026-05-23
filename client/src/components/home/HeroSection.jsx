@@ -207,36 +207,55 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* 3. Floating Info / Counter Bar */}
-      <div className="hidden lg:flex absolute bottom-0 right-0 z-30 bg-[#111111] border-t-4 border-[#f25810] shadow-2xl translate-y-1/4 mr-12">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSlide}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5 }}
-            className="flex items-center divide-x divide-gray-800"
-          >
-            {slide.stats.map((stat, idx) => (
-              <div
-                key={idx}
-                className={`px-10 py-8 ${idx === 2 ? "bg-[#1a1a1a]" : ""}`}
-              >
-                <div className="text-4xl font-black text-white mb-1">
-                  {stat.number}
-                  {/* Safely adds '+' only to numeric values, ignoring text like "ISO" or "EPC" */}
-                  {!isNaN(stat.number) && stat.number !== "0" && <span className="text-[#f25810]">+</span>}
-                </div>
-                <div className="text-xs text-gray-400 font-bold uppercase tracking-widest">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
-      </div>
+ {/* 3. Floating Info / Counter Bar */}
+<div className="hidden lg:flex absolute bottom-4 right-6 z-30">
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={currentSlide}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.4 }}
+      className="flex items-center overflow-hidden rounded-sm bg-[#111111]/95 border-t-2 border-[#f25810] shadow-xl backdrop-blur-sm"
+    >
+      {slide.stats.map((stat, idx) => (
+        <div
+          key={idx}
+          className={`
+            min-w-[130px]
+            px-6
+            py-4
+            flex
+            flex-col
+            justify-center
+            border-r
+            border-gray-800
+            last:border-r-0
+            ${idx === 2 ? "bg-[#171717]" : ""}
+          `}
+        >
+          {/* Number */}
+          <div className="flex items-start leading-none">
+            <span className="text-2xl xl:text-3xl font-black text-white tracking-tight">
+              {stat.number}
+            </span>
 
+            {!isNaN(stat.number) && stat.number !== "0" && (
+              <span className="text-[#f25810] text-xl xl:text-2xl font-black ml-0.5 leading-none">
+                +
+              </span>
+            )}
+          </div>
+
+          {/* Label */}
+          <div className="mt-2 text-[10px] text-gray-400 font-bold uppercase tracking-[0.18em] leading-tight">
+            {stat.label}
+          </div>
+        </div>
+      ))}
+    </motion.div>
+  </AnimatePresence>
+</div>
       {/* 4. Slide Indicators (Dots) */}
       <div className="absolute bottom-10 left-6 xl:left-12 z-30 flex gap-2">
         {slidesData.map((_, idx) => (

@@ -6,7 +6,7 @@
       id: "lei",
       title: "Legal Entity Identifier (LEI)",
       authority: "Companies Register (Ministry of Corporate Affairs), India",
-      status: "Active & Verified",
+      status: "Active ",
       number: "U45201GJ2013PTC076003",
       validity: "Active",
       desc: "Global directory verification ensuring transparent financial transactions and international tender compliance.",

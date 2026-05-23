@@ -2,65 +2,19 @@ import React from "react";
 import { motion } from "framer-motion";
 import { MapPin, Building2, IndianRupee, ArrowRight, Activity, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
-
-// Exact 4 Ongoing Projects extracted from MBIPL C Profile 2025 (Page 9)
-const ongoingProjectsData = [
-  {
-    id: "tumkur-bypass-nh48",
-    title: "Construction of MJB, MUB, VUP, LVUP, VOP, Flyover, ROB in Tumkur Bypass",
-    highway: "NH-48 (Bharatmala Pariyojna)",
-    location: "Karnataka, India",
-    client: "H.G. Infra Engineering Ltd.",
-    value: "167.0 Cr",
-    status: "40% Completed",
-    progress: 40,
-    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=1200&auto=format&fit=crop",
-    desc: "Major structural execution including bridges, underpasses, and flyovers for the Tumkur bypass section."
-  },
-  {
-    id: "badadat-maradgi-bridges",
-    title: "Construction of Minor Bridges, Major Bridge, Flyovers, SVUP & VUP",
-    highway: "MH/KN Border (Badadat) to Maradgi S Andola",
-    location: "Maharashtra/Karnataka Border",
-    client: "PNC Infratech Ltd.",
-    value: "42.25 Cr",
-    status: "50% Completed",
-    progress: 50,
-    image: "https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?q=80&w=1200&auto=format&fit=crop",
-    desc: "Critical cross-border structural development involving heavy girder launching and pier construction."
-  },
-  {
-    id: "ratnagiri-kolhapur-nh166",
-    title: "Four Laning of Ratnagiri Kolhapur Section (Pkg-1)",
-    highway: "NH-166 (Km 0.000 to 19.769 & Km 31.000 to 67.140)",
-    location: "Maharashtra, India",
-    client: "Ravi Infrabuild Projects Pvt. Ltd.",
-    value: "20.20 Cr",
-    status: "Structure Work Completed",
-    progress: 95,
-    image: "https://images.unsplash.com/photo-1518241052219-5eb8cce55dc5?q=80&w=1200&auto=format&fit=crop",
-    desc: "Back-to-back structure work execution for the critical four-laning expansion package."
-  },
-  {
-    id: "raichur-nh748a",
-    title: "Construction of Structures for HACH Road Project",
-    highway: "NH-748A (Km. 245+000 to Km. 259+000)",
-    location: "Raichur, Karnataka",
-    client: "G.R. Infraprojects Limited",
-    value: "48.27 Cr",
-    status: "2% Completed",
-    progress: 2,
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356f58?q=80&w=1200&auto=format&fit=crop",
-    desc: "Initial mobilization and foundational structure works commenced for the newly awarded HACH road corridor."
-  }
-];
+import { allProjectsData } from "../../data/allProjects"; // Adjust path if necessary
 
 export default function OngoingProjects() {
+  // Use startsWith to catch statuses like "Ongoing (40% Completed)"
+  const ongoingProjects = allProjectsData.filter(
+    (project) => project.status.startsWith("Ongoing")
+  );
+
   return (
-    <div className="bg-gray-50 min-h-screen  font-sans antialiased text-gray-900">
+    <div className="bg-gray-50 min-h-screen font-sans antialiased text-gray-900">
       
       {/* 1. Hero Banner - Active Construction Theme */}
-      <section className="relative h-[40vh] min-h-87.5 flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
+      <section className="relative h-[40vh] min-h-[350px] flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=2070&auto=format&fit=crop"
@@ -68,8 +22,8 @@ export default function OngoingProjects() {
             className="w-full h-full object-cover opacity-20 object-center"
           />
           {/* Engineering grid mask */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[30px_30px]" />
-          <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/70 to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-transparent" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
@@ -92,7 +46,7 @@ export default function OngoingProjects() {
           
           {/* Using a 2-column grid to give the 4 ongoing projects maximum visual weight */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {ongoingProjectsData.map((project, idx) => (
+            {ongoingProjects.map((project, idx) => (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -139,15 +93,15 @@ export default function OngoingProjects() {
                   {/* Operational Metrics Grid */}
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-gray-100 mt-auto mb-6">
                     <div className="flex flex-col gap-1">
-                      <span className="text-[11px] text-gray-400 font-semibold tracking-wide">Client</span>
+                      <span className="text-[11px] text-gray-400 font-semibold tracking-wide uppercase">Client</span>
                       <div className="flex items-center gap-1.5 text-sm font-semibold text-gray-800">
                         <Building2 className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                        <span className="truncate">{project.client}</span>
+                        <span className="truncate" title={project.client}>{project.client}</span>
                       </div>
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      <span className="text-[11px] text-gray-400 font-semibold tracking-wide">Project Value</span>
+                      <span className="text-[11px] text-gray-400 font-semibold tracking-wide uppercase">Project Value</span>
                       <div className="flex items-center gap-1 text-sm font-bold text-[#f25810]">
                         <IndianRupee className="w-3.5 h-3.5 shrink-0" />
                         {project.value}
@@ -155,10 +109,10 @@ export default function OngoingProjects() {
                     </div>
 
                     <div className="flex flex-col gap-1">
-                      <span className="text-[11px] text-gray-400 font-semibold tracking-wide">Location</span>
+                      <span className="text-[11px] text-gray-400 font-semibold tracking-wide uppercase">Location</span>
                       <div className="flex items-center gap-1.5 text-sm font-semibold text-gray-700">
                         <MapPin className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                        <span className="truncate">{project.location}</span>
+                        <span className="truncate" title={project.location}>{project.location}</span>
                       </div>
                     </div>
                   </div>
@@ -182,7 +136,7 @@ export default function OngoingProjects() {
       {/* 3. Enterprise CTA Section */}
       <section className="bg-gray-900 text-white py-16 relative overflow-hidden border-t-8 border-[#f25810]">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[radial-gradient(#f25810_1px,transparent_1px)] bg-size-[16px_16px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#f25810_1px,transparent_1px)] bg-[size:16px_16px]" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight mb-4">

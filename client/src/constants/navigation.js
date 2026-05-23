@@ -76,12 +76,12 @@ export const navigationLinks = [
   },
 
   {
-    title: "Industries",
+    title: "Industries & Clients",
 
     dropdown: [
       {
-        name: "Infrastructure",
-        path: "/industries/infrastructure",
+        name: "Clients",
+        path: "/industries/clients",
       },
 
       {
@@ -97,8 +97,8 @@ export const navigationLinks = [
   },
 
   {
-    title: "Equipment & Machinery",
-    path :"/equipment-machinery",
+    title: "Fleet",
+    path :"/fleet",
   },
 
   {

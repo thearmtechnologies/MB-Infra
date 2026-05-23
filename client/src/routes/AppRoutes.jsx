@@ -21,6 +21,8 @@ import EquipementMachinary from "../pages/equipment&rental/EquipementMachinary.j
 import VisionMission from "../pages/about/VisionMission.jsx";
 import FinancialOverview from "../pages/investors/FinancialOverview.jsx";
 import ScrollToTop from "../components/layout/ScrollToTop";
+import ProjectDetails from "../pages/projects/ProjectDetails.jsx";
+import ClientsPage from "../pages/industries&clients/ClientsPage.jsx";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -41,18 +43,20 @@ export default function AppRoutes() {
         <Route path="/projects/completed" element={<CompletedProjects />} />
         <Route path="/projects/ongoing" element={<OngoingProjects />} />
         <Route path="/projects/gallery" element={<ProjectGallery />} />
+        <Route path="/projects/:id" element={<ProjectDetails />} />  
         {/* Services */}
         <Route path="/services/roads-highways" element={<RoadsHighways />} />
         <Route
           path="/services/bridges-flyovers"
           element={<BridgesFlyovers />}
         />
-        <Route path="/equipment-machinery" element={<EquipementMachinary />} />
+        <Route path="/fleet" element={<EquipementMachinary />} />
         <Route
           path="/services/industrial-railways"
           element={<IndustrialRailways />}
         />
-
+    {/* Industries & Clients */}
+        <Route path="/industries/clients" element={<ClientsPage />} />
         {/* Investors */}
         <Route path="/investors/financial-overview" element={<FinancialOverview />} />
 

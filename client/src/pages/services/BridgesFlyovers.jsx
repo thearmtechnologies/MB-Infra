@@ -4,6 +4,7 @@ import { MoveUp, Layers, TrainTrack, HardHat, ArrowRight, Truck } from "lucide-r
 import { Link } from "react-router-dom";
 import CraneImage from "../../assets/img/vehicles/crane.png";
 import BridgeImage from "../../assets/img/vehicles/bridge.png";
+import BridgeConstructionImage from "../../assets/img/bridgeConstructionHero.png";
 // Data extracted directly from MBIPL C Profile (Page 4)
 const capabilities = [
   {
@@ -45,12 +46,12 @@ export default function BridgesFlyovers() {
       <section className="relative h-[60vh] min-h-125 flex items-center bg-gray-900 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=2070&auto=format&fit=crop"
+            src={BridgeConstructionImage}
             alt="Bridge Construction"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-50"
           />
           {/* Engineering Blueprint Grid Overlay */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]" />
+          {/* <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]" /> */}
           <div className="absolute inset-0 bg-linear-to-r from-gray-900 via-gray-900/80 to-transparent" />
         </div>
 

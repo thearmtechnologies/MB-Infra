@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Paperclip, Loader2 } from "lucide-react";
 
-export default function CareerForm() {
+export default function CareerForm({ prefilledData }) {
   const [formData, setFormData] = useState({
     fullName: "", email: "", phone: "", position: "", experience: "", location: "", message: "",
   });
   const [resume, setResume] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  // Listen for changes to prefilledData from the parent page
+  useEffect(() => {
+    if (prefilledData) {
+      setFormData((prevData) => ({
+        ...prevData,
+        position: prefilledData.position || "",
+        location: prefilledData.location || ""
+      }));
+    }
+  }, [prefilledData]);
 
   const handleInputChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -123,7 +134,7 @@ export default function CareerForm() {
             </div>
           </div>
 
-          <button type="submit" disabled={loading} className="w-full bg-[#f25810] hover:bg-[#d44a0d] text-white py-4 font-black uppercase tracking-widest text-sm transition-all flex items-center justify-center disabled:opacity-70">
+          <button type="submit" disabled={loading} className="w-full bg-[#f25810] hover:bg-[#d44a0d] text-white py-4 font-black uppercase tracking-widest text-sm transition-all flex items-center justify-center disabled:opacity-70 cursor-pointer">
             {loading ? <><Loader2 className="animate-spin mr-2" size={18} /> Sending Application...</> : "Submit Application"}
           </button>
         </form>

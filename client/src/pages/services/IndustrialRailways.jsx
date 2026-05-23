@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Train, Ship, Truck, HardHat, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import RailwayHeroImage from "../../assets/img/railwayHero.png";
 // Data extracted directly from MBIPL C Profile (Industrial & Railways capabilities)
 const capabilities = [
   {
@@ -34,8 +34,7 @@ export default function IndustrialRailways() {
       <section className="relative h-[60vh] min-h-125 flex items-center bg-gray-900 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?q=80&w=2069&auto=format&fit=crop"
-            alt="Railway and Industrial Infrastructure"
+            src={RailwayHeroImage}
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-linear-to-r from-gray-900 via-gray-900/80 to-transparent" />

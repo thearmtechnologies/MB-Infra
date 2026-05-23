@@ -2,7 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Truck, Shield, Map, Settings, ArrowRight, HardHat } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import ServiceHeroImage from "../../assets/img/roadsHighwaysHero.png";
+import HeavyMachineryImage from "../../assets/img/heavyMachinery.png";
+import AsphaltPavingImage from "../../assets/img/asphaltPaving.png";
+import EarthworksImage from "../../assets/img/earthworks.png";
 // Data extracted directly from MBIPL C Profile
 const capabilities = [
   {
@@ -43,7 +46,7 @@ export default function RoadsHighways() {
       <section className="relative h-[60vh] min-h-125 flex items-center bg-gray-900 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop"
+            src={ServiceHeroImage}
             alt="Highway Construction"
             className="w-full h-full object-cover opacity-30"
           />
@@ -96,8 +99,8 @@ export default function RoadsHighways() {
               viewport={{ once: true }}
               className="grid grid-cols-2 gap-4"
             >
-              <img src="https://images.unsplash.com/photo-1518241052219-5eb8cce55dc5?q=80&w=800&auto=format&fit=crop" alt="Asphalt Paving" className="w-full h-64 object-cover border-b-4 border-[#f25810]" />
-              <img src="https://images.unsplash.com/photo-1572025442646-866d16c84a54?q=80&w=800&auto=format&fit=crop" alt="Earthworks" className="w-full h-64 object-cover mt-8 border-b-4 border-gray-900" />
+              <img src={AsphaltPavingImage} alt="Asphalt Paving" className="w-full h-64 object-cover border-b-4 border-[#f25810]" />
+              <img src={EarthworksImage} alt="Earthworks" className="w-full h-64 object-cover mt-8 border-b-4 border-gray-900" />
             </motion.div>
           </div>
         </div>
@@ -152,7 +155,7 @@ export default function RoadsHighways() {
             </div>
             <div className="lg:w-5/12 relative">
                <div className="absolute inset-0 border-2 border-[#f25810] translate-x-4 translate-y-4" />
-               <img src="https://images.unsplash.com/photo-1587393855524-087f83d95bc9?q=80&w=800&auto=format&fit=crop" alt="Heavy Machinery" className="relative z-10 w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+               <img src={HeavyMachineryImage} alt="Heavy Machinery" className="relative z-10 w-full h-auto object-cover  hover:grayscale-0 transition-all duration-500" />
             </div>
           </div>
         </div>

@@ -1,174 +1,150 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { BarChart3, ChevronRight, Hand, TrendingUp } from "lucide-react";
+import { BarChart3, TrendingUp } from "lucide-react";
 
 export default function FinancialOverview() {
-  // Exact data extracted directly from the provided MB Infra image record
   const turnoverData = [
     { year: "2019-20", value: 38.46 },
     { year: "2020-21", value: 47.67 },
     { year: "2021-22", value: 53.74 },
     { year: "2022-23", value: 43.67 },
-    { year: "2023-24", value: 75.56 }
+    { year: "2023-24", value: 75.56 },
   ];
 
-  // Chart configuration
-  const chartCeiling = 100; // Set ceiling to 100 Cr for a clean Y-axis scale
+  const chartCeiling = 100;
   const yAxisSteps = [100, 75, 50, 25, 0];
 
   return (
-    <div className="bg-[#fafafa] min-h-screen font-sans text-gray-900 selection:bg-[#f25810]/10 selection:text-[#f25810] flex flex-col">
-      
-      {/* 1. HERO BANNER */}
-      <section className="relative py-20 bg-gray-950 flex flex-col justify-center overflow-hidden">
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <div className="absolute inset-0 bg-[linear-gradient(#f25810_1px,transparent_1px),linear-gradient(90deg,#f25810_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+    <div className="bg-[#fafafa] min-h-screen font-sans text-gray-900 overflow-x-hidden">
+      {/* HERO SECTION */}
+      <section className="relative py-20 bg-black overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-[linear-gradient(#f25810_1px,transparent_1px),linear-gradient(90deg,#f25810_1px,transparent_1px)] bg-size-[40px_40px]" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/80 to-transparent" />
-        
-        <div className="w-full max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto flex flex-col items-center"
-          >
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="h-0.5 w-8 bg-[#f25810]"></div>
-              <span className="text-[#f25810] text-sm font-semibold tracking-wide">
-                Financial Performance
-              </span>
-              <div className="h-0.5 w-8 bg-[#f25810]"></div>
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white leading-none mb-4">
-              Yearly <span className="text-[#f25810]">Turnover</span>
-            </h1>
-            <p className="text-gray-400 text-sm md:text-base max-w-xl leading-relaxed">
-              Tracking our continuous financial scaling across consecutive fiscal years. All values are represented in Crores (INR).
-            </p>
-          </motion.div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-px w-10 bg-[#f25810]" />
+            <span className="text-[#f25810] text-sm font-semibold tracking-widest uppercase">
+              Financial Performance
+            </span>
+            <div className="h-px w-10 bg-[#f25810]" />
+          </div>
+
+          <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
+            Yearly <span className="text-[#f25810]">Turnover</span>
+          </h1>
+
+          <p className="text-gray-400 max-w-2xl mx-auto mt-5 text-sm md:text-base leading-relaxed">
+            Tracking our continuous financial scaling across consecutive fiscal
+            years. All values are represented in Crores (INR).
+          </p>
         </div>
       </section>
 
-      {/* 2. PREMIUM EXECUTIVE BAR CHART */}
-      <section className="flex-1 py-16 md:py-24 bg-white relative">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 h-full flex flex-col justify-center">
-          
-          {/* Header & Context */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 border-b border-gray-100 pb-6">
+      {/* CHART SECTION */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+          {/* HEADER */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14 border-b border-gray-200 pb-8">
             <div>
-              <div className="flex items-center gap-2 mb-2 text-[#f25810]">
+              <div className="flex items-center gap-2 text-[#f25810] mb-3">
                 <BarChart3 size={20} />
-                <span className="text-sm font-semibold tracking-wide">Revenue Metrics</span>
+                <span className="text-sm font-semibold tracking-wide">
+                  Revenue Metrics
+                </span>
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-gray-900">
-                5-Year Growth Trajectory
+
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-black">
+                5-Year Growth in ₹ Cr{" "}
               </h2>
             </div>
-            
-            <div className="bg-gray-50 border border-gray-200 px-5 py-3 rounded-sm flex items-center gap-4">
-              <TrendingUp size={24} className="text-gray-400" />
+
+            <div className="bg-gray-50 border border-gray-200 px-6 py-4 rounded-lg flex items-center gap-4 shadow-sm">
+              <TrendingUp size={26} className="text-[#f25810]" />
+
               <div>
-                <p className="text-xs font-semibold text-gray-500 tracking-wide">Latest FY 2023-24</p>
-                <p className="text-xl font-bold text-gray-900">₹ 75.56 Cr</p>
+                <p className="text-xs font-semibold tracking-wide text-gray-500 uppercase">
+                  Latest FY 2023-24
+                </p>
+
+                <p className="text-2xl font-bold text-black">₹ 75.56 Cr</p>
               </div>
             </div>
           </div>
 
-          {/* Mobile swipe hint */}
-          <div className="md:hidden flex items-center justify-end text-xs font-medium text-[#f25810] mb-4 animate-pulse tracking-wide">
-            <Hand size={14} className="mr-1.5" />
-            Swipe chart <ChevronRight size={14} />
-          </div>
-
-          {/* Chart Container */}
-          <div className="w-full overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing pb-8">
-            <div className="min-w-[600px] md:min-w-full flex h-[350px] md:h-[450px]">
-              
-              {/* Y-Axis Legend */}
-              <div className="flex flex-col justify-between py-8 pr-4 border-r-2 border-gray-900 text-xs font-mono font-medium text-gray-400 text-right w-16 md:w-20 shrink-0">
+          {/* CHART */}
+          <div className="w-full">
+            <div className="flex w-full h-105 md:h-130">
+              {/* Y AXIS */}
+              <div className="w-14 md:w-20 flex flex-col justify-between pr-3 border-r-2 border-black text-[11px] md:text-xs text-gray-500 font-medium py-4">
                 {yAxisSteps.map((step) => (
                   <span key={step}>{step} Cr</span>
                 ))}
               </div>
 
-              {/* Chart Plot Area */}
-              <div className="relative flex-1 flex items-end justify-around px-2 md:px-8 border-b-2 border-gray-900 pb-0 pt-8">
-                
-                {/* Horizontal Grid Lines */}
-                <div className="absolute inset-0 flex flex-col justify-between py-8 pointer-events-none z-0">
-                  {yAxisSteps.map((step, i) => (
-                    <div 
-                      key={step} 
-                      className={`w-full border-b ${i === yAxisSteps.length - 1 ? 'border-transparent' : 'border-dashed border-gray-200'}`} 
+              {/* GRAPH AREA */}
+              <div className="relative flex-1 flex justify-around items-end border-b-2 border-black px-3 md:px-8 pt-6 pb-16">
+                {/* GRID LINES */}
+                <div className="absolute inset-0 flex flex-col justify-between pointer-events-none py-4">
+                  {yAxisSteps.map((_, i) => (
+                    <div
+                      key={i}
+                      className="border-b border-dashed border-gray-200 w-full"
                     />
                   ))}
                 </div>
 
-                {/* Vertical Data Bars */}
+                {/* BARS */}
                 {turnoverData.map((data, idx) => {
                   const heightPercentage = (data.value / chartCeiling) * 100;
-                  
+
                   return (
-                    <div key={idx} className="relative z-10 flex flex-col items-center group w-14 md:w-24 h-full justify-end">
-                      
-                      {/* Hover / Value Tooltip */}
-                      <motion.div 
-                        initial={{ opacity: 0, y: 10 }}
+                    <div
+                      key={idx}
+                      className="relative z-10 flex flex-col items-center justify-end h-full group"
+                    >
+                      {/* VALUE */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: idx * 0.1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.4 + (idx * 0.1) }}
-                        className="mb-3 flex flex-col items-center transition-transform group-hover:-translate-y-2"
+                        className="mb-3"
                       >
-                        <span className="text-sm font-bold text-gray-900 group-hover:text-[#f25810] transition-colors">
-                          ₹{data.value}
+                        <span className="text-xs md:text-sm font-bold text-black group-hover:text-[#f25810] transition-colors">
+                          ₹{data.value} Cr
                         </span>
                       </motion.div>
 
-                      {/* The Bar */}
+                      {/* BAR */}
                       <motion.div
                         initial={{ height: 0 }}
                         whileInView={{ height: `${heightPercentage}%` }}
-                        viewport={{ once: true, margin: "-50px" }}
-                        transition={{ 
-                          duration: 0.8, 
-                          delay: idx * 0.15,
-                          ease: [0.25, 1, 0.5, 1] // Smooth ease-out
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.9,
+                          delay: idx * 0.12,
                         }}
-                        className="w-full bg-gradient-to-t from-gray-900 via-[#8a3104] to-[#f25810] rounded-t-sm shadow-md cursor-pointer relative overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:brightness-110"
-                      >
-                        {/* Shimmer effect inside bar on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      </motion.div>
+                        className="w-10 sm:w-14 md:w-20 rounded-t-md bg-linear-to-t from-black via-[#6b2603] to-[#f25810] shadow-lg hover:brightness-110 transition-all duration-300"
+                      />
 
-                      {/* Year Label */}
-                      <div className="absolute -bottom-8 md:-bottom-10 flex flex-col items-center">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gray-400 mb-1.5 group-hover:bg-[#f25810] transition-colors"></div>
-                        <span className="text-xs font-medium text-gray-500 whitespace-nowrap group-hover:text-gray-900 transition-colors">
+                      {/* YEAR */}
+                      <div className="mt-4 flex flex-col items-center">
+                        <div className="w-2 h-2 rounded-full bg-gray-400 mb-2 group-hover:bg-[#f25810] transition-colors" />
+
+                        <span className="text-[11px] sm:text-xs md:text-sm font-medium text-gray-600 whitespace-nowrap group-hover:text-black transition-colors">
                           {data.year}
                         </span>
                       </div>
-
                     </div>
                   );
                 })}
               </div>
             </div>
           </div>
-
         </div>
       </section>
-
-      {/* Hide scrollbar CSS injection for mobile smoothness */}
-      <style dangerouslySetInnerHTML={{__html: `
-        .hide-scrollbar::-webkit-scrollbar {
-          display: none;
-        }
-        .hide-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}} />
     </div>
   );
 }

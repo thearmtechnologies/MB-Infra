@@ -11,7 +11,6 @@ import BoomPlacerImage from "../assets/img/vehicles/BoomPlacer.jpg";
 import JCBExcavatorsImage from "../assets/img/vehicles/JCBExcavators.jpg";
 import WaterTankerImage from "../assets/img/vehicles/WaterTanker.jpg";
 import RMCPlantImage from "../assets/img/vehicles/RMCPlant.jpg";
-import BikeImage from "../assets/img/vehicles/Bike.jpg";
 import BoleroPickupImage from "../assets/img/vehicles/BoleroPickup.jpg";
 import TractorImage from "../assets/img/vehicles/Tractor.jpg";
 import AshokLeylandCometImage from "../assets/img/vehicles/AshokLeylandCometImage.jpg";
@@ -23,7 +22,6 @@ import BulldozerImage from "../assets/img/vehicles/Bulldozer.jpg";
 import GeneratorSetImage from "../assets/img/vehicles/GeneratorSet.webp";
 import WeldingMachineImage from "../assets/img/vehicles/WeldingMachine.jpg";
 import TowerLightImage from "../assets/img/vehicles/TowerLight.jpg";
-import CarVehicleImage from "../assets/img/vehicles/CarVehicle.jpg";
 
 export const equipmentData = [
   {
@@ -110,13 +108,7 @@ export const equipmentData = [
     category: "Plant Equipment",
     image: RMCPlantImage,
   },
-  {
-    id: 13,
-    name: "Bike",
-    qty: 6,
-    category: "Light Vehicles",
-    image:BikeImage,
-  },
+ 
   {
     id: 14,
     name: "Bolero Pickup",
@@ -145,13 +137,7 @@ export const equipmentData = [
     category: "Transport & Logistics",
     image: TipperImage,
   },
-  {
-    id: 18,
-    name: "Car Vehicle",
-    qty: 9,
-    category: "Light Vehicles",
-    image: CarVehicleImage, 
-  },
+
   {
     id: 19,
     name: "Camper",

@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, matchPath, useLocation } from "react-router-dom";
 import { navigationLinks } from "../../constants/navigation";
 import logo from "../../assets/img/logo.png";
 // Desktop Dropdown Navigation Item
 const NavItem = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isDropdownActive = item.dropdown
+    ? item.dropdown.some((subItem) =>
+        matchPath({ path: subItem.path, end: true }, location.pathname)
+      )
+    : false;
 
   return (
     <div
@@ -14,16 +20,24 @@ const NavItem = ({ item }) => {
     >
       {/* NORMAL LINK */}
       {!item.dropdown ? (
-        <Link
+        <NavLink
           to={item.path}
-          className="text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors whitespace-nowrap"
+          className={({ isActive }) =>
+            `font-semibold text-[13px] min-[1200px]:text-[15px] min-[1800px]:text-[17px] transition-colors whitespace-nowrap ${
+              isActive ? "text-[#f25810]" : "text-[#333] hover:text-[#f25810]"
+            }`
+          }
         >
           {item.title}
-        </Link>
+        </NavLink>
       ) : (
         <>
           {/* DROPDOWN BUTTON */}
-          <button className="flex items-center gap-1 text-[#333] hover:text-[#f25810] font-semibold text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] transition-colors py-8 whitespace-nowrap">
+          <button
+            className={`flex items-center gap-1 font-semibold text-[13px] min-[1200px]:text-[15px] min-[1800px]:text-[17px] transition-colors py-8 whitespace-nowrap ${
+              isDropdownActive ? "text-[#f25810]" : "text-[#333] hover:text-[#f25810]"
+            }`}
+          >
             {item.title}
 
             <svg
@@ -53,13 +67,19 @@ const NavItem = ({ item }) => {
           >
             <div className="py-1">
               {item.dropdown.map((subItem, idx) => (
-                <Link
+                <NavLink
                   key={idx}
                   to={subItem.path}
-                  className="block px-5 py-3 text-[13px] text-gray-700 font-bold hover:bg-gray-50 hover:text-[#f25810] border-b border-gray-100 last:border-0 transition-all"
+                  className={({ isActive }) =>
+                    `block px-5 py-3 text-[13px] font-bold border-b border-gray-100 last:border-0 transition-all ${
+                      isActive
+                        ? "text-[#f25810] bg-gray-50"
+                        : "text-gray-700 hover:bg-gray-50 hover:text-[#f25810]"
+                    }`
+                  }
                 >
                   {subItem.name}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </div>
@@ -72,17 +92,27 @@ const NavItem = ({ item }) => {
 // Mobile Dropdown Navigation Item
 const MobileNavItem = ({ item, closeDrawer }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const isDropdownActive = item.dropdown
+    ? item.dropdown.some((subItem) =>
+        matchPath({ path: subItem.path, end: true }, location.pathname)
+      )
+    : false;
 
   // NORMAL LINK
   if (!item.dropdown) {
     return (
-      <Link
+      <NavLink
         to={item.path}
         onClick={closeDrawer}
-        className="block py-3 border-b border-gray-100 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
+        className={({ isActive }) =>
+          `block py-3 border-b border-gray-100 font-bold text-[13px] transition-colors ${
+            isActive ? "text-[#f25810]" : "text-[#333] hover:text-[#f25810]"
+          }`
+        }
       >
         {item.title}
-      </Link>
+      </NavLink>
     );
   }
 
@@ -91,7 +121,9 @@ const MobileNavItem = ({ item, closeDrawer }) => {
     <div className="border-b border-gray-100 py-1">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex justify-between items-center w-full py-3 text-[#333] hover:text-[#f25810] font-bold text-[13px] transition-colors"
+        className={`flex justify-between items-center w-full py-3 font-bold text-[13px] transition-colors ${
+          isDropdownActive ? "text-[#f25810]" : "text-[#333] hover:text-[#f25810]"
+        }`}
       >
         <span>{item.title}</span>
 
@@ -115,14 +147,18 @@ const MobileNavItem = ({ item, closeDrawer }) => {
       {isOpen && (
         <div className="bg-gray-50 pl-4 transition-all duration-200">
           {item.dropdown.map((subItem, idx) => (
-            <Link
+            <NavLink
               key={idx}
               to={subItem.path}
               onClick={closeDrawer}
-              className="block py-2.5 text-[13px] text-gray-600 font-semibold hover:text-[#f25810]"
+              className={({ isActive }) =>
+                `block py-2.5 text-[13px] font-semibold ${
+                  isActive ? "text-[#f25810]" : "text-gray-600 hover:text-[#f25810]"
+                }`
+              }
             >
               {subItem.name}
-            </Link>
+            </NavLink>
           ))}
         </div>
       )}
@@ -134,19 +170,22 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white w-full border-b border-gray-200 sticky top-0 z-100 shadow-sm">
-      <div className="w-full px-6 xl:px-12">
+      <div className="w-full px-4 xl:px-5">
         <div className="flex justify-between items-center h-16 min-[1000px]:h-24 gap-4 md:gap-8">
           {/* 1. Logo Section */}
-          <Link to="/" className="flex items-center cursor-pointer shrink-0">
+          <Link
+            to="/"
+            className="flex items-center cursor-pointer shrink-0 h-full"
+          >
             <img
               src={logo}
               alt="Logo"
-              className="h-10 min-[1000px]:h-14 w-auto object-contain"
+              className="h-full max-h-12 min-[1000px]:max-h-16 w-auto object-contain"
             />
           </Link>
           {/* 2. Middle Search Bar Section */}
-          <div className="flex-1 hidden min-[700px]:flex justify-center px-2 xl:px-4 min-w-65">
-            <div className="relative group w-full min-w-65 max-w-[320px] min-[1350px]:max-w-95min-[1600px]:max-w-xl">
+          <div className="flex-1 hidden min-[700px]:flex justify-center px-2 xl:px-3 min-w-0">
+            <div className="relative group w-full max-w-[280px] min-[1200px]:max-w-[340px] min-[1600px]:max-w-[420px]">
               {/* Search Icon */}
               <svg
                 className="
@@ -179,15 +218,15 @@ export default function Navbar() {
                 placeholder="Search..."
                 className="
         w-full
-        h-11
+              h-10
         bg-gray-50
         border
         border-gray-200
-        rounded-xl
+              rounded-lg
         pl-10
         pr-4
         text-sm
-        text-gray-700
+        text-gray-900
         placeholder:text-gray-400
         focus:outline-none
         focus:border-[#f25810]

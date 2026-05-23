@@ -3,6 +3,7 @@ import highway from "../../assets/img/highway.jpg";
 import ganga from "../../assets/img/ganga.jpg";
 import megastill from "../../assets/img/megastill.jpg";
 import urbanWay from "../../assets/img/urbanWay.jpg";
+import { Link } from "react-router-dom";
 const projects = [
   { title: "National Highway NH-44 Expansion", category: "Highways", img: highway },
   { title: "Ganga River Bridge Project", category: "Bridges", img: ganga },
@@ -27,9 +28,9 @@ export default function ProjectsSection() {
               Signature <span className="text-[#f25810]">Projects</span>
             </h2>
           </div>
-          <button className="bg-gray-900 hover:bg-[#f25810] text-white px-8 py-4 font-bold uppercase tracking-widest text-sm transition-all shrink-0">
+          <Link to='/projects' className="bg-gray-900 hover:bg-[#f25810] text-white px-8 py-4 font-bold uppercase tracking-widest text-sm transition-all shrink-0">
             View All Projects
-          </button>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">

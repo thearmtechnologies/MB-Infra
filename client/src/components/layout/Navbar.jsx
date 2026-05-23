@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { navigationLinks } from "../../constants/navigation";
+import logo from "../../assets/img/logo.png";
 // Desktop Dropdown Navigation Item
 const NavItem = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -136,18 +137,12 @@ export default function Navbar() {
       <div className="w-full px-6 xl:px-12">
         <div className="flex justify-between items-center h-16 min-[1000px]:h-24 gap-4 md:gap-8">
           {/* 1. Logo Section */}
-          <Link to="/" className="flex flex-col cursor-pointer shrink-0">
-            <div className="flex items-center">
-              <span className="text-xl min-[1000px]:text-2xl min-[1200px]:text-3xl min-[1800px]:text-4xl font-black tracking-tighter text-black">
-                MB
-              </span>
-              <span className="text-xl min-[1000px]:text-2xl min-[1200px]:text-3xl min-[1800px]:text-4xl font-black tracking-tighter text-[#f25810]">
-                Infra
-              </span>
-            </div>
-            <span className="text-[7px] min-[1000px]:text-[9px] min-[1200px]:text-[10px] min-[1800px]:text-[12px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-1">
-              Projects Pvt. Ltd.
-            </span>
+          <Link to="/" className="flex items-center cursor-pointer shrink-0">
+            <img
+              src={logo}
+              alt="Logo"
+              className="h-10 min-[1000px]:h-14 w-auto object-contain"
+            />
           </Link>
           {/* 2. Middle Search Bar Section */}
           <div className="flex-1 hidden min-[700px]:flex justify-center px-2 xl:px-4 min-w-65">

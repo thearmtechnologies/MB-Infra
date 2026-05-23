@@ -202,15 +202,15 @@ export default function CompanyProfile() {
               Guided By <span className="text-[#f25810]">Experience</span>
             </h2>
             <Link 
-              to="/leadership" 
+              to="/about/leadership" 
               className="mt-4 md:mt-0 bg-gray-900 hover:bg-[#f25810] text-white px-6 py-2.5 text-sm font-bold tracking-wider transition-colors rounded-sm shadow-sm"
             >
               Meet Everyone
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            {[...leadershipTeam.executives, ...leadershipTeam.management].slice(0, 4).map((leader, idx) => (
+          <div className=" grid-cols-1 flex  justify-center   sm:grid-cols-2 lg:grid-cols-4 gap-12">
+            {[...leadershipTeam.executives, ...leadershipTeam.management].slice(0, 2).map((leader, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}

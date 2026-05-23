@@ -19,9 +19,12 @@ import IndustrialRailways from "../pages/services/IndustrialRailways.jsx";
 import ProjectGallery from "../pages/projects/ProjectsGallery.jsx";
 import EquipementMachinary from "../pages/equipment&rental/EquipementMachinary.jsx";
 import VisionMission from "../pages/about/VisionMission.jsx";
+import FinancialOverview from "../pages/investors/FinancialOverview.jsx";
+import ScrollToTop from "../components/layout/ScrollToTop";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -49,6 +52,11 @@ export default function AppRoutes() {
           path="/services/industrial-railways"
           element={<IndustrialRailways />}
         />
+
+        {/* Investors */}
+        <Route path="/investors/financial-overview" element={<FinancialOverview />} />
+
+        {/* Careers */}
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>

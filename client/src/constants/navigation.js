@@ -106,14 +106,11 @@ export const navigationLinks = [
 
     dropdown: [
       {
-        name: "Annual Reports",
-        path: "/investors/annual-reports",
+        name: "Financial Overview",
+        path: "/investors/financial-overview",
       },
 
-      {
-        name: "Financial Results",
-        path: "/investors/financial-results",
-      },
+    
     ],
   },
 

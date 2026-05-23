@@ -1,5 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
+const quickLinks = [
+  { name: "About Company", path: "/about/company-profile" },
+  { name: "Leadership Team", path: "/about/leadership" },
+  { name: "Quality Policy", path: "/about/quality-policy" },
+  { name: "Investors Relation", path: "/investors/financial-overview" },
+  { name: "Career", path: "/careers" },
+];
 export default function Footer() {
   return (
     <footer className="bg-[#0a0a0a] border-t-4 border-[#f25810] pt-20 pb-10 w-full text-gray-400">
@@ -41,22 +49,15 @@ export default function Footer() {
             <h4 className="text-white font-black uppercase tracking-widest text-sm mb-6">
               Quick Links
             </h4>
-            <ul className="space-y-3 text-sm font-bold uppercase tracking-wider">
-              {[
-                "About Company",
-                "Leadership Team",
-                "Quality Policy",
-                "Investors Relation",
-                "Career Opportunities",
-                "Contact Us",
-              ].map((link, idx) => (
+            <ul className="space-y-3 text-md font-bold  tracking-wider">
+              {quickLinks.map((link, idx) => (
                 <li key={idx}>
-                  <a
-                    href="#"
+                  <Link
+                    to={link.path}
                     className="hover:text-[#f25810] transition-colors"
                   >
-                    {link}
-                  </a>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -67,7 +68,7 @@ export default function Footer() {
             <h4 className="text-white font-black uppercase tracking-widest text-sm mb-6">
               Our Expertise
             </h4>
-            <ul className="space-y-3 text-sm font-bold uppercase tracking-wider">
+            <ul className="space-y-3 text-md font-bold  tracking-wider">
               {[
                 "Highway Expansion",
                 "Bridge Construction",

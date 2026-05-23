@@ -18,7 +18,6 @@ export default function Home() {
         <TestimonialsSection />
       </main>
 
-      <Footer />
     </>
   );
 }

@@ -1,48 +1,48 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Navigation, TrendingUp, CheckCircle, ArrowRight, Shield, Tractor } from "lucide-react";
+import { MapPin, TrendingUp, ArrowRight, Factory, HardHat, Warehouse } from "lucide-react";
 import { Link } from "react-router-dom";
 
-export default function HighwaysAndRoads() {
+export default function IndustrialInfra() {
   const [activeTab, setActiveTab] = useState(0);
 
-  // Tabbed Capabilities Data
+  // Tabbed Capabilities Data for Industrial Infra
   const capabilities = [
     {
-      title: "Mass Earthworks & Grading",
-      icon: Tractor,
-      image: "https://images.unsplash.com/photo-1572025442646-866d16c84a54?q=80&w=1200&auto=format&fit=crop",
-      desc: "Our earthworks division handles massive volumetric terrain modifications. Utilizing a heavy fleet of excavators and automated graders, we prepare highly stable sub-grades across diverse geological terrains, ensuring long-term highway integrity."
+      title: "Heavy Steel & PEB Structures",
+      icon: Factory,
+      image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1200&auto=format&fit=crop",
+      desc: "We specialize in the erection of massive Pre-Engineered Buildings (PEB) and heavy structural steel frameworks. Our structures are custom-designed to accommodate large-scale manufacturing lines and heavy overhead crane operations."
     },
     {
-      title: "Asphalt & Rigid Paving",
-      icon: Navigation,
-      image: "https://images.unsplash.com/photo-1518241052219-5eb8cce55dc5?q=80&w=1200&auto=format&fit=crop",
-      desc: "We deploy state-of-the-art sensor-guided pavers capable of laying both flexible asphalt and continuous rigid concrete pavements. Our high-capacity batching plants ensure uninterrupted material flow for rapid mega-project execution."
+      title: "Industrial Civil Foundations",
+      icon: HardHat,
+      image: "https://images.unsplash.com/photo-1541888086925-920eb71e0e55?q=80&w=1200&auto=format&fit=crop",
+      desc: "Our civil division constructs high-load bearing machine foundations, specialized industrial flooring, and robust RCC structures built to withstand extreme industrial vibrations, chemical exposure, and heavy equipment loads."
     },
     {
-      title: "Structural Viaducts & Underpasses",
-      icon: Shield,
-      image: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?q=80&w=1200&auto=format&fit=crop",
-      desc: "Highways require complex crossing solutions. We construct heavily reinforced vehicular underpasses, elevated viaducts, and drainage culverts that integrate seamlessly into the primary road network without disrupting existing terrain."
+      title: "Warehousing & Logistics Hubs",
+      icon: Warehouse,
+      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
+      desc: "We develop state-of-the-art logistics parks and automated warehousing hubs. Our designs prioritize spatial efficiency, heavy vehicle maneuverability, and advanced loading dock integration for major supply chains."
     }
   ];
 
   // Featured Projects for Zig-Zag Layout
   const projects = [
     {
-      name: "Western Corridor Expressway",
-      location: "Maharashtra - Gujarat Border",
-      stats: { length: "142 Km", value: "₹2,450 Cr", status: "Completed 2023" },
-      image: "https://images.unsplash.com/photo-1463177699119-9188fca4a96c?q=80&w=1200&auto=format&fit=crop",
-      desc: "A massive 6-lane access-controlled expressway cutting through challenging hilly terrain. This project required the excavation of over 4 million cubic meters of rock and the deployment of 3 specialized asphalt batching plants."
+      name: "Mega Steel Processing Plant",
+      location: "Industrial Zone, Gujarat",
+      stats: { area: "2.5M Sq.Ft.", value: "₹1,200 Cr", status: "Completed 2023" },
+      image: "https://images.unsplash.com/photo-1565514020179-026b92b84bb6?q=80&w=1200&auto=format&fit=crop",
+      desc: "A complete turnkey execution of a massive steel processing facility. The project involved laying specialized vibration-resistant foundations for heavy milling machines and erecting over 15,000 MT of structural steel within a strict 18-month timeline."
     },
     {
-      name: "NH-44 Highway Upgradation",
-      location: "Central India Zone",
-      stats: { length: "210 Km", value: "₹3,100 Cr", status: "Ongoing" },
-      image: "https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?q=80&w=1200&auto=format&fit=crop",
-      desc: "Expanding the existing 4-lane national highway into a 6-lane economic corridor. The project involves real-time traffic management, the construction of 14 major grade separators, and continuous rigid concrete paving."
+      name: "National Logistics Park",
+      location: "Pune - Bengaluru Highway",
+      stats: { area: "4.0M Sq.Ft.", value: "₹850 Cr", status: "Ongoing" },
+      image: "https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1200&auto=format&fit=crop",
+      desc: "A modern, multi-modal logistics hub designed for an e-commerce giant. Features include high-tolerance VNA (Very Narrow Aisle) flooring, 120 automated loading docks, and integrated solar-ready structural roofing systems."
     }
   ];
 
@@ -58,8 +58,8 @@ export default function HighwaysAndRoads() {
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             transition={{ duration: 1 }}
-            src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop" 
-            alt="Highway Construction Site" 
+            src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2069&auto=format&fit=crop" 
+            alt="Industrial Construction Site" 
             className="w-full h-full object-cover opacity-30 lg:opacity-100"
           />
           {/* Desktop gradient blend */}
@@ -82,17 +82,17 @@ export default function HighwaysAndRoads() {
               </span>
             </div>
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-black text-white tracking-tighter mb-6 leading-[1.1]">
-              Highways And <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">Arterial Roads</span>
+              Industrial & <br />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">Manufacturing</span>
             </h1>
             <p className="text-gray-300 lg:text-gray-400 text-sm md:text-lg font-medium leading-relaxed mb-8 max-w-md">
-              Connecting the nation through high-speed, heavy-load road networks. We deliver state-of-the-art expressways engineered for maximum durability and zero-harm execution.
+              Building the foundation for India's industrial growth. We construct large-scale manufacturing plants, warehousing facilities, and heavy industrial complexes.
             </p>
             <button 
               onClick={() => document.getElementById('featured-projects').scrollIntoView({ behavior: 'smooth' })}
               className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-6 md:px-8 py-3.5 md:py-4 font-bold text-sm transition-all shadow-lg rounded-sm inline-flex items-center group w-fit"
             >
-              Explore Our Highways
+              Explore Our Facilities
               <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
             </button>
           </motion.div>
@@ -108,7 +108,7 @@ export default function HighwaysAndRoads() {
               Execution Capabilities
             </h2>
             <p className="text-gray-600 text-base md:text-lg max-w-2xl font-medium">
-              Our highway division is equipped to handle every phase of road construction, from initial terrain leveling to final smart-tolling integration.
+              Our industrial division manages complete turnkey executions, from heavy earthworks and specialized foundations to structural roofing and MEP integration.
             </p>
           </div>
 
@@ -172,7 +172,7 @@ export default function HighwaysAndRoads() {
           
           <div className="text-center mb-16 md:mb-20">
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-gray-900 mb-4">
-              Featured Highway Projects
+              Featured Industrial Projects
             </h2>
             <div className="w-16 h-1.5 bg-[#f25810] mx-auto"></div>
           </div>
@@ -184,7 +184,7 @@ export default function HighwaysAndRoads() {
                 className={`flex flex-col ${idx % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"} items-center relative group`}
               >
                 
-                {/* Image Container (Reduced height on mobile) */}
+                {/* Image Container */}
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -200,7 +200,7 @@ export default function HighwaysAndRoads() {
                   <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                 </motion.div>
 
-                {/* Overlapping Info Box (Reduced padding & adjusted layout on mobile) */}
+                {/* Overlapping Info Box */}
                 <motion.div 
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -221,11 +221,11 @@ export default function HighwaysAndRoads() {
                     {project.desc}
                   </p>
 
-                  {/* Stats Grid: Collapses nicely on mobile */}
+                  {/* Stats Grid */}
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 md:gap-6 border-t border-gray-100 pt-5 md:pt-6">
                     <div>
-                      <span className="block text-[10px] md:text-xs font-bold text-gray-400 mb-1">Total Length</span>
-                      <span className="block text-sm md:text-base font-black text-gray-900">{project.stats.length}</span>
+                      <span className="block text-[10px] md:text-xs font-bold text-gray-400 mb-1">Total Area</span>
+                      <span className="block text-sm md:text-base font-black text-gray-900">{project.stats.area}</span>
                     </div>
                     <div>
                       <span className="block text-[10px] md:text-xs font-bold text-gray-400 mb-1">Project Value</span>
@@ -251,16 +251,16 @@ export default function HighwaysAndRoads() {
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
           <TrendingUp size={40} className="text-[#f25810] mx-auto mb-6 md:mb-8" />
           <h2 className="text-3xl md:text-4xl font-black text-white tracking-tighter mb-4 md:mb-6">
-            Ready To Engineer The Next Mega-Corridor?
+            Ready To Build Your Next Mega-Facility?
           </h2>
           <p className="text-gray-400 text-sm md:text-lg mb-8 md:mb-10 font-medium">
-            Contact our project division to discuss tollways, structural paving, and heavy earthmoving contracts.
+            Contact our industrial division to discuss turnkey manufacturing plants, PEB structures, and logistics hubs.
           </p>
           <Link 
             to="/contact" 
             className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-8 md:px-10 py-3.5 md:py-4 font-bold text-sm transition-all shadow-lg rounded-sm inline-flex items-center"
           >
-            Contact Infrastructure Team
+            Contact Industrial Team
           </Link>
         </div>
       </section>

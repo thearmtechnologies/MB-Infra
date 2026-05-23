@@ -89,7 +89,7 @@ export default function CareerPage() {
 
       {/* 3. Open Positions - Corporate Docket Style */}
       <section className="py-24 bg-gray-50 border-t border-gray-200">
-        <div className="h-0.5 mx-auto px-6 xl:px-12">
+        <div className="max-w-7xl mx-auto px-6 xl:px-12">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <div>
               <div className="flex items-center gap-3 mb-4">

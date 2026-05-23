@@ -71,7 +71,7 @@ export default function VisionMission() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
-              <span className="w-8 h-[2px] bg-[#f25810]" />
+              <span className="w-8 h-0.5 bg-[#f25810]" />
               <span className="text-[#f25810] text-xs font-bold uppercase tracking-widest">
                 Corporate Foundations
               </span>
@@ -93,7 +93,7 @@ export default function VisionMission() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
           {/* VISION PANEL */}
           <div className="bg-white border border-gray-200 p-8 md:p-12 rounded-lg shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-md relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-[3px] bg-[#f25810]" />
+            <div className="absolute top-0 left-0 w-full h-0.75 *:bg-[#f25810]" />
             <div>
               <div className="w-12 h-12 bg-[#f25810]/10 rounded-md flex items-center justify-center text-[#f25810] mb-8">
                 <Compass size={24} />
@@ -119,7 +119,7 @@ export default function VisionMission() {
 
           {/* MISSION PANEL */}
           <div className="bg-white border border-gray-200 p-8 md:p-12 rounded-lg shadow-sm flex flex-col justify-between transition-all duration-300 hover:shadow-md relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-full h-[3px] bg-gray-900" />
+            <div className="absolute top-0 left-0 w-full h-0.75 bg-gray-900" />
             <div>
               <div className="w-12 h-12 bg-gray-100 rounded-md flex items-center justify-center text-gray-900 mb-8">
                 <Target size={24} />
@@ -219,7 +219,7 @@ export default function VisionMission() {
               <ArrowRight size={14} />
             </Link>
             <Link
-              to="/machinery"
+              to="/equipment-machinery"
               className="inline-flex items-center bg-gray-100 text-gray-700 text-xs font-bold uppercase tracking-wider px-6 py-3.5 rounded-md hover:bg-gray-200 transition-colors"
             >
               View Asset Fleet

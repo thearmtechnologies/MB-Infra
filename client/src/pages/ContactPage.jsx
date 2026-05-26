@@ -7,20 +7,19 @@ const contactDetails = [
   { 
     icon: MapPin, 
     title: "Corporate HQ", 
-    detail1: "MB Tower, Industrial Estate", 
-    detail2: "Mumbai, Maharashtra, India" 
+    detail1: "G-6, RS Platinum Building, Bhalej Road, Ganesh Colony, Anand, Gujarat, 388001"
   },
   { 
     icon: Phone, 
     title: "Call Us", 
-    detail1: "+91 22 1234 5678", 
-    detail2: "Toll Free: 1800 123 456" 
+    detail1: "+91 99094 14001", 
+    detail2: "Tele Fax - 02692 269001" 
   },
   { 
     icon: Mail, 
     title: "Email Us", 
-    detail1: "info@mbinfraprojects.com", 
-    detail2: "tenders@mbinfraprojects.com" 
+    detail1: "mayurprajapati@mbipl.in", 
+
   },
   { 
     icon: Clock, 
@@ -109,7 +108,7 @@ export default function ContactPage() {
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter mb-6 leading-tight drop-shadow-lg">
-              Contact <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">MB Infraprojects</span>
+              Contact <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54] pr-2">MB Infraprojects</span>
             </h1>
             <p className="text-gray-300 text-base md:text-lg font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-md">
               Whether you are a government entity, private stakeholder, or a prospective partner, we are ready to discuss your next mega-project.
@@ -120,7 +119,7 @@ export default function ContactPage() {
 
       {/* 2. Contact Information Cards */}
       <section className="py-20 bg-white relative z-20 -mt-10">
-        <div className="max-w-350 mx-auto px-6 xl:px-12">
+        <div className="max-w-7xl mx-auto px-6 xl:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {contactDetails.map((item, idx) => (
               <motion.div 
@@ -148,7 +147,7 @@ export default function ContactPage() {
 
       {/* 3. Main Form & Map Section */}
       <section className="py-20 bg-gray-50 flex-1">
-        <div className="max-w-350 mx-auto px-6 xl:px-12">
+        <div className="max-w-7xl mx-auto px-6 xl:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             
             {/* Left: Contact Form */}
@@ -236,10 +235,10 @@ export default function ContactPage() {
               {/* Map Container */}
               <div className="flex-1 bg-gray-300 min-h-75 border border-gray-200 relative group overflow-hidden">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.793284065271!2d72.89736857602492!3d19.072813152061073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c627a20bcaa9%3A0x12a637fa329ac56f!2sIndustrial+Estate%2C+Ghatkopar+West%2C+Mumbai%2C+Maharashtra!5e0!3m2!1sen!2sin!4v1715893000000!5m2!1sen!2sin" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31433.806629653067!2d72.92075740033292!3d22.558570121744133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e4e84b2569f97%3A0x882ca4231a5bd1fb!2sMB%20Infraprojects%20Pvt.%20Ltd.!5e1!3m2!1sen!2sin!4v1779717794851!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" 
                   width="100%" 
                   height="100%" 
-                  style={{ border: 0, filter: "grayscale(100%) contrast(1.2)" }} 
+                  style={{ border: 0,  }} 
                   allowFullScreen="" 
                   loading="lazy" 
                   referrerPolicy="no-referrer-when-downgrade"

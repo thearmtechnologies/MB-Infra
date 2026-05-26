@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   ArrowLeft, MapPin, Building2, IndianRupee, 
   Clock, ShieldCheck, CheckCircle2, Settings, 
@@ -15,12 +15,12 @@ export default function ProjectDetail() {
   // Find the exact project matching the URL parameter
   const project = allProjectsData.find((p) => p.id === id);
 
-  // Scroll to the top when the page loads
+  // Scroll to the top when the page loads or when ID changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [id]);
 
-  // Handle missing projects (e.g., if a user types a wrong URL)
+  // Handle missing projects gracefully
   if (!project) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 text-gray-900">
@@ -36,27 +36,39 @@ export default function ProjectDetail() {
     );
   }
 
-  // Determine badge color based on status
-  const isCompleted = project.status.toLowerCase() === "completed";
+  // Safely determine badge color based on status (protects against missing status)
+  const projectStatus = project.status || "Ongoing";
+  const isCompleted = projectStatus.toLowerCase() === "completed";
   const badgeColor = isCompleted ? "bg-green-600" : "bg-blue-600";
 
   return (
     <div className="bg-gray-50 min-h-screen font-sans antialiased text-gray-900">
       
       {/* 1. Technical Hero Header */}
-      <section className="relative h-[55vh] min-h-[450px] flex items-end pb-12 bg-gray-950 overflow-hidden border-b-8 border-[#f25810]">
-        <div className="absolute inset-0">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover opacity-30 object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/80 to-transparent" />
-          {/* Engineering blueprint grid line scheme */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]" />
-        </div>
+      <section className="relative h-[55vh] min-h-87.5 flex items-end pb-12 bg-black overflow-hidden border-b-8 border-[#f25810]">
         
-        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        {/* AnimatePresence allows background to transition smoothly if routing between projects directly */}
+        <AnimatePresence mode="wait">
+          <motion.div 
+            key={project.id}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="absolute inset-0 z-0"
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover object-center"
+            />
+            {/* Cinematic Dark Gradient Overlay matching HeroSection */}
+            <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/60 to-black/20 min-[1200px]:to-transparent z-10"></div>
+            
+            {/* Grid overlay removed as requested */}
+          </motion.div>
+        </AnimatePresence>
+        
+        <div className="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 w-full">
           <button 
             onClick={() => navigate(-1)}
             className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm font-semibold tracking-wide mb-8 uppercase"
@@ -64,24 +76,36 @@ export default function ProjectDetail() {
             <ArrowLeft className="w-4 h-4" /> Back to Portfolio
           </button>
           
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className={`inline-flex items-center gap-1.5 py-1 px-3 ${badgeColor} text-white text-xs font-bold tracking-widest uppercase rounded-sm shadow-sm`}>
-              {isCompleted ? <CheckCircle2 className="w-3.5 h-3.5" /> : <Clock className="w-3.5 h-3.5" />}
-              {project.status}
-            </span>
-            <span className="inline-block py-1 px-3 bg-gray-800 border border-gray-700 text-gray-300 text-xs font-bold tracking-widest uppercase rounded-sm">
-              {project.category}
-            </span>
-          </div>
+          <motion.div 
+            key={`header-${project.id}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <span className={`inline-flex items-center gap-1.5 py-1 px-3 ${badgeColor} text-white text-xs font-bold tracking-widest uppercase rounded-sm shadow-sm`}>
+                {isCompleted ? <CheckCircle2 className="w-3.5 h-3.5" /> : <Clock className="w-3.5 h-3.5" />}
+                {projectStatus}
+              </span>
+              {project.category && (
+                <span className="inline-block py-1 px-3 bg-gray-800 border border-gray-700 text-gray-300 text-xs font-bold tracking-widest uppercase rounded-sm">
+                  {project.category}
+                </span>
+              )}
+            </div>
 
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-4 max-w-4xl">
-            {project.title}
-          </h1>
-          
-          <div className="flex items-center gap-2 text-[#f25810] font-bold tracking-wider uppercase text-sm">
-            <Route className="w-5 h-5" />
-            Corridor: {project.highway}
-          </div>
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-tight mb-4 max-w-4xl">
+              {project.title}
+            </h1>
+            
+            {/* Only render highway text if highway data exists */}
+            {project.highway && (
+              <div className="flex items-center gap-2 text-[#f25810] font-bold tracking-wider uppercase text-sm">
+                <Route className="w-5 h-5" />
+                Corridor: {project.highway}
+              </div>
+            )}
+          </motion.div>
         </div>
       </section>
 
@@ -94,21 +118,25 @@ export default function ProjectDetail() {
             <div className="lg:w-2/3 space-y-12">
               
               {/* Executive Summary */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
-              >
-                <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
-                  <span className="w-8 h-1 bg-[#f25810] inline-block"></span>
-                  Executive Summary
-                </h2>
-                <p className="text-gray-600 leading-relaxed text-lg">
-                  {project.desc}
-                </p>
-              </motion.div>
+              {project.desc && (
+                <motion.div 
+                  key={`desc-${project.id}`}
+                  initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+                >
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                    <span className="w-8 h-1 bg-[#f25810] inline-block"></span>
+                    Executive Summary
+                  </h2>
+                  <p className="text-gray-600 leading-relaxed text-lg">
+                    {project.desc}
+                  </p>
+                </motion.div>
+              )}
 
               {/* Scope of Work */}
-              {project.projectDetails?.scopeOfWork && (
+              {project.projectDetails?.scopeOfWork && project.projectDetails.scopeOfWork.length > 0 && (
                 <motion.div 
+                  key={`scope-${project.id}`}
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 >
                   <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
@@ -129,8 +157,9 @@ export default function ProjectDetail() {
               )}
 
               {/* Key Engineering Features */}
-              {project.projectDetails?.keyFeatures && (
+              {project.projectDetails?.keyFeatures && project.projectDetails.keyFeatures.length > 0 && (
                 <motion.div 
+                  key={`features-${project.id}`}
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                 >
                   <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
@@ -151,6 +180,7 @@ export default function ProjectDetail() {
               {/* Health, Safety & Environment */}
               {project.projectDetails?.safetyAndEnvironment && (
                 <motion.div 
+                  key={`safety-${project.id}`}
                   initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
                   className="bg-gray-900 text-white p-8 md:p-10 rounded-sm relative overflow-hidden"
                 >
@@ -175,6 +205,7 @@ export default function ProjectDetail() {
               
               {/* Data Card */}
               <motion.div 
+                key={`specs-${project.id}`}
                 initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }}
                 className="bg-white border border-gray-200 shadow-xl rounded-sm overflow-hidden"
               >
@@ -183,29 +214,35 @@ export default function ProjectDetail() {
                 </div>
                 
                 <div className="p-6 space-y-6">
-                  <div className="flex items-start gap-4">
-                    <Building2 className="w-5 h-5 text-gray-400 shrink-0 mt-1" />
-                    <div>
-                      <p className="text-[11px] text-gray-400 font-bold tracking-widest uppercase mb-1">Contracting Client</p>
-                      <p className="text-gray-900 font-bold">{project.client}</p>
+                  {project.client && (
+                    <div className="flex items-start gap-4">
+                      <Building2 className="w-5 h-5 text-gray-400 shrink-0 mt-1" />
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-bold tracking-widest uppercase mb-1">Contracting Client</p>
+                        <p className="text-gray-900 font-bold">{project.client}</p>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
-                  <div className="flex items-start gap-4">
-                    <IndianRupee className="w-5 h-5 text-gray-400 shrink-0 mt-1" />
-                    <div>
-                      <p className="text-[11px] text-gray-400 font-bold tracking-widest uppercase mb-1">Project Value</p>
-                      <p className="text-[#f25810] font-bold text-lg">{project.value}</p>
+                  {project.value && (
+                    <div className="flex items-start gap-4">
+                      <IndianRupee className="w-5 h-5 text-gray-400 shrink-0 mt-1" />
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-bold tracking-widest uppercase mb-1">Project Value</p>
+                        <p className="text-[#f25810] font-bold text-lg">{project.value}</p>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
-                  <div className="flex items-start gap-4">
-                    <MapPin className="w-5 h-5 text-gray-400 shrink-0 mt-1" />
-                    <div>
-                      <p className="text-[11px] text-gray-400 font-bold tracking-widest uppercase mb-1">Location</p>
-                      <p className="text-gray-900 font-bold">{project.location}</p>
+                  {project.location && (
+                    <div className="flex items-start gap-4">
+                      <MapPin className="w-5 h-5 text-gray-400 shrink-0 mt-1" />
+                      <div>
+                        <p className="text-[11px] text-gray-400 font-bold tracking-widest uppercase mb-1">Location</p>
+                        <p className="text-gray-900 font-bold">{project.location}</p>
+                      </div>
                     </div>
-                  </div>
+                  )}
 
                   {project.projectDetails?.timeline && (
                     <div className="flex items-start gap-4">
@@ -220,8 +257,9 @@ export default function ProjectDetail() {
               </motion.div>
 
               {/* Machinery Deployed List */}
-              {project.projectDetails?.machineryUsed && (
+              {project.projectDetails?.machineryUsed && project.projectDetails.machineryUsed.length > 0 && (
                 <motion.div 
+                  key={`machinery-${project.id}`}
                   initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
                   className="bg-gray-100 border border-gray-200 p-6 rounded-sm"
                 >

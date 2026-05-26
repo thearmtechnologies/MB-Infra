@@ -1,17 +1,25 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { HardHat, Globe2, TrendingUp, CheckCircle2, ArrowRight, ArrowLeftRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { 
+  HardHat, Globe2, TrendingUp, CheckCircle2, 
+  ArrowRight, ArrowLeftRight, ChevronLeft, 
+  ChevronRight, Award 
+} from "lucide-react";
 import { Link } from "react-router-dom";
-// Importing your local data structure
+
+// Importing your local data structures
 import { leadershipTeam } from "../../data/leadershipData";
+import CompanyProfileImage from "../../assets/img/company-profile.jpg";
 import { coreValues, companyStats, corporateJourney } from "../../data/companyData";
+
 export default function CompanyProfile() {
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  
+  // Safe extraction of executives to avoid undefined mapping errors
+  const displayedLeaders = (leadershipTeam?.executives || []).slice(0, 2);
 
   // Drag-to-Scroll Handlers
   const startDragging = (e) => {
@@ -47,11 +55,11 @@ export default function CompanyProfile() {
       <section className="relative w-full h-[55vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1541888086925-920eb71e0e55?q=80&w=2070&auto=format&fit=crop"
+            src={CompanyProfileImage}
             alt="Corporate Industrial Engineering"
             className="w-full h-full object-cover opacity-35"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]"></div>
+       
           <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/40 to-transparent"></div>
         </div>
 
@@ -65,7 +73,7 @@ export default function CompanyProfile() {
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-5">
-              Pioneering India's <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">Infrastructure</span>
+              Pioneering India's <span className="text-transparent pr-2 bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">Infrastructure</span>
             </h1>
             <p className="text-gray-300 text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
               We are a premier EPC contractor dedicated to large-scale highway construction, industrial civil engineering, and structural excellence.
@@ -76,7 +84,7 @@ export default function CompanyProfile() {
 
       {/* 2. Company Overview Section */}
       <section className="py-24 bg-white relative z-20">
-        <div className="max-w-350 mx-auto px-6 xl:px-12">
+        <div className="max-w-7xl mx-auto px-6 xl:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -134,7 +142,7 @@ export default function CompanyProfile() {
 
       {/* 3. Operational Statistics Strip */}
       <section className="bg-gray-900 border-t-4 border-[#f25810] py-16">
-        <div className="max-w-350 mx-auto px-6 xl:px-12">
+        <div className="max-w-7xl mx-auto px-6 xl:px-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-gray-700">
             {companyStats.map((stat, idx) => (
               <motion.div 
@@ -159,7 +167,7 @@ export default function CompanyProfile() {
 
       {/* 4. Core Values & Strengths */}
       <section className="py-24 bg-gray-50 border-t border-gray-200">
-        <div className="max-w-350 mx-auto px-6 xl:px-12">
+        <div className="max-w-7xl mx-auto px-6 xl:px-12">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-gray-900 mb-4">
               Our Operational Pillars
@@ -196,62 +204,93 @@ export default function CompanyProfile() {
 
       {/* 5. Executive Leadership */}
       <section className="py-24 bg-white">
-        <div className="max-w-350 mx-auto px-6 xl:px-12">
-          <div className="flex flex-col md:flex-row items-center justify-between mb-16 border-b-2 border-gray-900 pb-4">
-            <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-gray-900">
+        <div className="max-w-7xl mx-auto px-6 xl:px-12">
+          
+          <div className="flex flex-col sm:flex-row items-center justify-between mb-16 border-b-2 border-gray-900 pb-4">
+            <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-gray-900 uppercase">
               Guided By <span className="text-[#f25810]">Experience</span>
             </h2>
             <Link 
               to="/about/leadership" 
-              className="mt-4 md:mt-0 bg-gray-900 hover:bg-[#f25810] text-white px-6 py-2.5 text-sm font-bold tracking-wider transition-colors rounded-sm shadow-sm"
+              className="mt-4 sm:mt-0 bg-gray-900 hover:bg-[#f25810] text-white px-6 py-2.5 text-sm font-bold tracking-wider uppercase transition-colors rounded-sm shadow-sm"
             >
               Meet Everyone
             </Link>
           </div>
 
-          <div className=" grid-cols-1 flex  justify-center   sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            {[...leadershipTeam.executives, ...leadershipTeam.management].slice(0, 2).map((leader, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto">
+            {displayedLeaders.map((leader, idx) => (
               <motion.div 
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="flex flex-col items-center text-center group"
+                transition={{ duration: 0.6, delay: idx * 0.15 }}
+                className="flex flex-col items-center md:items-start text-center md:text-left group bg-gray-50/50 border border-gray-100 p-8 rounded-sm shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="w-40 h-40 mb-6 overflow-hidden rounded-full border-4 border-gray-100 group-hover:border-[#f25810] transition-colors duration-300 shadow-md">
-                  <img 
-                    src={leader.image} 
-                    alt={leader.name} 
-                    className="w-full h-full object-cover object-top group-hover:grayscale-0 transition-all duration-500"
-                  />
+                <div className="flex flex-col sm:flex-row items-center gap-6 w-full mb-6">
+                  {/* Director Avatar */}
+                  <div className="w-32 h-32 shrink-0 overflow-hidden rounded-full border-4 border-white shadow-md group-hover:border-[#f25810] transition-colors duration-300">
+                    <img 
+                      src={leader.image} 
+                      alt={leader.name} 
+                      className="w-full h-full object-cover object-top transition-all duration-500"
+                    />
+                  </div>
+
+                  {/* Identity Block */}
+                  <div>
+                    <h3 className="text-xl font-black tracking-tight text-gray-900 uppercase">
+                      {leader.name}
+                    </h3>
+                    <p className="text-[#f25810] font-bold text-xs uppercase tracking-widest mt-1">
+                      {leader.role}
+                    </p>
+                    
+                    {/* Credentials / Accolades */}
+                    {leader.credentials && (
+                      <div className="flex flex-wrap justify-center sm:justify-start gap-1.5 mt-3">
+                        {leader.credentials.map((cert, cIdx) => (
+                          <span 
+                            key={cIdx} 
+                            className="inline-flex items-center gap-1 text-[10px] bg-gray-900 text-white font-bold tracking-wider uppercase px-2 py-1 rounded-sm shadow-xs"
+                          >
+                            <Award className="w-2.5 h-2.5 text-[#f25810]" /> {cert.split(" (")[0]}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
-                <h3 className="text-lg font-black tracking-tight text-gray-900">
-                  {leader.name}
-                </h3>
-                <p className="text-[#f25810] font-bold text-sm mt-1">
-                  {leader.role}
-                </p>
+
+                {/* Bio Paragraph */}
+                {leader.bio && (
+                  <p className="text-gray-600 font-medium text-sm leading-relaxed border-t border-gray-200 pt-4 w-full">
+                    {leader.bio}
+                  </p>
+                )}
               </motion.div>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* 6. Corporate Journey - Fully Interactive Horizontal Scroll Timeline */}
+      {/* 6. Corporate Journey - Responsive Timeline */}
       <section className="py-24 bg-gray-900 overflow-hidden relative">
-        <div className="max-w-350 mx-auto px-6 xl:px-12 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-6 xl:px-12 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-white">
               Our Industrial <span className="text-[#f25810]">Journey</span>
             </h2>
             <p className="text-gray-400 mt-2 font-medium flex items-center gap-2">
-              Drag or use arrows to navigate <ArrowLeftRight size={16} />
+              <span className="hidden md:flex items-center gap-2">Drag or use arrows to navigate <ArrowLeftRight size={16} /></span>
+              <span className="md:hidden">Scroll to view our history</span>
             </p>
           </div>
           
-          {/* Timeline Navigation Controls */}
-          <div className="flex items-center gap-3">
+          {/* Timeline Navigation Controls (Hidden on Mobile) */}
+          <div className="hidden md:flex items-center gap-3">
             <button 
               onClick={() => scroll("left")}
               className="w-12 h-12 bg-gray-800 hover:bg-[#f25810] text-white flex items-center justify-center rounded-sm transition-colors duration-300"
@@ -267,15 +306,43 @@ export default function CompanyProfile() {
           </div>
         </div>
 
-        {/* Horizontal Scroll Container - Upgraded for Mouse Dragging */}
-        <div className="w-full pl-6 xl:pl-12">
+        <div className="w-full px-6 xl:px-12 max-w-7xl mx-auto">
+          
+          {/* MOBILE VIEW: Vertical Stacked Timeline */}
+          <div className="md:hidden flex flex-col gap-10 relative before:absolute before:inset-y-0 before:left-1.75 before:w-0.5 before:bg-gray-700 py-4">
+            {corporateJourney.map((step, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                className="relative pl-8 group"
+              >
+                {/* Timeline Dot */}
+                <div className="absolute top-1.5 left-0 w-4 h-4 bg-gray-900 border-2 border-gray-600 rounded-full group-hover:border-[#f25810] group-hover:bg-[#f25810] transition-colors duration-300 shadow-[0_0_10px_rgba(242,88,16,0.5)]"></div>
+                
+                <h3 className="text-[#f25810] font-black text-2xl tracking-tighter mb-1">
+                  {step.year}
+                </h3>
+                <h4 className="text-white font-bold text-lg mb-2 tracking-wide">
+                  {step.title}
+                </h4>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {step.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* DESKTOP VIEW: Horizontal Drag Scroll Timeline */}
           <div 
             ref={sliderRef}
             onMouseDown={startDragging}
             onMouseLeave={stopDragging}
             onMouseUp={stopDragging}
             onMouseMove={onDrag}
-            className={`flex gap-8 overflow-x-auto pb-12 pt-4 select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
+            className={`hidden md:flex gap-8 overflow-x-auto pb-12 pt-4 select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             <style>{`
@@ -292,7 +359,7 @@ export default function CompanyProfile() {
                 className="min-w-[320px] md:min-w-100 shrink-0 border-t-2 border-gray-700 relative pt-8 group"
               >
                 {/* Timeline Dot */}
-                <div className="absolute -top-2.25 left-0 w-4 h-4 bg-gray-900 border-2 border-gray-600 rounded-full group-hover:border-[#f25810] group-hover:bg-[#f25810] transition-colors duration-300 shadow-[0_0_10px_rgba(242,88,16,0.5)] pointer-events-none"></div>
+                <div className="absolute -top-2.5 left-0 w-4 h-4 bg-gray-900 border-2 border-gray-600 rounded-full group-hover:border-[#f25810] group-hover:bg-[#f25810] transition-colors duration-300 shadow-[0_0_10px_rgba(242,88,16,0.5)] pointer-events-none"></div>
                 
                 {/* Timeline Content */}
                 <span className="text-5xl font-black text-transparent bg-clip-text bg-linear-to-b from-gray-700 to-gray-900 tracking-tighter absolute -top-4 right-4 -z-10 group-hover:from-gray-600 transition-colors pointer-events-none">

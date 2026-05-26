@@ -30,7 +30,7 @@ export default function CertificationsPage() {
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-5">
-              Corporate <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">Certifications</span>
+              Corporate <span className="text-transparent pr-2 bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">Certifications</span>
             </h1>
             <p className="text-gray-300 text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
               MB Infraprojects Pvt. Ltd. maintains strict regulatory, financial, and industrial compliance standards through nationally recognized certifications and registrations.

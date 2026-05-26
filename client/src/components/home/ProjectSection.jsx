@@ -1,20 +1,42 @@
 import React from "react";
-import highway from "../../assets/img/highway.jpg";
-import ganga from "../../assets/img/ganga.jpg";
-import megastill from "../../assets/img/megastill.jpg";
-import urbanWay from "../../assets/img/urbanWay.jpg";
 import { Link } from "react-router-dom";
+import TumkurBypassImage from "../../assets/img/allproject/tumkurBypass.png";
+import ChallakereImage from "../../assets/img/allproject/challakereHariyur.png";
+import NagpurMumbaiImage from "../../assets/img/allproject/nagpurMumbai.png";
+import ChitradurgaImage from "../../assets/img/allproject/chitradurga.png";
+// Featuring the Top 4 Highest-Value Projects extracted from the company profile
+// IMPORTANT: Ensure the 'id' fields here perfectly match the 'id' fields in your allProjectsData.js
 const projects = [
-  { title: "National Highway NH-44 Expansion", category: "Highways", img: highway },
-  { title: "Ganga River Bridge Project", category: "Bridges", img: ganga },
-  { title: "Mega Steel Plant Foundation", category: "Industrial Infra", img: megastill },
-  { title: "Urban Expressway Network", category: "Roads", img: urbanWay }
+  { 
+    id: "tumkur-bypass-nh48", // <-- Add the matching project ID here
+    title: "Tumkur Bypass Section (NH-48)", 
+    category: "Bridges & Underpasses (167 Cr)", 
+    img: TumkurBypassImage
+  },
+  { 
+    id: "challakere-hariyur-nh150a", // <-- Add the matching project ID here
+    title: "NH-150A Challakere to Hariyur", 
+    category: "Flyovers & Bridges (72.44 Cr)", 
+    img: ChallakereImage
+  },
+  { 
+    id: "nagpur-mumbai-expressway", // <-- Add the matching project ID here
+    title: "Nagpur-Mumbai Expressway", 
+    category: "Major Bridges & VUP (64.56 Cr)", 
+    img: NagpurMumbaiImage
+  },
+  { 
+    id: "chitradurga-nh48", // <-- Add the matching project ID here
+    title: "NH-48 Chitradurga Section", 
+    category: "Flyovers & Culverts (50.06 Cr)", 
+    img: ChitradurgaImage
+  }
 ];
 
 export default function ProjectsSection() {
   return (
     <section className="py-20 md:py-32 bg-white w-full">
-      <div className="w-full px-6 xl:px-12 mx-auto max-w-450">
+      <div className="w-full px-6 xl:px-12 mx-auto max-w-350">
         
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
@@ -35,7 +57,12 @@ export default function ProjectsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           {projects.map((project, idx) => (
-            <div key={idx} className="group relative h-87.5 md:h-125 overflow-hidden cursor-pointer">
+            // Changed from <div> to <Link> and added to={`/project/${project.id}`}
+            <Link 
+              key={idx} 
+              to={`/projects/${project.id}`} 
+              className="block group relative h-87.5 md:h-125 overflow-hidden cursor-pointer"
+            >
               <img 
                 src={project.img} 
                 alt={project.title} 
@@ -52,7 +79,7 @@ export default function ProjectsSection() {
                 </h3>
                 <div className="h-0.5 w-0 bg-[#f25810] group-hover:w-16 transition-all duration-500"></div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

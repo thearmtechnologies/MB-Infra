@@ -12,7 +12,7 @@ import {
   BookOpen,
   CheckCircle2
 } from "lucide-react";
-
+import QualityControlImage from "../../assets/img/quality.jpg";
 export default function QualityPolicy() {
   // Quality Pillars extracted from official MBIPL Brochure
   const qualityPillars = [
@@ -74,12 +74,12 @@ export default function QualityPolicy() {
       <section className="relative w-full h-[50vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop"
+            src={QualityControlImage}
             alt="Quality Control Engineering"
-            className="w-full h-full object-cover opacity-25 grayscale"
+            className="w-full h-full object-cover opacity-25"
           />
-          {/* Engineering blueprint grid line scheme */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]"></div>
+       
+         
           <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/50 to-transparent"></div>
         </div>
 
@@ -93,7 +93,7 @@ export default function QualityPolicy() {
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-5">
-              Quality & <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">Safety Policy</span>
+              Quality & <span className="text-transparent pr-2 bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">Safety Policy</span>
             </h1>
             <p className="text-gray-300 text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
               We believe that quality is not a one-time act but a continuous journey towards excellence, building lasting structures and trusted partnerships.

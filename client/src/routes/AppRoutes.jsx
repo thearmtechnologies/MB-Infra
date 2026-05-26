@@ -21,8 +21,10 @@ import EquipementMachinary from "../pages/equipment&rental/EquipementMachinary.j
 import VisionMission from "../pages/about/VisionMission.jsx";
 import FinancialOverview from "../pages/investors/FinancialOverview.jsx";
 import ScrollToTop from "../components/layout/ScrollToTop";
+import ScrollToTopButton from "../components/layout/ScrollToTopButton";
 import ProjectDetails from "../pages/projects/ProjectDetails.jsx";
 import ClientsPage from "../pages/industries&clients/ClientsPage.jsx";
+import IndustriesPage from "../pages/industries&clients/IndustriesPage.jsx";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -57,6 +59,7 @@ export default function AppRoutes() {
         />
     {/* Industries & Clients */}
         <Route path="/industries/clients" element={<ClientsPage />} />
+        <Route path ="/industries" element={<IndustriesPage />} />
         {/* Investors */}
         <Route path="/investors/financial-overview" element={<FinancialOverview />} />
 
@@ -64,6 +67,7 @@ export default function AppRoutes() {
         <Route path="/careers" element={<CareerPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>
+      <ScrollToTopButton />
       <Footer />
     </BrowserRouter>
   );

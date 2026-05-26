@@ -4,15 +4,11 @@ import {
   Search,
   Filter,
   ArrowRight,
-  Truck,
-  PenTool,
-  Settings,
   HardHat,
+  Settings,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { equipmentData } from "../../data/EquipmentData";
-// Authentic Fleet Data Extracted directly from MBIPL Profile
-
 
 const categories = [
   "All Equipment",
@@ -41,6 +37,7 @@ export default function EquipementMachinary() {
 
   return (
     <div className="bg-gray-50 min-h-screen pb-20">
+      
       {/* 1. Industrial Hero Banner */}
       <div className="relative h-[40vh] md:h-[50vh] bg-gray-900 overflow-hidden flex items-center justify-center">
         <img
@@ -70,49 +67,64 @@ export default function EquipementMachinary() {
 
       {/* 2. Operations Control Bar (Search & Filter) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
-        <div className="bg-white shadow-xl border-t-4 border-[#f25810] p-6 flex flex-col md:flex-row gap-4 items-center justify-between">
-          {/* Search Input */}
-          <div className="relative w-full md:w-1/3">
-            <input
-              type="text"
-              placeholder="Search equipment..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-gray-50 border border-gray-200 text-sm px-4 py-3 pl-11 focus:outline-none focus:border-[#f25810] transition-colors"
-            />
-            <Search className="absolute left-4 top-3.5 w-4 h-4 text-gray-400" />
+        <div className="bg-white shadow-xl border-t-4 border-[#f25810] p-6 md:p-8 rounded-b-sm">
+          
+          {/* Top Section: Title & Search */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6">
+            <div className="flex items-center gap-3">
+              <div className="bg-gray-100 p-2.5 rounded-sm">
+                <Filter className="w-5 h-5 text-gray-700" />
+              </div>
+              <h2 className="text-xl font-black text-gray-900 uppercase tracking-tight">
+                Filter Fleet
+              </h2>
+            </div>
+
+            {/* Search Input */}
+            <div className="relative w-full md:max-w-md">
+              <input
+                type="text"
+                placeholder="Search heavy machinery by name..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-gray-50 border border-gray-200 text-sm px-4 py-3 pl-11 focus:outline-none focus:border-[#f25810] focus:ring-1 focus:ring-[#f25810] focus:bg-white transition-all rounded-sm"
+              />
+              <Search className="absolute left-4 top-3.5 w-4 h-4 text-gray-400" />
+            </div>
           </div>
 
-          {/* Category Dropdown (Mobile) & Scrollable Tabs (Desktop) */}
-          <div className="w-full md:w-auto flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 hide-scrollbar">
-            <Filter className="w-4 h-4 text-gray-400 hidden md:block mr-2" />
+          <div className="h-px w-full bg-gray-100 mb-6"></div>
+
+          {/* Bottom Section: Wrapping Pill Filter (No Scrollbar) */}
+          <div className="flex flex-wrap gap-2.5 md:gap-3">
             {categories.map((cat, idx) => (
               <button
                 key={idx}
                 onClick={() => setActiveCategory(cat)}
-                className={`whitespace-nowrap px-4 py-2 text-xs font-bold transition-all border ${
+                className={`px-4 py-2 text-xs md:text-sm font-bold transition-all rounded-sm border ${
                   activeCategory === cat
-                    ? "bg-[#f25810] text-white border-[#f25810] shadow-md"
-                    : "bg-white text-gray-600 border-gray-200 hover:border-gray-400"
+                    ? "bg-[#f25810] text-white border-[#f25810] shadow-md shadow-orange-500/20"
+                    : "bg-gray-50 text-gray-600 border-gray-200 hover:border-gray-400 hover:bg-gray-100 hover:text-gray-900"
                 }`}
               >
                 {cat}
               </button>
             ))}
           </div>
+          
         </div>
       </div>
 
       {/* 3. Machinery Fleet Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
         {filteredEquipment.length === 0 ? (
-          <div className="text-center py-20">
+          <div className="text-center py-20 bg-white border border-gray-200 shadow-sm rounded-sm">
             <Settings className="w-12 h-12 text-gray-300 mx-auto mb-4 animate-spin-slow" />
             <h3 className="text-xl font-bold text-gray-900">
               No equipment found
             </h3>
             <p className="text-gray-500 text-sm mt-2">
-              Adjust your filters or search terms.
+              Adjust your filters or search terms to find available machinery.
             </p>
           </div>
         ) : (
@@ -129,36 +141,38 @@ export default function EquipementMachinary() {
                   exit={{ opacity: 0, scale: 0.9 }}
                   transition={{ duration: 0.3 }}
                   key={item.id}
-                  className="bg-white border border-gray-200 group hover:shadow-2xl hover:border-gray-400 transition-all flex flex-col justify-between"
+                  className="bg-white border border-gray-200 group hover:shadow-xl hover:border-gray-400 transition-all flex flex-col justify-between"
                 >
                   {/* Image Container with Industrial overlay */}
                   <div className="relative h-48 w-full overflow-hidden bg-gray-100">
                     <img
                       src={item.image}
                       alt={item.name}
-                      className="w-full h-full object-cover  opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                      className="w-full h-full object-cover opacity-90 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
                     />
-                    <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 text-[10px] font-bold text-gray-900 border border-gray-200 shadow-sm">
+                    <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 text-[10px] font-bold text-gray-900 border border-gray-200 shadow-sm uppercase tracking-wider">
                       {item.category}
                     </div>
                   </div>
 
                   {/* Asset Details */}
-                  <div className="p-5">
-                    <h3 className="text-lg font-bold text-gray-900 mb-3">
-                      {item.name}
-                    </h3>
-
-                    <div className="flex items-center justify-between border-t border-gray-100 pt-4 mb-4">
-                      <div className="flex items-center gap-2">
-                        <HardHat className="w-4 h-4 text-gray-400" />
-                        <span className="text-xs text-gray-500 font-semibold">
-                          Available Units
+                  <div className="p-5 flex flex-col grow justify-between">
+                    <div>
+                      <h3 className="text-lg font-bold text-gray-900 mb-4 leading-tight">
+                        {item.name}
+                      </h3>
+                      
+                      <div className="flex items-center justify-between border-t border-gray-100 pt-4 mb-5">
+                        <div className="flex items-center gap-2">
+                          <HardHat className="w-4 h-4 text-gray-400" />
+                          <span className="text-xs text-gray-500 font-semibold uppercase tracking-wider">
+                            Available Units
+                          </span>
+                        </div>
+                        <span className="bg-gray-100 text-gray-900 font-black text-xs px-2.5 py-1 rounded-sm border border-gray-200">
+                          {item.qty.toString().padStart(2, "0")}
                         </span>
                       </div>
-                      <span className="bg-gray-900 text-white font-mono text-xs px-2 py-0.5 rounded-sm">
-                        {item.qty.toString().padStart(2, "0")}
-                      </span>
                     </div>
 
                     {/* Routing to Contact Page with State */}
@@ -169,7 +183,7 @@ export default function EquipementMachinary() {
                         equipmentName: item.name,
                         category: item.category,
                       }}
-                      className="w-full py-2.5 border-2 border-gray-900 hover:bg-[#f25810] hover:border-[#f25810] hover:text-white text-gray-900 font-bold text-xs transition-all flex items-center justify-center gap-2 group-hover:shadow-md"
+                      className="w-full py-3 border-2 border-gray-900 hover:bg-[#f25810] hover:border-[#f25810] hover:text-white text-gray-900 font-bold text-xs transition-all flex items-center justify-center gap-2 group-hover:shadow-md uppercase tracking-wider"
                     >
                       Inquire For Rental
                       <ArrowRight className="w-3.5 h-3.5" />

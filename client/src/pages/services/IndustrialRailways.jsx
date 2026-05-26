@@ -35,7 +35,7 @@ export default function IndustrialRailways() {
         <div className="absolute inset-0">
           <img
             src={RailwayHeroImage}
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover "
           />
           <div className="absolute inset-0 bg-linear-to-r from-gray-900 via-gray-900/80 to-transparent" />
         </div>

@@ -45,15 +45,11 @@ export default function LeadershipPage() {
       <section className="relative w-full h-[50vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1541888086925-920eb71e0e55?q=80&w=2070&auto=format&fit=crop"
-            alt="Corporate Industrial Engineering"
-            className="w-full h-full object-cover opacity-35"
-          />
+       
 
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]"></div>
 
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/40 to-transparent"></div>
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12">
@@ -74,7 +70,7 @@ export default function LeadershipPage() {
 
             <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-5 uppercase">
               Engineering{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f25810] to-[#ff8c54]">
+              <span className="text-transparent pr-2 bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">
                 Leadership
               </span>
             </h1>
@@ -221,7 +217,7 @@ export default function LeadershipPage() {
           <div className="relative flex items-center ml-78.75 justify-center gap-28">
 
             {/* CONNECTOR BETWEEN TOP BOXES */}
-            <div className="absolute top-1/2 left-1/2 w-28 h-[2px] bg-gray-700 -translate-x-1/2"></div>
+            <div className="absolute top-1/2 left-1/2 w-28 h-0.5 bg-gray-700 -translate-x-1/2"></div>
 
             {/* Managing Director */}
             <div className="relative z-10 w-52 bg-[#ff4f6d] text-white rounded-xl border-2 border-gray-800 px-6 py-5 text-center shadow-lg">
@@ -248,10 +244,10 @@ export default function LeadershipPage() {
           </div>
 
           {/* ROOT CONNECTOR FROM MANAGING DIRECTOR */}
-          <div className="w-[2px] h-12 bg-gray-700"></div>
+          <div className="w-0.5 h-12 bg-gray-700"></div>
 
           {/* MAIN HORIZONTAL ROOT LINE */}
-          <div className="w-[85%] h-[2px] bg-gray-700"></div>
+          <div className="w-[85%] h-0.5 bg-gray-700"></div>
 
         </div>
 
@@ -261,7 +257,7 @@ export default function LeadershipPage() {
           {/* SITE 1 */}
           <div className="flex flex-col items-center flex-1">
 
-            <div className="w-[2px] h-10 bg-gray-700"></div>
+            <div className="w-0.5 h-10 bg-gray-700"></div>
 
             <div className="w-48 bg-[#57c7c1] border-2 border-gray-700 rounded-xl px-4 py-4 text-center shadow-md">
               <h3 className="font-black text-gray-900 text-lg leading-tight">
@@ -273,11 +269,11 @@ export default function LeadershipPage() {
               </p>
             </div>
 
-            <div className="w-[2px] h-10 bg-gray-400"></div>
+            <div className="w-0.5 h-10 bg-gray-400"></div>
 
             <OrgNode title="Site Engineers" level="low" />
 
-            <div className="w-[2px] h-8 bg-gray-400"></div>
+            <div className="w-0.5 h-8 bg-gray-400"></div>
 
             <div className="bg-yellow-300 border-2 border-gray-700 rounded-xl px-4 py-4 text-center shadow-sm w-40">
               <h3 className="font-black text-gray-900 text-sm uppercase">
@@ -285,11 +281,11 @@ export default function LeadershipPage() {
               </h3>
             </div>
 
-            <div className="w-[2px] h-8 bg-gray-400"></div>
+            <div className="w-0.5 h-8 bg-gray-400"></div>
 
             <OrgNode title="Store Manager" level="low" />
 
-            <div className="w-[2px] h-8 bg-gray-400"></div>
+            <div className="w-0.5 h-8 bg-gray-400"></div>
 
             <OrgNode title="Machine Operators" level="low" />
           </div>
@@ -297,7 +293,7 @@ export default function LeadershipPage() {
           {/* SITE 2 */}
           <div className="flex flex-col items-center flex-1">
 
-            <div className="w-[2px] h-10 bg-gray-700"></div>
+            <div className="w-0.5 h-10 bg-gray-700"></div>
 
             <div className="w-48 bg-[#57c7c1] border-2 border-gray-700 rounded-xl px-4 py-4 text-center shadow-md">
               <h3 className="font-black text-gray-900 text-lg leading-tight">
@@ -309,11 +305,11 @@ export default function LeadershipPage() {
               </p>
             </div>
 
-            <div className="w-[2px] h-10 bg-gray-400"></div>
+            <div className="w-0.5 h-10 bg-gray-400"></div>
 
             <OrgNode title="Site Engineers" level="low" />
 
-            <div className="w-[2px] h-8 bg-gray-400"></div>
+            <div className="w-0.5 h-8 bg-gray-400"></div>
 
             <div className="bg-yellow-300 border-2 border-gray-700 rounded-xl px-4 py-4 text-center shadow-sm w-40">
               <h3 className="font-black text-gray-900 text-sm uppercase">
@@ -321,11 +317,11 @@ export default function LeadershipPage() {
               </h3>
             </div>
 
-            <div className="w-[2px] h-8 bg-gray-400"></div>
+            <div className="w-0.5 h-8 bg-gray-400"></div>
 
             <OrgNode title="Store Manager" level="low" />
 
-            <div className="w-[2px] h-8 bg-gray-400"></div>
+            <div className="w-0.5 h-8 bg-gray-400"></div>
 
             <OrgNode title="Machine Operators" level="low" />
           </div>
@@ -333,7 +329,7 @@ export default function LeadershipPage() {
           {/* SITE 3 */}
           <div className="flex flex-col items-center flex-1">
 
-            <div className="w-[2px] h-10 bg-gray-700"></div>
+            <div className="w-0.5 h-10 bg-gray-700"></div>
 
             <div className="w-48 bg-[#57c7c1] border-2 border-gray-700 rounded-xl px-4 py-4 text-center shadow-md">
               <h3 className="font-black text-gray-900 text-lg leading-tight">
@@ -345,11 +341,11 @@ export default function LeadershipPage() {
               </p>
             </div>
 
-            <div className="w-[2px] h-10 bg-gray-400"></div>
+            <div className="w-0.5 h-10 bg-gray-400"></div>
 
             <OrgNode title="Site Engineers" level="low" />
 
-            <div className="w-[2px] h-8 bg-gray-400"></div>
+            <div className="w-0.5 h-8 bg-gray-400"></div>
 
             <div className="bg-yellow-300 border-2 border-gray-700 rounded-xl px-4 py-4 text-center shadow-sm w-40">
               <h3 className="font-black text-gray-900 text-sm uppercase">
@@ -357,11 +353,11 @@ export default function LeadershipPage() {
               </h3>
             </div>
 
-            <div className="w-[2px] h-8 bg-gray-400"></div>
+            <div className="w-0.5 h-8 bg-gray-400"></div>
 
             <OrgNode title="Store Manager" level="low" />
 
-            <div className="w-[2px] h-8 bg-gray-400"></div>
+            <div className="w-0.5 h-8 bg-gray-400"></div>
 
             <OrgNode title="Machine Operators" level="low" />
           </div>
@@ -369,7 +365,7 @@ export default function LeadershipPage() {
           {/* ACCOUNTS DIVISION */}
           <div className="flex flex-col items-center flex-1">
 
-            <div className="w-[2px] h-10 bg-gray-700"></div>
+            <div className="w-0.5 h-10 bg-gray-700"></div>
 
             <div className="w-48 bg-[#57c7c1] border-2 border-gray-700 rounded-xl px-4 py-4 text-center shadow-md">
               <h3 className="font-black text-gray-900 text-lg leading-tight">
@@ -381,7 +377,7 @@ export default function LeadershipPage() {
               </p>
             </div>
 
-            <div className="w-[2px] h-10 bg-gray-400"></div>
+            <div className="w-0.5 h-10 bg-gray-400"></div>
 
             <OrgNode title="Site Accountants" level="low" />
           </div>
@@ -402,7 +398,7 @@ export default function LeadershipPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[999] bg-black/70 backdrop-blur-xs p-4 flex items-center justify-center"
+            className="fixed inset-0 z-999 bg-black/70 backdrop-blur-xs p-4 flex items-center justify-center"
             onClick={() => setSelectedLeader(null)}
           >
             
@@ -429,7 +425,7 @@ export default function LeadershipPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-12">
 
-                  <div className="md:col-span-5 bg-gray-900 relative h-72 md:h-auto min-h-[300px]">
+                  <div className="md:col-span-5 bg-gray-900 relative h-72 md:h-auto min-h-75">
                     
                     <img
                       src={selectedLeader.image}
@@ -437,7 +433,7 @@ export default function LeadershipPage() {
                       className="w-full h-full object-cover object-top"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-transparent to-transparent"></div>
                   </div>
 
                   <div className="md:col-span-7 p-6 md:p-10 flex flex-col justify-between bg-white">

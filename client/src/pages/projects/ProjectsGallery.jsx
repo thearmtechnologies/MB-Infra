@@ -8,7 +8,8 @@ import Image4 from "../../assets/img/project/img4.png";
 import Image5 from "../../assets/img/project/img5.png";
 import Image6 from "../../assets/img/project/img6.png";
 import Image7 from "../../assets/img/project/img7.png";
-// Media dataset (No project text/details as requested)
+
+// Media dataset
 // Using grid spanning classes to create an asymmetrical "Bento Box" layout
 const galleryMedia = [
   {
@@ -140,7 +141,7 @@ export default function ProjectGallery() {
       </section>
 
       {/* 3. Asymmetrical Media Grid */}
-      <section className="py-10 max-w-400 mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-10 max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           layout
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[250px]"
@@ -215,8 +216,9 @@ export default function ProjectGallery() {
               className="relative max-w-7xl w-full max-h-[90vh] flex items-center justify-center"
               onClick={(e) => e.stopPropagation()} // Prevent click from closing modal if clicking image
             >
+              {/* FIX: Use logical OR to grab either the static image or the URL */}
               <img
-                src={selectedMedia.url}
+                src={selectedMedia.image || selectedMedia.url}
                 alt="Expanded execution view"
                 className="max-w-full max-h-[90vh] object-contain rounded-sm shadow-2xl"
               />

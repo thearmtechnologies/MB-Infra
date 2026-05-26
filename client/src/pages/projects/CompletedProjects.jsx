@@ -17,14 +17,14 @@ export default function CompletedProjects() {
     <div className="bg-white min-h-screen font-sans antialiased text-gray-900">
       
       {/* 1. Hero Banner */}
-      <section className="relative h-[40vh] min-h-[350px] flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
+      <section className="relative h-[40vh] min-h-87.5 flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1504307651254-35680f356f58?q=80&w=2070&auto=format&fit=crop"
             alt="Heavy Construction Progress"
             className="w-full h-full object-cover opacity-25 object-center"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[30px_30px]" />
           <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/70 to-transparent" />
         </div>
         
@@ -117,7 +117,7 @@ export default function CompletedProjects() {
       {/* 4. Enterprise CTA Section - Simplified */}
       <section className="bg-gray-900 text-white py-16 relative overflow-hidden border-t-8 border-[#f25810]">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[radial-gradient(#f25810_1px,transparent_1px)] bg-[size:16px_16px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#f25810_1px,transparent_1px)] bg-size-[16px_16px]" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight mb-4">

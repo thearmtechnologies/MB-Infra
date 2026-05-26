@@ -47,8 +47,8 @@ export default function CareerPage() {
             className="w-full h-full object-cover opacity-30"
           />
           {/* Engineering blueprint grid pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px]"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/50 to-transparent"></div>
         </div>
         
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-16">
@@ -62,7 +62,7 @@ export default function CareerPage() {
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter mb-6 leading-tight drop-shadow-lg">
               Build Your Career With <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f25810] to-[#ff8c54]">MB Infraprojects</span>
+              <span className="text-transparent bg-clip-text pr-2 bg-linear-to-r from-[#f25810] to-[#ff8c54]">MB Infraprojects</span>
             </h1>
             <p className="text-gray-300 text-base md:text-lg font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-md">
               We are engineering the future. Join a team of dedicated professionals building India's most critical infrastructure, highways, and mega-structures.

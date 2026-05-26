@@ -2,6 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Building2, Handshake, ShieldCheck, ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
+import apexLogo from "../../assets/img/client/apex-tarmac.png";
+import ashokaLogo from "../../assets/img/client/ashoka-buildcon-limited-logo.png";
+import ecciLogo from "../../assets/img/client/east_coast_construction_industries_limited_logo.jpg";
+import grilLogo from "../../assets/img/client/gril.png";
+import hgLogo from "../../assets/img/client/hgiel.png";
+import pncLogo from "../../assets/img/client/pnc-infra.png";
+import raviLogo from "../../assets/img/client/ravi-infra-blue-logo-LATEST-1.png";
 
 // Client data extracted directly from the MBIPL C Profile 2025
 const clientsData = [
@@ -12,6 +19,7 @@ const clientsData = [
     role: "Primary EPC Partner",
     description: "Collaborated on massive structural packages including the Nagpur-Mumbai Super Communication Expressway and various NH-48 and NH-150A developments.",
     color: "bg-blue-600",
+    logo: pncLogo,
   },
   {
     id: "ravi",
@@ -20,6 +28,7 @@ const clientsData = [
     role: "Strategic Highway Partner",
     description: "Executed critical structural works, bypass developments, and four-laning expansion packages across Maharashtra and Rajasthan terrains.",
     color: "bg-indigo-600",
+    logo: raviLogo,
   },
   {
     id: "hg",
@@ -28,6 +37,7 @@ const clientsData = [
     role: "Bharatmala Pariyojna Partner",
     description: "Partnered for heavy structural execution, including complex Railway Over Bridges (ROB) and flyovers on EPC mode under the Bharatmala Pariyojna.",
     color: "bg-amber-600",
+    logo: hgLogo,
   },
   {
     id: "gr",
@@ -36,6 +46,7 @@ const clientsData = [
     role: "National Highway Partner",
     description: "Engaged for foundational mobilization and major structural works on newly awarded national highway corridors.",
     color: "bg-cyan-600",
+    logo: grilLogo,
   },
   {
     id: "ashoka",
@@ -44,6 +55,7 @@ const clientsData = [
     role: "Logistics Infrastructure Partner",
     description: "Delivered specialized port connectivity infrastructure and rigid concrete pavements designed for high-density transport traffic.",
     color: "bg-orange-600",
+    logo: ashokaLogo,
   },
   {
     id: "ecci",
@@ -52,6 +64,7 @@ const clientsData = [
     role: "Bridge Engineering Partner",
     description: "Executed precision engineering for major river bridges, involving deep pile foundations and aquatic span structures.",
     color: "bg-teal-600",
+    logo: ecciLogo,
   },
   {
     id: "apex",
@@ -60,6 +73,7 @@ const clientsData = [
     role: "Railway Corridor Partner",
     description: "Collaborated on Dedicated Freight Corridor (DFCCIL) detour construction, executing precision earthworks and track blanketing.",
     color: "bg-emerald-600",
+    logo: apexLogo,
   },
 ];
 
@@ -68,15 +82,15 @@ export default function ClientsPage() {
     <div className="bg-gray-50 min-h-screen font-sans antialiased text-gray-900">
       
       {/* 1. Hero Section */}
-      <section className="relative h-[40vh] min-h-[350px] flex items-center bg-gray-950 overflow-hidden border-b-8 border-[#f25810]">
+      <section className="relative h-[40vh] min-h-87.5 flex items-center bg-gray-950 overflow-hidden border-b-8 border-[#f25810]">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
             alt="Corporate Infrastructure Partnerships"
             className="w-full h-full object-cover opacity-20 object-center grayscale"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/80 to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[30px_30px]" />
+          <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/80 to-transparent" />
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full text-center md:text-left">
@@ -141,15 +155,15 @@ export default function ClientsPage() {
                 key={client.id}
                 className="bg-white border border-gray-200 rounded-sm overflow-hidden hover:shadow-xl hover:border-gray-300 transition-all duration-300 group flex flex-col"
               >
-                {/* Card Header / Fake Logo Banner */}
+                {/* Card Header / Client Logo */}
                 <div className="h-32 bg-gray-100 flex items-center justify-center relative overflow-hidden group-hover:bg-gray-200 transition-colors">
-                  {/* Background Accents */}
                   <div className="absolute -right-4 -top-4 w-24 h-24 bg-gray-200 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
-                  
-                  {/* Monogram / Initials */}
-                  <div className={`relative z-10 w-16 h-16 ${client.color} text-white flex items-center justify-center text-xl font-bold tracking-wider rounded-sm shadow-md ring-4 ring-white`}>
-                    {client.shortName}
-                  </div>
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="relative z-10 max-h-16 max-w-45 object-contain"
+                    loading="lazy"
+                  />
                 </div>
 
                 {/* Card Content */}
@@ -186,7 +200,7 @@ export default function ClientsPage() {
       {/* 4. Enterprise CTA Section */}
       <section className="bg-gray-900 text-white py-16 relative overflow-hidden border-t-8 border-[#f25810]">
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[radial-gradient(#f25810_1px,transparent_1px)] bg-[size:16px_16px]" />
+          <div className="absolute inset-0 bg-[radial-gradient(#f25810_1px,transparent_1px)] bg-size-[16px_16px]" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight mb-4">

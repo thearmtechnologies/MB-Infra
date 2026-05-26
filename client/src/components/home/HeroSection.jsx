@@ -222,7 +222,7 @@ export default function HeroSection() {
         <div
           key={idx}
           className={`
-            min-w-[130px]
+            min-w-32.5
             px-6
             py-4
             flex

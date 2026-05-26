@@ -85,14 +85,11 @@ export const navigationLinks = [
       },
 
       {
-        name: "Transportation",
-        path: "/industries/transportation",
+        name: "Industries",
+        path: "/industries",
       },
 
-      {
-        name: "Energy & Utilities",
-        path: "/industries/energy",
-      },
+      
     ],
   },
 

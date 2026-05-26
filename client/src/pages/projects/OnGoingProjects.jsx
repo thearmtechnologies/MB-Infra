@@ -14,7 +14,7 @@ export default function OngoingProjects() {
     <div className="bg-gray-50 min-h-screen font-sans antialiased text-gray-900">
       
       {/* 1. Hero Banner - Active Construction Theme */}
-      <section className="relative h-[40vh] min-h-[350px] flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
+      <section className="relative h-[40vh] min-h-87.5 flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=2070&auto=format&fit=crop"
@@ -22,7 +22,7 @@ export default function OngoingProjects() {
             className="w-full h-full object-cover opacity-20 object-center"
           />
           {/* Engineering grid mask */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:30px_30px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[30px_30px]" />
           <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-transparent" />
         </div>
         

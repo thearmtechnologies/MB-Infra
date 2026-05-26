@@ -1,5 +1,5 @@
 import NorthernKotaBypassImage from "../assets/img/allproject/northernKota.png";
-import BhilwaraLadpuraImage from "../assets/img/allproject/bhilwaraLadpura.png";
+import BhilwaraLadpuraImage from "../assets/img/allproject/bhilwaraLadpura.jpg";
 import RatnagiriKolhapurImage from "../assets/img/allproject/ratnagiriKolhapur.png";
 import RaichurImage from "../assets/img/allproject/raichur.png";
 import honnahalliHariharaImage from "../assets/img/allproject/honnahalliHarihara.png";
@@ -9,6 +9,8 @@ import DelhiVadodaraExpresswayImage from "../assets/img/allproject/delhiVadodara
 import TumkurBypassImage from "../assets/img/allproject/tumkurBypass.png";
 import ChallakereHariyurImage from "../assets/img/allproject/challakereHariyur.png";
 import BadalatMaradgiImage from "../assets/img/allproject/badalatMaradgi.png";
+import JNPTImage from "../assets/img/allproject/jnpt.jpg";
+import RgsDetourImage from "../assets/img/allproject/rgsDetour.jpg";
 export const allProjectsData = [
   // ------------------------------------------
   // ROADS & HIGHWAYS
@@ -404,7 +406,7 @@ export const allProjectsData = [
     status: "Completed",
     category: "industrial",
     progress: 100,
-    image: "https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1200&auto=format&fit=crop",
+    image: JNPTImage,
     desc: "Specialized logistical road paving and sub-grade preparation designed for high-density terminal transport traffic.",
     projectDetails: {
       timeline: "6 Months",
@@ -438,7 +440,7 @@ export const allProjectsData = [
     status: "Completed",
     category: "railways",
     progress: 100,
-    image: "https://images.unsplash.com/photo-1572025442646-866d16c84a54?q=80&w=1200&auto=format&fit=crop",
+    image: RgsDetourImage,
     desc: "Grade separation detour structural execution to facilitate seamless crossing layout over high-speed cargo lines.",
     projectDetails: {
       timeline: "5 Months",

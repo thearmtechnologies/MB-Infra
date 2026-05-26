@@ -1,3 +1,31 @@
 @import "tailwindcss";
 @import "flowbite-react/plugin/tailwindcss";
 @source "../.flowbite-react/class-list.json";
+
+html,
+body {
+	overflow-x: hidden;
+}
+
+.splash-fade {
+	animation: splashFade 1.5s ease forwards;
+}
+
+@keyframes splashFade {
+	0% {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+	20% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	80% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-6px);
+	}
+}

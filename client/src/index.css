@@ -11,6 +11,7 @@ body {
 	animation: splashFade 1.5s ease forwards;
 }
 
+
 @keyframes splashFade {
 	0% {
 		opacity: 0;
@@ -29,3 +30,4 @@ body {
 		transform: translateY(-6px);
 	}
 }
+

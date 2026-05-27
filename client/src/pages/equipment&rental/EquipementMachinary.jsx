@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  Search,
-  Filter,
-  ArrowRight,
-  HardHat,
-  Settings,
-} from "lucide-react";
+import { Search, Filter, ArrowRight, HardHat, Settings, Download } from "lucide-react";
 import { Link } from "react-router-dom";
+import * as XLSX from "xlsx"; // <-- Import the SheetJS library
 import { equipmentData } from "../../data/EquipmentData";
+import FleetImage from "../../assets/img/vehicles/fleet.jpg";
 
 const categories = [
   "All Equipment",
@@ -35,15 +31,49 @@ export default function EquipementMachinary() {
     return matchesSearch && matchesCategory;
   });
 
+  // Calculate Totals dynamically from the data
+  const totalFleetSize = equipmentData.reduce((total, item) => total + item.qty, 0);
+  const totalAssetTypes = equipmentData.length;
+
+  // --- DYNAMIC EXCEL DOWNLOAD FUNCTION ---
+  const handleDownloadExcel = () => {
+    // 1. Format the raw data into clean column structures for Excel
+    // We intentionally exclude the 'image' property as it's an object path
+    const formattedData = equipmentData.map((item, index) => ({
+      "Sr. No.": index + 1,
+      "Equipment Name": item.name,
+      "Category": item.category,
+      "Total Units Available": item.qty,
+    }));
+
+    // 2. Create a new Worksheet from the formatted JSON
+    const worksheet = XLSX.utils.json_to_sheet(formattedData);
+
+    // Optional: Auto-size the columns for better readability
+    const columnWidths = [
+      { wch: 10 }, // Sr. No.
+      { wch: 35 }, // Equipment Name
+      { wch: 25 }, // Category
+      { wch: 25 }  // Total Units Available
+    ];
+    worksheet["!cols"] = columnWidths;
+
+    // 3. Create a new Workbook and append the Worksheet
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "MB Infra Fleet");
+
+    // 4. Trigger the download of the Excel file
+    XLSX.writeFile(workbook, "MB_Infra_Equipment_List.xlsx");
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen pb-20">
-      
       {/* 1. Industrial Hero Banner */}
       <div className="relative h-[40vh] md:h-[50vh] bg-gray-900 overflow-hidden flex items-center justify-center">
         <img
-          src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2069&auto=format&fit=crop"
+          src={FleetImage}
           alt="Heavy Machinery Fleet"
-          className="absolute inset-0 w-full h-full object-cover opacity-25 object-center mix-blend-overlay"
+          className="absolute inset-0 w-full h-full object-cover object-center"
         />
         <div className="relative z-10 text-center px-4">
           <motion.div
@@ -65,37 +95,61 @@ export default function EquipementMachinary() {
         </div>
       </div>
 
-      {/* 2. Operations Control Bar (Search & Filter) */}
+      {/* 2. Operations Control Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
         <div className="bg-white shadow-xl border-t-4 border-[#f25810] p-6 md:p-8 rounded-b-sm">
           
-          {/* Top Section: Title & Search */}
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6">
-            <div className="flex items-center gap-3">
-              <div className="bg-gray-100 p-2.5 rounded-sm">
-                <Filter className="w-5 h-5 text-gray-700" />
+          {/* UPDATED HEADER: Grid layout for larger screens to center search bar */}
+          <div className="flex flex-col lg:grid lg:grid-cols-3 items-start lg:items-center gap-6 mb-6">
+            
+            {/* Left: Header & Stats */}
+            <div className="flex items-center gap-4 lg:justify-self-start">
+              <div className="bg-gray-100 p-3 rounded-sm hidden sm:block">
+                <Filter className="w-6 h-6 text-gray-700" />
               </div>
-              <h2 className="text-xl font-black text-gray-900 uppercase tracking-tight">
-                Filter Fleet
-              </h2>
+              <div>
+                <h2 className="text-xl md:text-2xl font-black text-gray-900 uppercase tracking-tight">
+                  Filter Fleet
+                </h2>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="text-xs text-[#f25810] font-black uppercase tracking-wider bg-orange-50 px-2 py-0.5 rounded-sm border border-orange-100">
+                    {totalAssetTypes} Asset Types
+                  </span>
+                  <span className="text-xs text-gray-600 font-bold uppercase tracking-wider bg-gray-100 px-2 py-0.5 rounded-sm border border-gray-200">
+                    {totalFleetSize} Total Units
+                  </span>
+                </div>
+              </div>
             </div>
 
-            {/* Search Input */}
-            <div className="relative w-full md:max-w-md">
+            {/* Middle: Prominent Search Input */}
+            <div className="w-full lg:max-w-md lg:justify-self-center relative">
               <input
                 type="text"
-                placeholder="Search heavy machinery by name..."
+                placeholder="Search heavy machinery..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-gray-50 border border-gray-200 text-sm px-4 py-3 pl-11 focus:outline-none focus:border-[#f25810] focus:ring-1 focus:ring-[#f25810] focus:bg-white transition-all rounded-sm"
+                className="w-full bg-white border-2 border-gray-300 text-sm md:text-base px-5 py-3.5 pl-12 focus:outline-none focus:border-[#f25810] focus:ring-4 focus:ring-[#f25810]/10 transition-all rounded-sm shadow-sm"
               />
-              <Search className="absolute left-4 top-3.5 w-4 h-4 text-gray-400" />
+              <Search className="absolute left-4 top-3.5 w-5 h-5 text-gray-400" />
             </div>
+            
+            {/* Right: Dynamic Excel Download Button */}
+            <div className="w-full sm:w-auto lg:justify-self-end">
+              <button
+                onClick={handleDownloadExcel}
+                className="w-full sm:w-auto flex items-center justify-center gap-2 bg-gray-900 hover:bg-[#f25810] text-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider transition-colors rounded-sm shadow-sm whitespace-nowrap cursor-pointer"
+              >
+                <Download className="w-4 h-4" />
+                Download Excel
+              </button>
+            </div>
+
           </div>
 
           <div className="h-px w-full bg-gray-100 mb-6"></div>
 
-          {/* Bottom Section: Wrapping Pill Filter (No Scrollbar) */}
+          {/* Bottom Section: Wrapping Pill Filter */}
           <div className="flex flex-wrap gap-2.5 md:gap-3">
             {categories.map((cat, idx) => (
               <button
@@ -111,7 +165,6 @@ export default function EquipementMachinary() {
               </button>
             ))}
           </div>
-          
         </div>
       </div>
 
@@ -161,7 +214,7 @@ export default function EquipementMachinary() {
                       <h3 className="text-lg font-bold text-gray-900 mb-4 leading-tight">
                         {item.name}
                       </h3>
-                      
+
                       <div className="flex items-center justify-between border-t border-gray-100 pt-4 mb-5">
                         <div className="flex items-center gap-2">
                           <HardHat className="w-4 h-4 text-gray-400" />

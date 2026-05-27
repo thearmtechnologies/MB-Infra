@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 
 import { leadershipTeam } from "../../data/leadershipData";
-
+import LeadershipImage from "../../assets/img/hero/leadership.jpg";
 // Reusable Organizational Node Component
 const OrgNode = ({ title, level }) => {
   let styles = "";
@@ -46,7 +46,11 @@ export default function LeadershipPage() {
         
         <div className="absolute inset-0 z-0">
        
-
+ <img
+          src={LeadershipImage}
+          alt="Heavy Machinery Fleet"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]"></div>
 
           <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/40 to-transparent"></div>

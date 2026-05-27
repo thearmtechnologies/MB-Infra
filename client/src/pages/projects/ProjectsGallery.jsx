@@ -8,6 +8,12 @@ import Image4 from "../../assets/img/project/img4.png";
 import Image5 from "../../assets/img/project/img5.png";
 import Image6 from "../../assets/img/project/img6.png";
 import Image7 from "../../assets/img/project/img7.png";
+import ClipVideo from "../../assets/videos/clip_01.mp4";
+import ClipVideo2 from "../../assets/videos/clip_02.mp4";
+import ClipVideo3 from "../../assets/videos/clip_03.mp4";
+import ClipVideo4 from "../../assets/videos/clip_04.mp4";
+import ClipVideo5 from "../../assets/videos/clip_05.mp4";
+import ClipVideo6 from "../../assets/videos/clip_06.mp4";
 
 // Media dataset
 // Using grid spanning classes to create an asymmetrical "Bento Box" layout
@@ -16,12 +22,13 @@ const galleryMedia = [
     id: 1,
     type: "photo",
     image: Image1,
-    gridClass: "md:col-span-2 md:row-span-2", // Large feature square
+    gridClass: "md:col-span-2 md:row-span-2",
   },
   {
     id: 2,
     type: "video",
-    url: "https://images.unsplash.com/photo-1572025442646-866d16c84a54?q=80&w=1200&auto=format&fit=crop",
+    video: ClipVideo,
+    poster: Image2,
     gridClass: "md:col-span-1 md:row-span-1",
   },
   {
@@ -34,13 +41,14 @@ const galleryMedia = [
     id: 4,
     type: "photo",
     image: Image3,
-    gridClass: "md:col-span-2 md:row-span-1", // Wide rectangle
+    gridClass: "md:col-span-2 md:row-span-1",
   },
   {
     id: 5,
     type: "video",
-    url: "https://images.unsplash.com/photo-1504307651254-35680f356f58?q=80&w=1200&auto=format&fit=crop",
-    gridClass: "md:col-span-1 md:row-span-2", // Tall rectangle
+    video: ClipVideo3,
+    poster: Image3,
+    gridClass: "md:col-span-1 md:row-span-1",
   },
   {
     id: 6,
@@ -52,19 +60,20 @@ const galleryMedia = [
     id: 7,
     type: "photo",
     image: Image5,
-    gridClass: "md:col-span-2 md:row-span-2", // Large feature square
+    gridClass: "md:col-span-2 md:row-span-2",
   },
   {
     id: 8,
     type: "video",
-    url: "https://images.unsplash.com/photo-1513828565645-cdb46ba559ac?q=80&w=1200&auto=format&fit=crop",
+    video: ClipVideo2,
+    poster: Image4,
     gridClass: "md:col-span-1 md:row-span-1",
   },
   {
     id: 9,
     type: "photo",
     image: Image6,
-    gridClass: "md:col-span-2 md:row-span-1", // Wide rectangle
+    gridClass: "md:col-span-2 md:row-span-1",
   },
   {
     id: 10,
@@ -72,6 +81,28 @@ const galleryMedia = [
     image: Image7,
     gridClass: "md:col-span-1 md:row-span-1",
   },
+  {
+    id: 11,
+    type: "video",
+    video: ClipVideo4,
+    poster: Image5,
+    gridClass: "md:col-span-1 md:row-span-1",
+  },
+  {
+    id: 12,
+    type: "video",
+    video: ClipVideo5,
+    poster: Image6,
+    gridClass: "md:col-span-2 md:row-span-1",
+  },
+  {
+    id: 13,
+    type: "video",
+    video: ClipVideo6,
+    poster: Image7,
+    gridClass: "md:col-span-1 md:row-span-2",
+  },
+
 ];
 
 export default function ProjectGallery() {
@@ -140,11 +171,11 @@ export default function ProjectGallery() {
         </div>
       </section>
 
-      {/* 3. Asymmetrical Media Grid */}
+      {/* 3. Masonry-Style Media Grid (Less empty gaps) */}
       <section className="py-10 max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           layout
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[250px]"
+          className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4"
         >
           <AnimatePresence mode="popLayout">
             {filteredMedia.map((media) => (
@@ -156,23 +187,37 @@ export default function ProjectGallery() {
                 transition={{ duration: 0.4 }}
                 key={media.id}
                 onClick={() => setSelectedMedia(media)}
-                className={`relative group cursor-pointer overflow-hidden rounded-sm bg-gray-900 shadow-sm hover:shadow-xl transition-all duration-300 ${media.gridClass}`}
+                className="relative group cursor-pointer overflow-hidden rounded-sm bg-gray-900 shadow-sm hover:shadow-xl transition-all duration-300 mb-4 break-inside-avoid"
               >
-                {/* Image rendering */}
-                <img
-                  src={media.image || media.url}
-                  alt="MB Infraprojects Execution"
-                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
-                />
+                {/* Media rendering for the grid (Keeps controls false here) */}
+                {media.type === "video" ? (
+                  <video
+                    src={media.video}
+                    poster={media.poster}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls={false}
+                    preload="metadata"
+                    className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
+                  />
+                ) : (
+                  <img
+                    src={media.image}
+                    alt="MB Infraprojects Execution"
+                    className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-in-out"
+                  />
+                )}
 
                 {/* Dark Overlay on Hover */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
 
-                {/* Video Indicator */}
+                {/* Video Play Icon Indicator */}
                 {media.type === "video" && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center group-hover:bg-[#f25810] group-hover:scale-110 transition-all duration-300 border border-white/30">
-                      <Play className="w-6 h-6 text-white ml-1 fill-white" />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-12 h-12 bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 group-hover:bg-[#f25810] group-hover:scale-105 transition-all duration-300">
+                      <Play className="w-5 h-5 text-white ml-0.5 fill-white" />
                     </div>
                   </div>
                 )}
@@ -214,22 +259,26 @@ export default function ProjectGallery() {
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
               className="relative max-w-7xl w-full max-h-[90vh] flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()} // Prevent click from closing modal if clicking image
+              onClick={(e) => e.stopPropagation()} // Prevent click from closing modal if clicking media
             >
-              {/* FIX: Use logical OR to grab either the static image or the URL */}
-              <img
-                src={selectedMedia.image || selectedMedia.url}
-                alt="Expanded execution view"
-                className="max-w-full max-h-[90vh] object-contain rounded-sm shadow-2xl"
-              />
-
-              {/* Fake Video Player UI Overlay if it's a video */}
-              {selectedMedia.type === "video" && (
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="w-24 h-24 bg-[#f25810]/90 rounded-full flex items-center justify-center shadow-2xl shadow-orange-900/50">
-                    <Play className="w-10 h-10 text-white ml-2 fill-white" />
-                  </div>
-                </div>
+              {selectedMedia.type === "video" ? (
+                <video
+                  key={`video-${selectedMedia.id}`} // Force React to remount video so it plays
+                  src={selectedMedia.video}
+                  poster={selectedMedia.poster}
+                  autoPlay
+                  playsInline
+                  controls // ENABLED CONTROLS HERE SO USERS CAN PLAY IT IF BLOCKED
+                  preload="metadata"
+                  className="max-w-full max-h-[90vh] object-contain rounded-sm shadow-2xl"
+                />
+              ) : (
+                <img
+                  key={`img-${selectedMedia.id}`}
+                  src={selectedMedia.image}
+                  alt="Expanded execution view"
+                  className="max-w-full max-h-[90vh] object-contain rounded-sm shadow-2xl"
+                />
               )}
             </motion.div>
           </motion.div>

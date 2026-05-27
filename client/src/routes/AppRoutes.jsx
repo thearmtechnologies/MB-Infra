@@ -60,8 +60,8 @@ export default function AppRoutes() {
     {/* Industries & Clients */}
         <Route path="/industries/clients" element={<ClientsPage />} />
         <Route path ="/industries" element={<IndustriesPage />} />
-        {/* Investors */}
-        <Route path="/investors/financial-overview" element={<FinancialOverview />} />
+        {/* Financials */}
+        <Route path="/financials" element={<FinancialOverview />} />
 
         {/* Careers */}
         <Route path="/careers" element={<CareerPage />} />

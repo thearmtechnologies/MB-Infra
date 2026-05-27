@@ -9,7 +9,7 @@ import {
   ArrowRight 
 } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import IndustriesImage from "../../assets/img/hero/industries.jpg"
 // Data strictly extracted from MBIPL C Profile 2025
 const industriesData = [
   {
@@ -57,7 +57,7 @@ export default function IndustriesPage() {
       <section className="relative h-[45vh] min-h-87.5 flex items-center justify-center overflow-hidden bg-black border-b-8 border-[#f25810]">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1541888086425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop"
+            src={IndustriesImage}
             alt="Infrastructure Sectors"
             className="w-full h-full object-cover object-center opacity-40"
           />

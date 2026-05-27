@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock, Send, Loader2 } from "lucide-react";
 import toast, { Toaster } from "react-hot-toast";
-
+import { useLocation } from "react-router-dom";
+import { equipmentData } from "../data/EquipmentData";
+import ContactImage from "../assets/img/hero/contact.jpg";
 const contactDetails = [
   { 
     icon: MapPin, 
@@ -30,18 +32,79 @@ const contactDetails = [
 ];
 
 export default function ContactPage() {
+  const location = useLocation();
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
     phone: "",
     company: "",
     inquiryType: "",
+    equipmentName: "",
+    equipmentQty: 1,
     message: "",
   });
   const [loading, setLoading] = useState(false);
 
+  const equipmentOptions = useMemo(
+    () => [...equipmentData].sort((a, b) => a.name.localeCompare(b.name)),
+    []
+  );
+
+  const selectedEquipment = useMemo(
+    () => equipmentData.find((item) => item.name === formData.equipmentName),
+    [formData.equipmentName]
+  );
+
+  useEffect(() => {
+    const state = location.state || {};
+    if (!state.inquiryType && !state.equipmentName) {
+      return;
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      inquiryType: state.inquiryType || prev.inquiryType,
+      equipmentName: state.equipmentName || prev.equipmentName,
+      equipmentQty: state.equipmentQty || prev.equipmentQty || 1,
+      message: state.message || prev.message,
+    }));
+  }, [location.state]);
+
+  useEffect(() => {
+    if (formData.inquiryType !== "Equipment Rental") {
+      setFormData((prev) => ({
+        ...prev,
+        equipmentName: "",
+        equipmentQty: 1,
+      }));
+    }
+  }, [formData.inquiryType]);
+
+  useEffect(() => {
+    if (!selectedEquipment) {
+      return;
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      equipmentQty: Math.min(Math.max(prev.equipmentQty || 1, 1), selectedEquipment.qty),
+    }));
+  }, [selectedEquipment]);
+
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleEquipmentQtyChange = (e) => {
+    const rawValue = Number.parseInt(e.target.value, 10);
+    const maxQty = selectedEquipment?.qty ?? 1;
+    const nextValue = Number.isNaN(rawValue) ? 1 : rawValue;
+
+    setFormData((prev) => ({
+      ...prev,
+      equipmentQty: Math.min(Math.max(nextValue, 1), maxQty),
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -68,6 +131,8 @@ export default function ContactPage() {
           phone: "", 
           company: "", 
           inquiryType: "", 
+          equipmentName: "",
+          equipmentQty: 1,
           message: "" 
         });
         e.target.reset();
@@ -89,12 +154,11 @@ export default function ContactPage() {
       <section className="relative w-full h-[55vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop"
+            src={ContactImage}
             alt="Bridge structural engineering"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover "
           />
-          {/* Engineering blueprint grid pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]"></div>
+ 
           <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/50 to-transparent"></div>
         </div>
         
@@ -190,12 +254,55 @@ export default function ContactPage() {
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2">Nature of Inquiry *</label>
                   <select required name="inquiryType" value={formData.inquiryType} onChange={handleInputChange} className="w-full bg-gray-50 border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#f25810] focus:bg-white transition-colors">
                     <option value="">Select an option...</option>
+                    <option value="Equipment Rental">Equipment Rental</option>
                     <option value="New Project/Tender">New Project / Tender Proposal</option>
                     <option value="Vendor/Supplier">Vendor / Supplier Registration</option>
                     <option value="Media/PR">Media & PR</option>
                     <option value="General">General Inquiry</option>
                   </select>
                 </div>
+
+                {formData.inquiryType === "Equipment Rental" && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2">Equipment / Vehicle *</label>
+                      <select
+                        required
+                        name="equipmentName"
+                        value={formData.equipmentName}
+                        onChange={handleInputChange}
+                        className="w-full bg-gray-50 border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#f25810] focus:bg-white transition-colors"
+                      >
+                        <option value="">Select equipment...</option>
+                        {equipmentOptions.map((item) => (
+                          <option key={item.id} value={item.name}>
+                            {item.name} ({item.qty} available)
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2">Quantity *</label>
+                      <input
+                        required
+                        type="number"
+                        name="equipmentQty"
+                        min="1"
+                        max={selectedEquipment?.qty || 1}
+                        value={formData.equipmentQty}
+                        onChange={handleEquipmentQtyChange}
+                        disabled={!selectedEquipment}
+                        className="w-full bg-gray-50 border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:border-[#f25810] focus:bg-white transition-colors disabled:opacity-60"
+                      />
+                      {selectedEquipment && (
+                        <p className="text-[11px] text-gray-400 mt-2">
+                          Max available: {selectedEquipment.qty}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 <div className="mb-8">
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2">Message *</label>

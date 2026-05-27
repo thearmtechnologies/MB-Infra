@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { Link, NavLink, matchPath, useLocation } from "react-router-dom";
+import React, { useMemo, useState } from "react";
+import { Link, NavLink, matchPath, useLocation, useNavigate } from "react-router-dom";
 import { navigationLinks } from "../../constants/navigation";
+import { allProjectsData } from "../../data/allProjects";
 // Desktop Dropdown Navigation Item
 const NavItem = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -166,6 +167,71 @@ const MobileNavItem = ({ item, closeDrawer }) => {
 };
 export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const searchIndex = useMemo(() => {
+    const navItems = [
+      { label: "Home", path: "/", category: "Page" },
+      ...navigationLinks.flatMap((item) => {
+        if (item.dropdown) {
+          return item.dropdown.map((subItem) => ({
+            label: subItem.name,
+            path: subItem.path,
+            category: item.title,
+          }));
+        }
+
+        if (item.path) {
+          return [{ label: item.title, path: item.path, category: "Page" }];
+        }
+
+        return [];
+      }),
+    ];
+
+    const projectItems = allProjectsData.map((project) => ({
+      label: project.title,
+      path: `/projects/${project.id}`,
+      category: "Project",
+      searchText: `${project.title} ${project.location} ${project.highway} ${project.client} ${project.category}`.toLowerCase(),
+    }));
+
+    return [
+      ...navItems.map((item) => ({
+        ...item,
+        searchText: `${item.label} ${item.category}`.toLowerCase(),
+      })),
+      ...projectItems,
+    ];
+  }, []);
+
+  const searchResults = useMemo(() => {
+    const trimmed = searchQuery.trim().toLowerCase();
+    if (!trimmed) {
+      return [];
+    }
+
+    const terms = trimmed.split(/\s+/);
+    return searchIndex
+      .filter((item) => terms.every((term) => item.searchText.includes(term)))
+      .slice(0, 8);
+  }, [searchIndex, searchQuery]);
+
+  const handleSearchSelect = (path) => {
+    navigate(path);
+    setSearchQuery("");
+    setIsSearchOpen(false);
+    setIsMobileOpen(false);
+  };
+
+  const handleSearchKeyDown = (event) => {
+    if (event.key === "Enter" && searchResults.length > 0) {
+      event.preventDefault();
+      handleSearchSelect(searchResults[0].path);
+    }
+  };
 
   return (
     <nav className="bg-white w-full border-b border-gray-200 sticky top-0 z-100 shadow-sm">
@@ -218,6 +284,14 @@ export default function Navbar() {
               <input
                 type="text"
                 placeholder="Search..."
+                value={searchQuery}
+                onChange={(event) => {
+                  setSearchQuery(event.target.value);
+                  setIsSearchOpen(true);
+                }}
+                onFocus={() => setIsSearchOpen(true)}
+                onBlur={() => setTimeout(() => setIsSearchOpen(false), 150)}
+                onKeyDown={handleSearchKeyDown}
                 className="
         w-full
               h-10
@@ -239,6 +313,30 @@ export default function Navbar() {
         duration-300
       "
               />
+
+              {isSearchOpen && searchQuery.trim().length > 0 && (
+                <div className="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50">
+                  {searchResults.length === 0 ? (
+                    <div className="px-4 py-3 text-xs text-gray-500">
+                      No matches found.
+                    </div>
+                  ) : (
+                    searchResults.map((result) => (
+                      <button
+                        key={`${result.category}-${result.path}`}
+                        type="button"
+                        onClick={() => handleSearchSelect(result.path)}
+                        className="w-full text-left px-4 py-3 text-sm hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="font-semibold text-gray-800">
+                          {result.label}
+                        </div>
+                        <div className="text-xs text-gray-500">{result.category}</div>
+                      </button>
+                    ))
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
@@ -320,6 +418,14 @@ export default function Navbar() {
               <input
                 type="text"
                 placeholder="Search..."
+                value={searchQuery}
+                onChange={(event) => {
+                  setSearchQuery(event.target.value);
+                  setIsSearchOpen(true);
+                }}
+                onFocus={() => setIsSearchOpen(true)}
+                onBlur={() => setTimeout(() => setIsSearchOpen(false), 150)}
+                onKeyDown={handleSearchKeyDown}
                 className="w-full bg-gray-50 text-sm border border-gray-200 rounded-lg px-4 py-2 pl-9 focus:outline-none focus:border-[#f25810]"
               />
               <svg
@@ -335,6 +441,30 @@ export default function Navbar() {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
+
+              {isSearchOpen && searchQuery.trim().length > 0 && (
+                <div className="absolute left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50">
+                  {searchResults.length === 0 ? (
+                    <div className="px-4 py-3 text-xs text-gray-500">
+                      No matches found.
+                    </div>
+                  ) : (
+                    searchResults.map((result) => (
+                      <button
+                        key={`mobile-${result.category}-${result.path}`}
+                        type="button"
+                        onClick={() => handleSearchSelect(result.path)}
+                        className="w-full text-left px-4 py-3 text-sm hover:bg-gray-50 transition-colors"
+                      >
+                        <div className="font-semibold text-gray-800">
+                          {result.label}
+                        </div>
+                        <div className="text-xs text-gray-500">{result.category}</div>
+                      </button>
+                    ))
+                  )}
+                </div>
+              )}
             </div>
           </div>
 

@@ -11,7 +11,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { Link } from "react-router-dom";
-
+import VisionImage from "../../assets/img/hero/vision.jpg";
 export default function VisionMission() {
   const containerVariants = {
     animate: { transition: { staggerChildren: 0.1 } },
@@ -59,6 +59,11 @@ export default function VisionMission() {
     <div className="bg-[#fcfcfc] text-gray-900 font-sans selection:bg-[#f25810]/10 selection:text-[#f25810]">
       {/* HEADER SECTION - Minimal Industrial Style */}
       <section className="bg-gray-950 text-white pt-28 pb-20 relative overflow-hidden">
+         <img
+                  src={VisionImage}
+                  alt="Heavy Machinery Fleet"
+                  className="absolute inset-0 w-full h-full opacity-30 object-cover object-center"
+                />
         {/* Subtle engineering grid background overlay */}
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"

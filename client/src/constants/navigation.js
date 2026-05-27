@@ -99,16 +99,13 @@ export const navigationLinks = [
   },
 
   {
-    title: "Investors",
-
-    dropdown: [
-      {
-        name: "Financial Overview",
-        path: "/investors/financial-overview",
-      },
+    title: "Financials",
+    path: "/financials",
+  
+ 
 
     
-    ],
+  
   },
 
   {

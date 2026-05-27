@@ -6,10 +6,10 @@ import apexLogo from "../../assets/img/client/apex-tarmac.png";
 import ashokaLogo from "../../assets/img/client/ashoka-buildcon-limited-logo.png";
 import ecciLogo from "../../assets/img/client/east_coast_construction_industries_limited_logo.jpg";
 import grilLogo from "../../assets/img/client/gril.png";
-import hgLogo from "../../assets/img/client/hgiel.png";
+import hgLogo from "../../assets/img/client/hgiel-logo.png";
 import pncLogo from "../../assets/img/client/pnc-infra.png";
 import raviLogo from "../../assets/img/client/ravi-infra-blue-logo-LATEST-1.png";
-
+import ClientsImage from "../../assets/img/hero/client.jpg"
 // Client data extracted directly from the MBIPL C Profile 2025
 const clientsData = [
   {
@@ -85,9 +85,9 @@ export default function ClientsPage() {
       <section className="relative h-[40vh] min-h-87.5 flex items-center bg-gray-950 overflow-hidden border-b-8 border-[#f25810]">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"
+            src={ClientsImage}
             alt="Corporate Infrastructure Partnerships"
-            className="w-full h-full object-cover opacity-20 object-center grayscale"
+            className="w-full h-full object-cover  object-center grayscale"
           />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[30px_30px]" />
           <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/80 to-transparent" />

@@ -3,31 +3,30 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { allProjectsData } from "../../data/allProjects"; // Adjust path if necessary
-
+import CompleteImage from "../../assets/img/hero/complete.jpg";
 export default function CompletedProjects() {
   // Start by loading 6 items to perfectly fit a 3-column grid
   const [loadLimit, setLoadLimit] = useState(6);
 
   // Filter the central dataset to ONLY include strictly completed projects
   const completedProjects = allProjectsData.filter(
-    (project) => project.status === "Completed"
+    (project) => project.status === "Completed",
   );
 
   return (
     <div className="bg-white min-h-screen font-sans antialiased text-gray-900">
-      
       {/* 1. Hero Banner */}
       <section className="relative h-[40vh] min-h-87.5 flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1504307651254-35680f356f58?q=80&w=2070&auto=format&fit=crop"
+            src={CompleteImage}
             alt="Heavy Construction Progress"
-            className="w-full h-full object-cover opacity-25 object-center"
+            className="w-full h-full object-cover bject-center"
           />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[30px_30px]" />
           <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/70 to-transparent" />
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
           <span className="inline-block py-1 px-3 rounded-sm bg-[#f25810] text-white text-xs font-bold tracking-wider uppercase mb-4">
             Audited Registry
@@ -36,7 +35,8 @@ export default function CompletedProjects() {
             Completed Infrastructure Projects
           </h1>
           <p className="text-gray-400 text-sm md:text-base max-w-2xl font-medium">
-            Verifiable tracking logs of large-scale civil works successfully handed over to India's frontline EPC corporations.
+            Verifiable tracking logs of large-scale civil works successfully
+            handed over to India's frontline EPC corporations.
           </p>
         </div>
       </section>
@@ -44,7 +44,6 @@ export default function CompletedProjects() {
       {/* 2. Compact Engineering Layout Grid */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence mode="popLayout">
               {completedProjects.slice(0, loadLimit).map((project) => (
@@ -57,7 +56,10 @@ export default function CompletedProjects() {
                   key={project.id}
                   className="bg-gray-50 border border-gray-200 rounded-md overflow-hidden flex flex-col justify-between hover:border-gray-400 hover:shadow-xl transition-all duration-300 group"
                 >
-                  <Link to={`/projects/${project.id}`} className="flex flex-col h-full">
+                  <Link
+                    to={`/projects/${project.id}`}
+                    className="flex flex-col h-full"
+                  >
                     {/* Compact Media Container */}
                     <div className="h-48 relative overflow-hidden bg-gray-900">
                       <div className="absolute top-3 left-3 z-10 bg-[#f25810] text-white font-semibold text-[10px] px-2.5 py-1 tracking-widest uppercase shadow-sm rounded-sm">
@@ -75,7 +77,7 @@ export default function CompletedProjects() {
                       <h2 className="text-[17px] font-semibold text-gray-900 leading-snug mb-3 line-clamp-2">
                         {project.title}
                       </h2>
-                      
+
                       <div className="flex items-center gap-2 text-sm font-medium text-gray-500 mb-4">
                         <MapPin className="w-4 h-4 text-[#f25810] shrink-0" />
                         <span className="truncate">{project.location}</span>
@@ -84,7 +86,7 @@ export default function CompletedProjects() {
                       <p className="text-gray-600 text-sm leading-relaxed line-clamp-3 mb-6">
                         {project.desc}
                       </p>
-                      
+
                       {/* Fake bottom margin to push the action button to the bottom if description is short */}
                       <div className="mt-auto">
                         <span className="text-[#f25810] font-bold text-sm tracking-wide flex items-center gap-1 group-hover:gap-2 transition-all">
@@ -110,7 +112,6 @@ export default function CompletedProjects() {
               </button>
             </div>
           )}
-
         </div>
       </section>
 
@@ -124,7 +125,8 @@ export default function CompletedProjects() {
             Want To Discuss Your Next Infrastructure Project?
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto mb-8 leading-relaxed text-sm">
-            Connect with our industrial procurement, estimation, and machinery leasing divisions to finalize contracts on upcoming tenders.
+            Connect with our industrial procurement, estimation, and machinery
+            leasing divisions to finalize contracts on upcoming tenders.
           </p>
           <div className="flex justify-center">
             <Link
@@ -136,7 +138,6 @@ export default function CompletedProjects() {
           </div>
         </div>
       </section>
-
     </div>
   );
 }

@@ -7,7 +7,7 @@ export const leadershipTeam = {
       role: " Director",
       // category: "Board of Directors",
       image: DirectorImage,
-      bio: "With over 32 years of cross-functional experience in heavy civil engineering, Mr. Bhardwaj has pioneered mega-scale highway layouts and structural turnkeys across India. Under his vision, MB Infraprojects expanded its asset footprint from local earthworks into a nationwide premier EPC contractor.",
+      bio: "With   years of cross-functional experience in heavy civil engineering, Mr. Mayurbhai has pioneered mega-scale highway layouts and structural turnkeys across India. Under his vision, MB Infraprojects expanded its asset footprint from local earthworks into a nationwide premier EPC contractor.",
       credentials: [
         "B.Tech Civil (IIT Bombay)",
         "FIE India Membership",

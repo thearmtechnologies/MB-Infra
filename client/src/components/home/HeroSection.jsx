@@ -5,6 +5,7 @@ import bridge from "../../assets/img/bridge.jpg";
 import industrial from "../../assets/img/industrial.jpg";
 import pavingRoad from "../../assets/img/pavingRoad.jpg";
 import dumpTruck from "../../assets/img/dumpTruck.jpg";
+import { Link } from "react-router-dom";
 
 // STRICTLY REAL DATA EXTRACTED FROM MBIPL C PROFILE 2025 PDF
 const slidesData = [
@@ -182,7 +183,7 @@ export default function HeroSection() {
                 variants={textVariants}
                 className="flex flex-col sm:flex-row gap-4"
               >
-                <button className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-8 py-4 font-bold uppercase tracking-widest text-sm transition-all shadow-lg shadow-[#f25810]/40 flex items-center justify-center gap-2 group">
+                <Link to="/projects" className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-8 py-4 font-bold uppercase tracking-widest text-sm transition-all shadow-lg shadow-[#f25810]/40 flex items-center justify-center gap-2 group">
                   Explore Projects
                   <svg
                     className="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
@@ -197,10 +198,10 @@ export default function HeroSection() {
                       d="M14 5l7 7m0 0l-7 7m7-7H3"
                     />
                   </svg>
-                </button>
-                <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 font-bold uppercase tracking-widest text-sm transition-all flex items-center justify-center">
+                </Link>
+                <Link to="/fleet" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 font-bold uppercase tracking-widest text-sm transition-all flex items-center justify-center">
                   Our Fleet & Machinery
-                </button>
+                </Link>
               </motion.div>
             </motion.div>
           </AnimatePresence>

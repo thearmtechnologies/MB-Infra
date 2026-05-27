@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { BarChart3, TrendingUp } from "lucide-react";
-
+import FinancialBg from "../../assets/img/hero/finance.jpg";
 export default function FinancialOverview() {
   const turnoverData = [
     { year: "2019-20", value: 38.46 },
@@ -17,31 +17,41 @@ export default function FinancialOverview() {
   return (
     <div className="bg-[#fafafa] min-h-screen font-sans text-gray-900 overflow-x-hidden">
       {/* HERO SECTION */}
-      <section className="relative py-20 bg-black overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0 bg-[linear-gradient(#f25810_1px,transparent_1px),linear-gradient(90deg,#f25810_1px,transparent_1px)] bg-size-[40px_40px]" />
-        </div>
+    <section className="relative py-20 overflow-hidden">
+  {/* Background Image */}
+  <div className="absolute inset-0">
+    <img
+      src={FinancialBg}
+      alt="Financial Background"
+      className="w-full h-full object-cover object-center"
+    />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <div className="flex items-center justify-center gap-4 mb-4">
-            <div className="h-px w-10 bg-[#f25810]" />
-            <span className="text-[#f25810] text-sm font-semibold tracking-widest uppercase">
-              Financial Performance
-            </span>
-            <div className="h-px w-10 bg-[#f25810]" />
-          </div>
+    {/* Optional dark overlay for readability */}
+    <div className="absolute inset-0 bg-black/60" />
+  </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
-            Yearly <span className="text-[#f25810]">Turnover</span>
-          </h1>
+  {/* Content */}
+  <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+    <div className="flex items-center justify-center gap-4 mb-4">
+      <div className="h-px w-10 bg-[#f25810]" />
 
-          <p className="text-gray-400 max-w-2xl mx-auto mt-5 text-sm md:text-base leading-relaxed">
-            Tracking our continuous financial scaling across consecutive fiscal
-            years. All values are represented in Crores (INR).
-          </p>
-        </div>
-      </section>
+      <span className="text-[#f25810] text-sm font-semibold tracking-widest uppercase">
+        Financial Performance
+      </span>
 
+      <div className="h-px w-10 bg-[#f25810]" />
+    </div>
+
+    <h1 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
+      Yearly <span className="text-[#f25810]">Turnover</span>
+    </h1>
+
+    <p className="text-gray-300 max-w-2xl mx-auto mt-5 text-sm md:text-base leading-relaxed">
+      Tracking our continuous financial scaling across consecutive fiscal
+      years. All values are represented in Crores (INR).
+    </p>
+  </div>
+</section>
       {/* CHART SECTION */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">

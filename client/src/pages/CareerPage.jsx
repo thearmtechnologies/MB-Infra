@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import CareerForm from "../components/careers/CareerForm"; // Adjust path if needed
 import { Briefcase, Clock, HardHat, MapPin, ShieldCheck, TrendingUp, ArrowRight } from "lucide-react";
-
+import CareerImage from "../assets/img/hero/career.jpg";
 const benefits = [
   { icon: TrendingUp, title: "Career Growth", desc: "Fast-tracked progression in a rapidly growing EPC environment." },
   { icon: HardHat, title: "Professional Team", desc: "Work alongside industry-leading engineers and project managers." },
@@ -42,12 +42,11 @@ export default function CareerPage() {
       <section className="relative w-full h-[65vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1541888086925-920eb71e0e55?q=80&w=2070&auto=format&fit=crop"
+            src={CareerImage}
             alt="Large scale highway construction"
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover"
           />
-          {/* Engineering blueprint grid pattern */}
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]"></div>
+     
           <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/50 to-transparent"></div>
         </div>
         

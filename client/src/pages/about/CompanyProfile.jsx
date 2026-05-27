@@ -11,7 +11,8 @@ import { Link } from "react-router-dom";
 import { leadershipTeam } from "../../data/leadershipData";
 import CompanyProfileImage from "../../assets/img/company-profile.jpg";
 import { coreValues, companyStats, corporateJourney } from "../../data/companyData";
-
+import AboutImage1 from "../../assets/img/about1.jpg";
+import AboutImage2 from "../../assets/img/about2.jpg";
 export default function CompanyProfile() {
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -123,14 +124,14 @@ export default function CompanyProfile() {
               <div className="absolute -inset-4 bg-gray-50 -z-10 rounded-sm"></div>
               <div className="h-64 sm:h-80 bg-gray-200 rounded-sm overflow-hidden shadow-sm">
                 <img 
-                  src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop" 
+                  src={AboutImage1}
                   alt="Bridge Construction" 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
               <div className="h-64 sm:h-80 bg-gray-200 rounded-sm overflow-hidden shadow-sm mt-8">
                 <img 
-                  src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=1000&auto=format&fit=crop" 
+                  src={AboutImage2}
                   alt="Industrial Machinery" 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />

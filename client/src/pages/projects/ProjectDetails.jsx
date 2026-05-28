@@ -53,7 +53,7 @@ export default function ProjectDetail() {
   return (
     <div className="bg-gray-50 min-h-screen font-sans antialiased text-gray-900">
       {/* 1. Technical Hero Header */}
-      <section className="relative w-full min-h-87.5 md:min-h-112.5 flex flex-col justify-end pb-10 pt-20 md:pt-28 bg-black overflow-hidden border-b-8 border-[#f25810]">
+      <section className="relative w-full hero-section flex flex-col justify-end pb-10 pt-20 md:pt-28 bg-black overflow-hidden border-b-8 border-[#f25810]">
         {/* AnimatePresence allows background to transition smoothly if routing between projects directly */}
         <AnimatePresence mode="wait">
           <motion.div

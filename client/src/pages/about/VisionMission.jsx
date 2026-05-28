@@ -58,12 +58,12 @@ export default function VisionMission() {
   return (
     <div className="bg-[#fcfcfc] text-gray-900 font-sans selection:bg-[#f25810]/10 selection:text-[#f25810]">
       {/* HEADER SECTION - Minimal Industrial Style */}
-      <section className="bg-gray-950 text-white pt-28 pb-20 relative overflow-hidden">
-         <img
-                  src={VisionImage}
-                  alt="Heavy Machinery Fleet"
-                  className="absolute inset-0 w-full h-full opacity-30 object-cover object-center"
-                />
+      <section className="hero-section bg-gray-950 text-white relative overflow-hidden flex items-center">
+        <img
+          src={VisionImage}
+          alt="Heavy Machinery Fleet"
+          className="absolute inset-0 w-full h-full opacity-30 object-cover object-center"
+        />
         {/* Subtle engineering grid background overlay */}
         <div
           className="absolute inset-0 opacity-5 pointer-events-none"
@@ -73,7 +73,7 @@ export default function VisionMission() {
           }}
         />
 
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 py-16 md:py-20">
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-0.5 bg-[#f25810]" />

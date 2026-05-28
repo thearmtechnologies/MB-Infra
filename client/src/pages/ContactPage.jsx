@@ -163,23 +163,19 @@ export default function ContactPage() {
       <Toaster position="bottom-right" />
 
       {/* 1. Hero Section - FIXED HEIGHTS ADDED HERE */}
-      <section className="relative w-full h-112.5 md:h-137.5 hero-section flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+   <section className="relative w-full hero-section flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
           <img
             src={ContactImage}
-            alt="Bridge structural engineering"
-            className="w-full h-full object-cover"
+            alt="Large scale highway construction"
+            className="absolute inset-0 w-full h-full object-cover object-center"
           />
-
+     
           <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/50 to-transparent"></div>
         </div>
-
+        
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, ease: "easeOut" }}>
             <div className="flex items-center justify-center gap-4 mb-6">
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
               <span className="text-[#f25810] font-black tracking-[0.25em] uppercase text-xs md:text-sm shadow-black drop-shadow-md">
@@ -188,19 +184,20 @@ export default function ContactPage() {
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
             </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white uppercase tracking-tighter mb-6 leading-tight drop-shadow-lg">
-              Contact{" "}
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54] pr-2">
-                MB Infraprojects
-              </span>
+            Contact<br/>
+              <span className="text-transparent bg-clip-text pr-2 bg-linear-to-r from-[#f25810] to-[#ff8c54]">MB Infraprojects</span>
             </h1>
             <p className="text-gray-300 text-base md:text-lg font-medium max-w-2xl mx-auto leading-relaxed drop-shadow-md">
-              Whether you are a government entity, private stakeholder, or a
-              prospective partner, we are ready to discuss your next
-              mega-project.
+                Whether you are a government entity, private stakeholder, or a
+        prospective partner, we are ready to discuss your next
+        mega-project.
             </p>
           </motion.div>
         </div>
+
       </section>
+
+   
 
       {/* 2. Contact Information Cards */}
       <section className="py-20 bg-white relative z-20 -mt-10">

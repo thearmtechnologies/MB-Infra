@@ -8,7 +8,13 @@ body {
 }
 
 :root {
-	--hero-section-height: clamp(360px, 55vh, 600px);
+	--hero-section-height: 31.625rem;
+}
+
+@media (max-width: 768px) {
+	:root {
+		--hero-section-height: 26rem;
+	}
 }
 
 .hero-section {

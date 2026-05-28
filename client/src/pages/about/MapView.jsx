@@ -38,7 +38,7 @@ const LocationPin = ({ type, status, isActive }) => {
 
 export default function MapView({ data, activeLocation, onLocationSelect }) {
   return (
-    <div className="relative w-full h-[600px] lg:h-[750px] bg-gradient-to-b from-[#fef8f2] to-[#f6efe7] rounded-2xl overflow-hidden border border-black/10 shadow-xl flex items-center justify-center">
+    <div className="relative w-full h-150 lg:h-187.5 bg-linear-to-b from-[#fef8f2] to-[#f6efe7] rounded-2xl overflow-hidden border border-black/10 shadow-xl flex items-center justify-center">
       
       <img 
         src={indiaMapSvg} 

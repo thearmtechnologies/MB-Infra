@@ -200,7 +200,7 @@ export default function ContactPage() {
    
 
       {/* 2. Contact Information Cards */}
-      <section className="py-20 bg-white relative z-20 -mt-10">
+      <section className="py-20 bg-white relative z-20">
         <div className="max-w-7xl mx-auto px-6 xl:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {contactDetails.map((item, idx) => (

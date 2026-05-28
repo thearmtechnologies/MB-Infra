@@ -35,7 +35,7 @@ export default function PanIndiaPresence() {
 
   return (
     <section className="py-16 md:py-24 bg-[#f6f3ee] text-gray-900 min-h-screen">
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-350 mx-auto px-4 sm:px-6 lg:px-8">
         {/* Page Header */}
         <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-black/10 pb-8">
           <div>
@@ -78,7 +78,7 @@ export default function PanIndiaPresence() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10">
           {/* LEFT SIDE: Clean Text-Based Data Dockets */}
-          <div className="lg:col-span-5 flex flex-col gap-3 order-2 lg:order-1 h-full max-h-[750px] overflow-y-auto pr-2 custom-scrollbar">
+          <div className="lg:col-span-5 flex flex-col gap-3 order-2 lg:order-1 h-full max-h-187.5 overflow-y-auto pr-2 custom-scrollbar">
             {panIndiaData.map((proj, idx) => {
               const isActive = activeLocation === proj.id;
 
@@ -111,7 +111,7 @@ export default function PanIndiaPresence() {
                       {proj.title}
                     </h3>
                     <span
-                      className={`flex-shrink-0 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-widest rounded ${badgeStyle}`}
+                      className={`shrink-0 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-widest rounded ${badgeStyle}`}
                     >
                       {proj.type === "HQ" ? "HQ" : proj.status}
                     </span>

@@ -10,6 +10,7 @@ import hgLogo from "../../assets/img/client/hgiel-logo.png";
 import pncLogo from "../../assets/img/client/pnc-infra.png";
 import raviLogo from "../../assets/img/client/ravi-infra-blue-logo-LATEST-1.png";
 import ClientsImage from "../../assets/img/hero/client.jpg"
+
 // Client data extracted directly from the MBIPL C Profile 2025
 const clientsData = [
   {
@@ -20,6 +21,8 @@ const clientsData = [
     description: "Collaborated on massive structural packages including the Nagpur-Mumbai Super Communication Expressway and various NH-48 and NH-150A developments.",
     color: "bg-blue-600",
     logo: pncLogo,
+    bgClass: "bg-gray-100 group-hover:bg-gray-200",
+    logoStyle: "max-h-16 max-w-[80%]"
   },
   {
     id: "ravi",
@@ -29,6 +32,8 @@ const clientsData = [
     description: "Executed critical structural works, bypass developments, and four-laning expansion packages across Maharashtra and Rajasthan terrains.",
     color: "bg-indigo-600",
     logo: raviLogo,
+    bgClass: "bg-gray-100 group-hover:bg-gray-200",
+    logoStyle: "max-h-20 max-w-[85%]" // Removed scale to prevent it from going outside the box
   },
   {
     id: "hg",
@@ -38,6 +43,8 @@ const clientsData = [
     description: "Partnered for heavy structural execution, including complex Railway Over Bridges (ROB) and flyovers on EPC mode under the Bharatmala Pariyojna.",
     color: "bg-amber-600",
     logo: hgLogo,
+    bgClass: "bg-gray-900 group-hover:bg-black", 
+    logoStyle: "max-h-20 max-w-[85%]"
   },
   {
     id: "gr",
@@ -47,6 +54,8 @@ const clientsData = [
     description: "Engaged for foundational mobilization and major structural works on newly awarded national highway corridors.",
     color: "bg-cyan-600",
     logo: grilLogo,
+    bgClass: "bg-gray-800 group-hover:bg-gray-900", // Dark background for white text visibility
+    logoStyle: "max-h-20 max-w-[85%]" // Safely contained dimensions
   },
   {
     id: "ashoka",
@@ -56,6 +65,8 @@ const clientsData = [
     description: "Delivered specialized port connectivity infrastructure and rigid concrete pavements designed for high-density transport traffic.",
     color: "bg-orange-600",
     logo: ashokaLogo,
+    bgClass: "bg-gray-100 group-hover:bg-gray-200",
+    logoStyle: "max-h-16 max-w-[80%]"
   },
   {
     id: "ecci",
@@ -65,6 +76,8 @@ const clientsData = [
     description: "Executed precision engineering for major river bridges, involving deep pile foundations and aquatic span structures.",
     color: "bg-teal-600",
     logo: ecciLogo,
+    bgClass: "bg-gray-100 group-hover:bg-gray-200",
+    logoStyle: "max-h-20 max-w-[85%] mix-blend-multiply" 
   },
   {
     id: "apex",
@@ -74,6 +87,8 @@ const clientsData = [
     description: "Collaborated on Dedicated Freight Corridor (DFCCIL) detour construction, executing precision earthworks and track blanketing.",
     color: "bg-emerald-600",
     logo: apexLogo,
+    bgClass: "bg-gray-100 group-hover:bg-gray-200",
+    logoStyle: "max-h-16 max-w-[80%]"
   },
 ];
 
@@ -152,15 +167,16 @@ export default function ClientsPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 key={client.id}
-                className="bg-white border border-gray-200 rounded-sm overflow-hidden hover:shadow-xl hover:border-gray-300 transition-all duration-300 group flex flex-col"
+                // Updated border classes for much clearer visibility (border-2, border-gray-300, distinct hover glow)
+                className="bg-white border-2 border-gray-300 rounded-sm overflow-hidden hover:shadow-xl hover:border-[#f25810]/70 transition-all duration-300 group flex flex-col"
               >
                 {/* Card Header / Client Logo */}
-                <div className="h-32 bg-gray-100 flex items-center justify-center relative overflow-hidden group-hover:bg-gray-200 transition-colors">
-                  <div className="absolute -right-4 -top-4 w-24 h-24 bg-gray-200 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
+                <div className={`h-36 flex items-center justify-center relative overflow-hidden transition-colors ${client.bgClass}`}>
+                  <div className="absolute -right-4 -top-4 w-24 h-24 bg-gray-400/20 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700"></div>
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="relative z-10 max-h-16 max-w-45 object-contain"
+                    className={`relative z-10 object-contain transition-transform duration-500 group-hover:scale-105 ${client.logoStyle}`}
                     loading="lazy"
                   />
                 </div>

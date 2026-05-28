@@ -249,7 +249,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white w-full border-b border-gray-200 sticky top-0 z-[100] shadow-sm">
+    <nav className="bg-white w-full border-b border-gray-200 sticky top-0 z-100 shadow-sm">
       <div className="w-full px-4 xl:px-5">
         <div className="flex justify-between items-center h-16 min-[1000px]:h-24 gap-4 md:gap-8">
           {/* 1. Logo Section */}
@@ -269,7 +269,7 @@ export default function Navbar() {
 
           {/* 2. Middle Search Bar Section */}
           <div className="flex-1 hidden min-[700px]:flex justify-center px-2 xl:px-3 min-w-0">
-            <div className="relative group w-full max-w-[280px] min-[1200px]:max-w-[340px] min-[1600px]:max-w-[420px]">
+            <div className="relative group w-fullmax-w-70 min-[1200px]:max-w-85 min-[1600px]:max-w-105">
               {/* Search Icon */}
               <svg
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#f25810] transition-colors pointer-events-none"
@@ -361,7 +361,7 @@ export default function Navbar() {
 
       {/* --- Mobile View Slide-in Overlay --- */}
       <div
-        className={`fixed inset-0 bg-black/50 transition-opacity duration-300 z-[150] ${
+        className={`fixed inset-0 bg-black/50 transition-opacity duration-300 z-150 ${
           isMobileOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -370,7 +370,7 @@ export default function Navbar() {
       />
 
       <div
-        className={`fixed top-0 left-0 h-full w-[280px] sm:w-[350px] bg-white z-[200] shadow-2xl transition-transform duration-300 ease-in-out transform ${
+        className={`fixed top-0 left-0 h-full w-70 sm:w-87.5  bg-white z-200 shadow-2xl transition-transform duration-300 ease-in-out transform ${
           isMobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

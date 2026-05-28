@@ -1,14 +1,21 @@
 import React, { useMemo, useState } from "react";
-import { Link, NavLink, matchPath, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  matchPath,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { navigationLinks } from "../../constants/navigation";
 import { allProjectsData } from "../../data/allProjects";
+
 // Desktop Dropdown Navigation Item
 const NavItem = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const isDropdownActive = item.dropdown
     ? item.dropdown.some((subItem) =>
-        matchPath({ path: subItem.path, end: true }, location.pathname)
+        matchPath({ path: subItem.path, end: true }, location.pathname),
       )
     : false;
 
@@ -35,7 +42,9 @@ const NavItem = ({ item }) => {
           {/* DROPDOWN BUTTON */}
           <button
             className={`flex items-center gap-1 font-semibold text-[13px] min-[1200px]:text-[15px] min-[1800px]:text-[17px] transition-colors py-8 whitespace-nowrap ${
-              isDropdownActive ? "text-[#f25810]" : "text-[#333] hover:text-[#f25810]"
+              isDropdownActive
+                ? "text-[#f25810]"
+                : "text-[#333] hover:text-[#f25810]"
             }`}
           >
             {item.title}
@@ -95,7 +104,7 @@ const MobileNavItem = ({ item, closeDrawer }) => {
   const location = useLocation();
   const isDropdownActive = item.dropdown
     ? item.dropdown.some((subItem) =>
-        matchPath({ path: subItem.path, end: true }, location.pathname)
+        matchPath({ path: subItem.path, end: true }, location.pathname),
       )
     : false;
 
@@ -122,7 +131,9 @@ const MobileNavItem = ({ item, closeDrawer }) => {
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`flex justify-between items-center w-full py-3 font-bold text-[13px] transition-colors ${
-          isDropdownActive ? "text-[#f25810]" : "text-[#333] hover:text-[#f25810]"
+          isDropdownActive
+            ? "text-[#f25810]"
+            : "text-[#333] hover:text-[#f25810]"
         }`}
       >
         <span>{item.title}</span>
@@ -153,7 +164,9 @@ const MobileNavItem = ({ item, closeDrawer }) => {
               onClick={closeDrawer}
               className={({ isActive }) =>
                 `block py-2.5 text-[13px] font-semibold ${
-                  isActive ? "text-[#f25810]" : "text-gray-600 hover:text-[#f25810]"
+                  isActive
+                    ? "text-[#f25810]"
+                    : "text-gray-600 hover:text-[#f25810]"
                 }`
               }
             >
@@ -165,6 +178,7 @@ const MobileNavItem = ({ item, closeDrawer }) => {
     </div>
   );
 };
+
 export default function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -195,7 +209,8 @@ export default function Navbar() {
       label: project.title,
       path: `/projects/${project.id}`,
       category: "Project",
-      searchText: `${project.title} ${project.location} ${project.highway} ${project.client} ${project.category}`.toLowerCase(),
+      searchText:
+        `${project.title} ${project.location} ${project.highway} ${project.client} ${project.category}`.toLowerCase(),
     }));
 
     return [
@@ -234,14 +249,12 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white w-full border-b border-gray-200 sticky top-0 z-100 shadow-sm">
-    <div className="w-full px-4 xl:px-5">
+    <nav className="bg-white w-full border-b border-gray-200 sticky top-0 z-[100] shadow-sm">
+      <div className="w-full px-4 xl:px-5">
         <div className="flex justify-between items-center h-16 min-[1000px]:h-24 gap-4 md:gap-8">
-          
           {/* 1. Logo Section */}
           <Link to="/" className="flex flex-col cursor-pointer shrink-0">
             <div className="flex items-center">
-              {/* UPDATED: Increased text sizes (text-3xl up to text-6xl) */}
               <span className="text-3xl min-[1000px]:text-4xl min-[1200px]:text-5xl min-[1800px]:text-6xl font-black tracking-tighter text-black">
                 MB
               </span>
@@ -249,7 +262,6 @@ export default function Navbar() {
                 INFRA
               </span>
             </div>
-            {/* UPDATED: Increased subtitle sizes slightly to maintain balance and adjusted negative top margin */}
             <span className="text-[9px] min-[1000px]:text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-1 min-[1200px]:-mt-2">
               Projects Pvt. Ltd.
             </span>
@@ -257,21 +269,10 @@ export default function Navbar() {
 
           {/* 2. Middle Search Bar Section */}
           <div className="flex-1 hidden min-[700px]:flex justify-center px-2 xl:px-3 min-w-0">
-            <div className="relative group w-full max-w-70 min-[1200px]:max-w-85 min-[1600px]:max-w-105">
+            <div className="relative group w-full max-w-[280px] min-[1200px]:max-w-[340px] min-[1600px]:max-w-[420px]">
               {/* Search Icon */}
               <svg
-                className="
-        absolute
-        left-3
-        top-1/2
-        -translate-y-1/2
-        w-4
-        h-4
-        text-gray-400
-        group-focus-within:text-[#f25810]
-        transition-colors
-        pointer-events-none
-      "
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#f25810] transition-colors pointer-events-none"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -296,26 +297,7 @@ export default function Navbar() {
                 onFocus={() => setIsSearchOpen(true)}
                 onBlur={() => setTimeout(() => setIsSearchOpen(false), 150)}
                 onKeyDown={handleSearchKeyDown}
-                className="
-        w-full
-              h-10
-        bg-gray-50
-        border
-        border-gray-200
-              rounded-lg
-        pl-10
-        pr-4
-        text-sm
-        text-gray-900
-        placeholder:text-gray-400
-        focus:outline-none
-        focus:border-[#f25810]
-        focus:ring-4
-        focus:ring-[#f25810]/10
-        focus:bg-white
-        transition-all
-        duration-300
-      "
+                className="w-full h-10 bg-gray-50 border border-gray-200 rounded-lg pl-10 pr-4 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#f25810] focus:ring-4 focus:ring-[#f25810]/10 focus:bg-white transition-all duration-300"
               />
 
               {isSearchOpen && searchQuery.trim().length > 0 && (
@@ -335,7 +317,9 @@ export default function Navbar() {
                         <div className="font-semibold text-gray-800">
                           {result.label}
                         </div>
-                        <div className="text-xs text-gray-500">{result.category}</div>
+                        <div className="text-xs text-gray-500">
+                          {result.category}
+                        </div>
                       </button>
                     ))
                   )}
@@ -374,27 +358,43 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
       {/* --- Mobile View Slide-in Overlay --- */}
       <div
-        className={`fixed inset-0 bg-black/50 transition-opacity duration-300 z-150 ${isMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`fixed inset-0 bg-black/50 transition-opacity duration-300 z-[150] ${
+          isMobileOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
         onClick={() => setIsMobileOpen(false)}
       />
 
       <div
-        className={`fixed top-0 left-0 h-full w-70 sm:w-87.5 bg-white z-200 shadow-2xl transition-transform duration-300 ease-in-out transform ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed top-0 left-0 h-full w-[280px] sm:w-[350px] bg-white z-[200] shadow-2xl transition-transform duration-300 ease-in-out transform ${
+          isMobileOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
         <div className="flex flex-col h-full">
           <div className="p-4 border-b border-gray-100 flex justify-between items-center">
-            <div className="flex flex-col">
+            {/* UPDATED MOBILE LOGO */}
+            <Link
+              to="/"
+              onClick={() => setIsMobileOpen(false)}
+              className="flex flex-col cursor-pointer shrink-0"
+            >
               <div className="flex items-center">
-                <span className="text-xl font-black tracking-tighter text-black">
+                <span className="text-3xl font-black tracking-tighter text-black">
                   MB
                 </span>
-                <span className="text-xl font-black tracking-tighter text-[#f25810]">
-                  Infra
+                <span className="text-3xl font-black tracking-tighter text-[#f25810]">
+                  INFRA
                 </span>
               </div>
-            </div>
+              <span className="text-[9px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-1">
+                Projects Pvt. Ltd.
+              </span>
+            </Link>
+
             <button
               onClick={() => setIsMobileOpen(false)}
               className="text-gray-500 hover:text-black focus:outline-none p-1"
@@ -432,7 +432,7 @@ export default function Navbar() {
                 className="w-full bg-gray-50 text-sm border border-gray-200 rounded-lg px-4 py-2 pl-9 focus:outline-none focus:border-[#f25810]"
               />
               <svg
-                className="w-4 h-4 text-gray-400 absolute left-3 top-3"
+                className="w-4 h-4 text-gray-400 absolute left-3 top-3 pointer-events-none"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -462,7 +462,9 @@ export default function Navbar() {
                         <div className="font-semibold text-gray-800">
                           {result.label}
                         </div>
-                        <div className="text-xs text-gray-500">{result.category}</div>
+                        <div className="text-xs text-gray-500">
+                          {result.category}
+                        </div>
                       </button>
                     ))
                   )}
@@ -471,18 +473,16 @@ export default function Navbar() {
             </div>
           </div>
 
-         {/* Mobile Drawer Navigation Content Links */}
-<div className="flex-1 overflow-y-auto px-6 py-2">
-
-  {navigationLinks.map((item, idx) => (
-    <MobileNavItem
-      key={idx}
-      item={item}
-      closeDrawer={() => setIsMobileOpen(false)}
-    />
-  ))}
-
-</div>
+          {/* Mobile Drawer Navigation Content Links */}
+          <div className="flex-1 overflow-y-auto px-6 py-2">
+            {navigationLinks.map((item, idx) => (
+              <MobileNavItem
+                key={idx}
+                item={item}
+                closeDrawer={() => setIsMobileOpen(false)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </nav>

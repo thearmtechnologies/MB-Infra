@@ -26,24 +26,31 @@ export default function Footer() {
     <footer className="bg-[#0a0a0a] border-t-4 border-[#f25810] pt-12 pb-6 w-full text-gray-400">
       <div className="w-full px-6 xl:px-12 mx-auto max-w-450">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+          
           {/* Brand Col & Contact Details */}
           <div>
-            <div className="flex flex-col mb-5">
-              {/* --- INCREASED LOGO SIZE HERE --- */}
+            {/* UPDATED LOGO SECTION TO MATCH NAVBAR */}
+            <Link to="/" className="flex flex-col mb-6 cursor-pointer w-max">
               <img
                 src={Logo}
                 alt="MB Infra Logo"
                 className="w-36 md:w-48 h-auto mb-3 object-contain"
               />
-              <div className="flex items-center">
-                <span className="text-2xl font-black tracking-tighter text-white">
-                  MB
-                </span>
-                <span className="text-2xl font-black tracking-tighter text-[#f25810] ml-1">
-                  INFRA
+              <div className="flex flex-col">
+                <div className="flex items-center">
+                  <span className="text-3xl font-black tracking-tighter text-white">
+                    MB
+                  </span>
+                  <span className="text-3xl font-black tracking-tighter text-[#f25810] ml-1.5">
+                    INFRA
+                  </span>
+                </div>
+                <span className="text-[9px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-0.5">
+                  Projects Pvt. Ltd.
                 </span>
               </div>
-            </div>
+            </Link>
+            
             <p className="text-[13px] font-medium leading-relaxed mb-5">
               A premier EPC organization focused on constructing India's
               critical infrastructure. Delivering mega-projects in highways,

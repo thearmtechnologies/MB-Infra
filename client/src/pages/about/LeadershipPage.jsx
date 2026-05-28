@@ -53,7 +53,7 @@ export default function LeadershipPage() {
         />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[40px_40px]"></div>
 
-          <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/40 to-transparent"></div>
+          <div className="absolute inset-0 bg-linear-to-t from-[#050505] via-black/70 to-transparent"></div>
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12">
@@ -61,6 +61,7 @@ export default function LeadershipPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="bg-black/45 backdrop-blur-xs px-6 py-8 rounded-2xl border border-white/10 shadow-xl"
           >
             <div className="flex items-center justify-center gap-4 mb-5">
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
@@ -96,15 +97,15 @@ export default function LeadershipPage() {
           <div className="border-b-2 border-gray-900 pb-4 mb-16 flex items-baseline justify-between">
             
             <h2 className="text-2xl md:text-4xl font-black tracking-tighter uppercase">
-              The <span className="text-[#f25810]">Board</span> of Directors
+              <span className="text-[#f25810]">Managing</span> Director
             </h2>
 
             <span className="text-xs font-bold text-gray-400 tracking-widest hidden sm:inline uppercase">
-              MB Infra / Board Level
+              MB Infra / Managing Director
             </span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="flex flex-wrap justify-center gap-12">
             
             {leadershipTeam.executives.map((leader, idx) => (
               
@@ -117,7 +118,7 @@ export default function LeadershipPage() {
                   duration: 0.6,
                   delay: idx * 0.1,
                 }}
-                className="bg-gray-50 border border-gray-200 p-6 md:p-10 grid grid-cols-1 md:grid-cols-5 gap-8 hover:shadow-xl transition-all duration-300 relative overflow-hidden group border-t-4 border-t-gray-900"
+                className="bg-gray-50 border border-gray-200 p-6 md:p-10 grid grid-cols-1 md:grid-cols-5 gap-8 hover:shadow-xl transition-all duration-300 relative overflow-hidden group border-t-4 border-t-gray-900 w-full max-w-2xl"
               >
                 
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gray-100 rounded-bl-full z-0 translate-x-8 -translate-y-8 group-hover:bg-[#f25810]/5 transition-colors duration-300"></div>

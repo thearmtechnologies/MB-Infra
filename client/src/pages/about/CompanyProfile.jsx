@@ -1,16 +1,26 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  HardHat, Globe2, TrendingUp, CheckCircle2, 
-  ArrowRight, ArrowLeftRight, ChevronLeft, 
-  ChevronRight, Award 
+import {
+  HardHat,
+  Globe2,
+  TrendingUp,
+  CheckCircle2,
+  ArrowRight,
+  ArrowLeftRight,
+  ChevronLeft,
+  ChevronRight,
+  Award,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 // Importing your local data structures
 import { leadershipTeam } from "../../data/leadershipData";
 import CompanyProfileImage from "../../assets/img/company-profile.jpg";
-import { coreValues, companyStats, corporateJourney } from "../../data/companyData";
+import {
+  coreValues,
+  companyStats,
+  corporateJourney,
+} from "../../data/companyData";
 import AboutImage1 from "../../assets/img/about1.jpg";
 import AboutImage2 from "../../assets/img/about2.jpg";
 export default function CompanyProfile() {
@@ -51,7 +61,6 @@ export default function CompanyProfile() {
 
   return (
     <div className="w-full bg-white min-h-screen flex flex-col font-sans text-gray-900">
-      
       {/* 1. Hero Section */}
       <section className="relative w-full hero-section flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
@@ -60,12 +69,16 @@ export default function CompanyProfile() {
             alt="Corporate Industrial Engineering"
             className="w-full h-full object-cover opacity-35"
           />
-       
+
           <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-black/40 to-transparent"></div>
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="flex items-center justify-center gap-4 mb-5">
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
               <span className="text-[#f25810] font-bold tracking-wider text-xs md:text-sm">
@@ -74,10 +87,15 @@ export default function CompanyProfile() {
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-5">
-              Pioneering India's <span className="text-transparent pr-2 bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">Infrastructure</span>
+              Pioneering India's{" "}
+              <span className="text-transparent pr-2 bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">
+                Infrastructure
+              </span>
             </h1>
             <p className="text-gray-300 text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
-              We are a premier EPC contractor dedicated to large-scale highway construction, industrial civil engineering, and structural excellence.
+              We are a premier EPC contractor dedicated to large-scale highway
+              construction, industrial civil engineering, and structural
+              excellence.
             </p>
           </motion.div>
         </div>
@@ -87,7 +105,7 @@ export default function CompanyProfile() {
       <section className="py-24 bg-white relative z-20">
         <div className="max-w-7xl mx-auto px-6 xl:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -98,23 +116,38 @@ export default function CompanyProfile() {
                 Building The Framework Of Tomorrow
               </h2>
               <div className="w-20 h-1.5 bg-[#f25810] mb-8"></div>
-              
+
               <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-6">
-                MB Infraprojects Pvt. Ltd. is a leading infrastructure development and heavy civil construction company in India. With decades of cross-functional experience, we specialize in the execution of complex Engineering, Procurement, and Construction (EPC) projects across the nation.
+                MB Infraprojects Pvt. Ltd. is a leading infrastructure
+                development and heavy civil construction company in India. With
+                decades of cross-functional experience, we specialize in the
+                execution of complex Engineering, Procurement, and Construction
+                (EPC) projects across the nation.
               </p>
               <p className="text-gray-600 text-base leading-relaxed mb-8">
-                From mega-scale highway layouts and commercial infrastructure to heavy earthmoving and bridge girder launching, our operational capabilities are backed by a massive, state-of-the-art machinery fleet. We partner with government entities and private stakeholders to deliver sustainable, zero-harm environments that drive economic growth.
+                From mega-scale highway layouts and commercial infrastructure to
+                heavy earthmoving and bridge girder launching, our operational
+                capabilities are backed by a massive, state-of-the-art machinery
+                fleet. We partner with government entities and private
+                stakeholders to deliver sustainable, zero-harm environments that
+                drive economic growth.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/projects" className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-8 py-3.5 font-bold tracking-wider text-sm transition-all shadow-md text-center rounded-sm flex items-center justify-center group">
+                <Link
+                  to="/projects"
+                  className="bg-[#f25810] hover:bg-[#d44a0d] text-white px-8 py-3.5 font-bold tracking-wider text-sm transition-all shadow-md text-center rounded-sm flex items-center justify-center group"
+                >
                   View Our Projects
-                  <ArrowRight size={16} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight
+                    size={16}
+                    className="ml-2 transform group-hover:translate-x-1 transition-transform"
+                  />
                 </Link>
               </div>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -123,16 +156,16 @@ export default function CompanyProfile() {
             >
               <div className="absolute -inset-4 bg-gray-50 -z-10 rounded-sm"></div>
               <div className="h-64 sm:h-80 bg-gray-200 rounded-sm overflow-hidden shadow-sm">
-                <img 
+                <img
                   src={AboutImage1}
-                  alt="Bridge Construction" 
+                  alt="Bridge Construction"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
               <div className="h-64 sm:h-80 bg-gray-200 rounded-sm overflow-hidden shadow-sm mt-8">
-                <img 
+                <img
                   src={AboutImage2}
-                  alt="Industrial Machinery" 
+                  alt="Industrial Machinery"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
@@ -146,7 +179,7 @@ export default function CompanyProfile() {
         <div className="max-w-7xl mx-auto px-6 xl:px-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-gray-700">
             {companyStats.map((stat, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -174,7 +207,8 @@ export default function CompanyProfile() {
               Our Operational Pillars
             </h2>
             <p className="text-gray-600 font-medium text-base">
-              The foundational principles that guide our mega-projects, ensure structural integrity, and drive sustainable industrial growth.
+              The foundational principles that guide our mega-projects, ensure
+              structural integrity, and drive sustainable industrial growth.
             </p>
           </div>
 
@@ -206,13 +240,12 @@ export default function CompanyProfile() {
       {/* 5. Executive Leadership */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 xl:px-12">
-          
           <div className="flex flex-col sm:flex-row items-center justify-between mb-16 border-b-2 border-gray-900 pb-4">
             <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-gray-900 uppercase">
-              Guided By <span className="text-[#f25810]">Experience</span>
+              Meet Our <span className="text-[#f25810]">Managing Director</span>
             </h2>
-            <Link 
-              to="/about/leadership" 
+            <Link
+              to="/about/leadership"
               className="mt-4 sm:mt-0 bg-gray-900 hover:bg-[#f25810] text-white px-6 py-2.5 text-sm font-bold tracking-wider uppercase transition-colors rounded-sm shadow-sm"
             >
               Meet Everyone
@@ -221,7 +254,7 @@ export default function CompanyProfile() {
 
           <div className="flex bg-center grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto">
             {displayedLeaders.map((leader, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -232,9 +265,9 @@ export default function CompanyProfile() {
                 <div className="flex flex-col sm:flex-row items-center gap-6 w-full mb-6">
                   {/* Director Avatar */}
                   <div className="w-32 h-32 shrink-0 overflow-hidden rounded-full border-4 border-white shadow-md group-hover:border-[#f25810] transition-colors duration-300">
-                    <img 
-                      src={leader.image} 
-                      alt={leader.name} 
+                    <img
+                      src={leader.image}
+                      alt={leader.name}
                       className="w-full h-full object-cover object-top transition-all duration-500"
                     />
                   </div>
@@ -247,16 +280,17 @@ export default function CompanyProfile() {
                     <p className="text-[#f25810] font-bold text-xs uppercase tracking-widest mt-1">
                       {leader.role}
                     </p>
-                    
+
                     {/* Credentials / Accolades */}
                     {leader.credentials && (
                       <div className="flex flex-wrap justify-center sm:justify-start gap-1.5 mt-3">
                         {leader.credentials.map((cert, cIdx) => (
-                          <span 
-                            key={cIdx} 
+                          <span
+                            key={cIdx}
                             className="inline-flex items-center gap-1 text-[10px] bg-gray-900 text-white font-bold tracking-wider uppercase px-2 py-1 rounded-sm shadow-xs"
                           >
-                            <Award className="w-2.5 h-2.5 text-[#f25810]" /> {cert.split(" (")[0]}
+                            <Award className="w-2.5 h-2.5 text-[#f25810]" />{" "}
+                            {cert.split(" (")[0]}
                           </span>
                         ))}
                       </div>
@@ -273,7 +307,6 @@ export default function CompanyProfile() {
               </motion.div>
             ))}
           </div>
-
         </div>
       </section>
 
@@ -285,20 +318,22 @@ export default function CompanyProfile() {
               Our Industrial <span className="text-[#f25810]">Journey</span>
             </h2>
             <p className="text-gray-400 mt-2 font-medium flex items-center gap-2">
-              <span className="hidden md:flex items-center gap-2">Drag or use arrows to navigate <ArrowLeftRight size={16} /></span>
+              <span className="hidden md:flex items-center gap-2">
+                Drag or use arrows to navigate <ArrowLeftRight size={16} />
+              </span>
               <span className="md:hidden">Scroll to view our history</span>
             </p>
           </div>
-          
+
           {/* Timeline Navigation Controls (Hidden on Mobile) */}
           <div className="hidden md:flex items-center gap-3">
-            <button 
+            <button
               onClick={() => scroll("left")}
               className="w-12 h-12 bg-gray-800 hover:bg-[#f25810] text-white flex items-center justify-center rounded-sm transition-colors duration-300"
             >
               <ChevronLeft size={24} />
             </button>
-            <button 
+            <button
               onClick={() => scroll("right")}
               className="w-12 h-12 bg-gray-800 hover:bg-[#f25810] text-white flex items-center justify-center rounded-sm transition-colors duration-300"
             >
@@ -308,11 +343,10 @@ export default function CompanyProfile() {
         </div>
 
         <div className="w-full px-6 xl:px-12 max-w-7xl mx-auto">
-          
           {/* MOBILE VIEW: Vertical Stacked Timeline */}
           <div className="md:hidden flex flex-col gap-10 relative before:absolute before:inset-y-0 before:left-1.75 before:w-0.5 before:bg-gray-700 py-4">
             {corporateJourney.map((step, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -322,7 +356,7 @@ export default function CompanyProfile() {
               >
                 {/* Timeline Dot */}
                 <div className="absolute top-1.5 left-0 w-4 h-4 bg-gray-900 border-2 border-gray-600 rounded-full group-hover:border-[#f25810] group-hover:bg-[#f25810] transition-colors duration-300 shadow-[0_0_10px_rgba(242,88,16,0.5)]"></div>
-                
+
                 <h3 className="text-[#f25810] font-black text-2xl tracking-tighter mb-1">
                   {step.year}
                 </h3>
@@ -337,21 +371,21 @@ export default function CompanyProfile() {
           </div>
 
           {/* DESKTOP VIEW: Horizontal Drag Scroll Timeline */}
-          <div 
+          <div
             ref={sliderRef}
             onMouseDown={startDragging}
             onMouseLeave={stopDragging}
             onMouseUp={stopDragging}
             onMouseMove={onDrag}
             className={`hidden md:flex gap-8 overflow-x-auto pb-12 pt-4 select-none ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             <style>{`
               ::-webkit-scrollbar { display: none; }
             `}</style>
 
             {corporateJourney.map((step, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -361,12 +395,12 @@ export default function CompanyProfile() {
               >
                 {/* Timeline Dot */}
                 <div className="absolute -top-2.5 left-0 w-4 h-4 bg-gray-900 border-2 border-gray-600 rounded-full group-hover:border-[#f25810] group-hover:bg-[#f25810] transition-colors duration-300 shadow-[0_0_10px_rgba(242,88,16,0.5)] pointer-events-none"></div>
-                
+
                 {/* Timeline Content */}
                 <span className="text-5xl font-black text-transparent bg-clip-text bg-linear-to-b from-gray-700 to-gray-900 tracking-tighter absolute -top-4 right-4 -z-10 group-hover:from-gray-600 transition-colors pointer-events-none">
                   {step.year}
                 </span>
-                
+
                 <h3 className="text-[#f25810] font-black text-2xl tracking-tighter mb-2 pointer-events-none">
                   {step.year}
                 </h3>
@@ -378,13 +412,12 @@ export default function CompanyProfile() {
                 </p>
               </motion.div>
             ))}
-            
+
             {/* Ending Spacer */}
             <div className="min-w-[6vw] shrink-0 pointer-events-none"></div>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

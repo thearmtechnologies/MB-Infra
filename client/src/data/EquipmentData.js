@@ -89,7 +89,7 @@ export const equipmentData = [
   },
   {
     id: 10,
-    name: "JCB Excavators",
+    name: " Excavators",
     qty: 4,
     category: "Earthmoving",
     image:JCBExcavatorsImage,

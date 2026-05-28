@@ -235,22 +235,26 @@ export default function Navbar() {
 
   return (
     <nav className="bg-white w-full border-b border-gray-200 sticky top-0 z-100 shadow-sm">
-      <div className="w-full px-4 xl:px-5">
+    <div className="w-full px-4 xl:px-5">
         <div className="flex justify-between items-center h-16 min-[1000px]:h-24 gap-4 md:gap-8">
+          
           {/* 1. Logo Section */}
-              <Link to="/" className="flex flex-col cursor-pointer shrink-0">
+          <Link to="/" className="flex flex-col cursor-pointer shrink-0">
             <div className="flex items-center">
-              <span className="text-xl min-[1000px]:text-2xl min-[1200px]:text-3xl min-[1800px]:text-4xl font-black tracking-tighter text-black">
+              {/* UPDATED: Increased text sizes (text-3xl up to text-6xl) */}
+              <span className="text-3xl min-[1000px]:text-4xl min-[1200px]:text-5xl min-[1800px]:text-6xl font-black tracking-tighter text-black">
                 MB
               </span>
-              <span className="text-xl min-[1000px]:text-2xl min-[1200px]:text-3xl min-[1800px]:text-4xl font-black tracking-tighter text-[#f25810]">
+              <span className="text-3xl min-[1000px]:text-4xl min-[1200px]:text-5xl min-[1800px]:text-6xl font-black tracking-tighter text-[#f25810]">
                 INFRA
               </span>
             </div>
-            <span className="text-[7px] min-[1000px]:text-[9px] min-[1200px]:text-[10px] min-[1800px]:text-[12px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-1">
+            {/* UPDATED: Increased subtitle sizes slightly to maintain balance and adjusted negative top margin */}
+            <span className="text-[9px] min-[1000px]:text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-1 min-[1200px]:-mt-2">
               Projects Pvt. Ltd.
             </span>
           </Link>
+
           {/* 2. Middle Search Bar Section */}
           <div className="flex-1 hidden min-[700px]:flex justify-center px-2 xl:px-3 min-w-0">
             <div className="relative group w-full max-w-70 min-[1200px]:max-w-85 min-[1600px]:max-w-105">
@@ -370,7 +374,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
       {/* --- Mobile View Slide-in Overlay --- */}
       <div
         className={`fixed inset-0 bg-black/50 transition-opacity duration-300 z-150 ${isMobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}

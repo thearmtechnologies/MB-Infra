@@ -17,7 +17,7 @@ export default function FinancialOverview() {
   return (
     <div className="bg-[#fafafa] min-h-screen font-sans text-gray-900 overflow-x-hidden">
       {/* HERO SECTION */}
-    <section className="relative py-20 overflow-hidden">
+    <section className="relative hero-section flex items-center justify-center overflow-hidden">
   {/* Background Image */}
   <div className="absolute inset-0">
     <img

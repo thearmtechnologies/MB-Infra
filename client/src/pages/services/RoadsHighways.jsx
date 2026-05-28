@@ -43,7 +43,7 @@ export default function RoadsHighways() {
   return (
     <div className="bg-white min-h-screen ">
       {/* 1. Hero Section - Industrial Corporate Style */}
-      <section className="relative h-[60vh] min-h-125 flex items-center bg-gray-900 overflow-hidden">
+      <section className="relative hero-section flex items-center bg-gray-900 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={ServiceHeroImage}

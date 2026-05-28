@@ -42,7 +42,7 @@ export default function LeadershipPage() {
     <div className="w-full bg-[#fafafa] min-h-screen flex flex-col font-sans text-gray-900 selection:bg-[#f25810]/10 selection:text-[#f25810]">
       
       {/* HERO SECTION */}
-      <section className="relative w-full h-[50vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+      <section className="relative w-full hero-section flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         
         <div className="absolute inset-0 z-0">
        

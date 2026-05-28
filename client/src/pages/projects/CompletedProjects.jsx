@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -7,22 +7,42 @@ import CompleteImage from "../../assets/img/hero/complete.jpg";
 export default function CompletedProjects() {
   // Start by loading 6 items to perfectly fit a 3-column grid
   const [loadLimit, setLoadLimit] = useState(6);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   // Filter the central dataset to ONLY include strictly completed projects
   const completedProjects = allProjectsData.filter(
     (project) => project.status === "Completed",
   );
 
+  useEffect(() => {
+    if (!completedProjects.length) {
+      return undefined;
+    }
+
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % completedProjects.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [completedProjects.length]);
+
   return (
     <div className="bg-white min-h-screen font-sans antialiased text-gray-900">
       {/* 1. Hero Banner */}
-      <section className="relative h-[40vh] min-h-87.5 flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
+      <section className="relative hero-section flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
         <div className="absolute inset-0">
-          <img
-            src={CompleteImage}
-            alt="Heavy Construction Progress"
-            className="w-full h-full object-cover bject-center"
-          />
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={completedProjects[currentSlide]?.id || "completed-hero"}
+              src={completedProjects[currentSlide]?.image || CompleteImage}
+              alt={completedProjects[currentSlide]?.title || "Heavy Construction Progress"}
+              className="w-full h-full object-cover object-center"
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.8 }}
+            />
+          </AnimatePresence>
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-size-[30px_30px]" />
           <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/70 to-transparent" />
         </div>
@@ -31,13 +51,24 @@ export default function CompletedProjects() {
           <span className="inline-block py-1 px-3 rounded-sm bg-[#f25810] text-white text-xs font-bold tracking-wider uppercase mb-4">
             Audited Registry
           </span>
-          <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-4 capitalize">
-            Completed Infrastructure Projects
-          </h1>
-          <p className="text-gray-400 text-sm md:text-base max-w-2xl font-medium">
-            Verifiable tracking logs of large-scale civil works successfully
-            handed over to India's frontline EPC corporations.
-          </p>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={completedProjects[currentSlide]?.id || "completed-text"}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-4 capitalize">
+                {completedProjects[currentSlide]?.title ||
+                  "Completed Infrastructure Projects"}
+              </h1>
+              <p className="text-gray-300 text-sm md:text-base max-w-2xl font-medium">
+                {completedProjects[currentSlide]?.desc ||
+                  "Verifiable tracking logs of large-scale civil works successfully handed over to India's frontline EPC corporations."}
+              </p>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 

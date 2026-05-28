@@ -71,7 +71,7 @@ export default function QualityPolicy() {
     <div className="w-full bg-white min-h-screen flex flex-col font-sans text-gray-900">
       
       {/* 1. Hero Section - Technical Blueprint Pattern */}
-      <section className="relative w-full h-[50vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+      <section className="relative w-full hero-section flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
           <img
             src={QualityControlImage}

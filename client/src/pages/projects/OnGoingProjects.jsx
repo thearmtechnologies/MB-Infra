@@ -14,7 +14,7 @@ export default function OngoingProjects() {
     <div className="bg-gray-50 min-h-screen font-sans antialiased text-gray-900">
       
       {/* 1. Hero Banner - Active Construction Theme */}
-      <section className="relative h-[40vh] min-h-87.5 flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
+      <section className="relative hero-section flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
         <div className="absolute inset-0">
           <img
             src={OngoingImage}

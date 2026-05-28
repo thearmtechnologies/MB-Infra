@@ -69,11 +69,11 @@ export default function EquipementMachinary() {
   return (
     <div className="bg-gray-50 min-h-screen pb-20">
       {/* 1. Industrial Hero Banner */}
-      <div className="relative h-[40vh] md:h-[50vh] bg-gray-900 overflow-hidden flex items-center justify-center">
+      <div className="relative hero-section bg-gray-900 overflow-hidden flex items-center justify-center">
         <img
           src={FleetImage}
           alt="Heavy Machinery Fleet"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full opacity-20 object-cover object-center"
         />
         <div className="relative z-10 text-center px-4">
           <motion.div

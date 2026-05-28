@@ -1,0 +1,153 @@
+// src/data/PanIndiaData.js
+
+export const panIndiaData = [
+  // --- CORPORATE HQ ---
+  {
+    id: "hq-anand",
+    title: "Corporate Headquarters",
+    state: "Anand, Gujarat",
+    client: "MB Infraprojects Pvt. Ltd.",
+    value: "Central Operations",
+    type: "HQ",
+    status: "Active",
+    coordinates: { top: "49%", left: "19%" }, // Anand, Gujarat Map Coordinates
+  },
+
+  // --- RAJASTHAN ---
+  {
+    id: "northern-kota",
+    title: "Northern Kota Bypass (SH-33)",
+    state: "Rajasthan",
+    client: "Ravi Infrabuild Pvt. Ltd.",
+    value: "5.6 Cr",
+    type: "Project",
+    status: "Completed",
+    coordinates: { top: "42%", left: "31%" },
+  },
+  {
+    id: "bhilwara-ladpura",
+    title: "Bhilwara Ladpura Project (NH-758)",
+    state: "Rajasthan",
+    client: "Ravi Infrabuild Pvt. Ltd.",
+    value: "3.10 Cr",
+    type: "Project",
+    status: "Completed",
+    coordinates: { top: "40%", left: "27%" },
+  },
+  {
+    id: "rgs-detour",
+    title: "RGS Detour (Ringus Jaipur Railway)",
+    state: "Rajasthan",
+    client: "MHK AT PLT (JV)",
+    value: "2.5 Cr",
+    type: "Project",
+    status: "Completed",
+    coordinates: { top: "36%", left: "29%" },
+  },
+
+  // --- MAHARASHTRA ---
+  {
+    id: "panvel-jnpt",
+    title: "Panvel JNPT Port Connectivity",
+    state: "Maharashtra",
+    client: "Ashoka Buildcon Ltd.",
+    value: "3.0 Cr",
+    type: "Project",
+    status: "Completed",
+    coordinates: { top: "58%", left: "25%" },
+  },
+  {
+    id: "ratnagiri-kolhapur",
+    title: "Ratnagiri Kolhapur Section (NH-166)",
+    state: "Maharashtra",
+    client: "Ravi Infrabuild Pvt. Ltd.",
+    value: "20.20 Cr",
+    type: "Project",
+    status: "Ongoing",
+    coordinates: { top: "64%", left: "26%" },
+  },
+  {
+    id: "nagpur-mumbai",
+    title: "Nagpur-Mumbai Expressway",
+    state: "Maharashtra",
+    client: "PNC Infratech Ltd.",
+    value: "64.56 Cr",
+    type: "Project",
+    status: "Completed",
+    coordinates: { top: "49%", left: "45%" },
+  },
+
+  // --- KARNATAKA ---
+  {
+    id: "raichur-nh748a",
+    title: "HACH Road Project (NH-748A)",
+    state: "Karnataka",
+    client: "G.R. Infraprojects Ltd.",
+    value: "48.27 Cr",
+    type: "Project",
+    status: "Ongoing",
+    coordinates: { top: "64%", left: "35%" },
+  },
+  {
+    id: "honnahalli-harihara",
+    title: "Honnahalli & Harihara Major Bridges",
+    state: "Karnataka",
+    client: "East Cost Construction",
+    value: "37.81 Cr",
+    type: "Project",
+    status: "Completed",
+    coordinates: { top: "70%", left: "30%" },
+  },
+  {
+    id: "chitradurga-nh48",
+    title: "Flyovers & VUPs Chitradurga (NH-48)",
+    state: "Karnataka",
+    client: "PNC Infratech Ltd.",
+    value: "50.06 Cr",
+    type: "Project",
+    status: "Completed",
+    coordinates: { top: "71%", left: "32%" },
+  },
+  {
+    id: "challakere-hariyur",
+    title: "Challakere to Hariyur (NH-150A)",
+    state: "Karnataka",
+    client: "PNC Infratech Ltd.",
+    value: "72.44 Cr",
+    type: "Project",
+    status: "Completed",
+    coordinates: { top: "72%", left: "34%" },
+  },
+  {
+    id: "tumkur-bypass",
+    title: "Tumkur Bypass Flyovers & ROBs",
+    state: "Karnataka",
+    client: "H.G. Infra Engineering Ltd.",
+    value: "167.0 Cr",
+    type: "Project",
+    status: "Ongoing",
+    coordinates: { top: "75%", left: "33%" },
+  },
+
+  // --- INTER-STATE BORDERS ---
+  {
+    id: "delhi-vadodara",
+    title: "Delhi-Vadodara Expressway (Pkg-31)",
+    state: "GJ/RJ Border",
+    client: "PNC Infratech Ltd.",
+    value: "34.0 Cr",
+    type: "Project",
+    status: "Completed",
+    coordinates: { top: "46%", left: "22%" },
+  },
+  {
+    id: "badadat-maradgi",
+    title: "Badadat to Maradgi S Andola",
+    state: "MH/KA Border",
+    client: "PNC Infratech Ltd.",
+    value: "42.25 Cr",
+    type: "Project",
+    status: "Ongoing",
+    coordinates: { top: "61%", left: "32%" },
+  }
+];

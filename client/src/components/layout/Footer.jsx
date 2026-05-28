@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail } from "lucide-react"; // Imported icons for contact info
+import { MapPin, Phone, Mail } from "lucide-react";
+
+// IMPORT YOUR LOGO HERE
+import Logo from "../../assets/img/logo2.png";
 
 const quickLinks = [
   { name: "About Company", path: "/about/company-profile" },
@@ -23,16 +26,23 @@ export default function Footer() {
     <footer className="bg-[#0a0a0a] border-t-4 border-[#f25810] pt-12 pb-6 w-full text-gray-400">
       <div className="w-full px-6 xl:px-12 mx-auto max-w-450">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
-          
           {/* Brand Col & Contact Details */}
           <div>
-            <div className="flex items-center mb-5">
-              <span className="text-2xl font-black tracking-tighter text-white">
-                MB
-              </span>
-              <span className="text-2xl font-black tracking-tighter text-[#f25810] ml-1">
-                INFRA
-              </span>
+            <div className="flex flex-col mb-5">
+              {/* --- INCREASED LOGO SIZE HERE --- */}
+              <img
+                src={Logo}
+                alt="MB Infra Logo"
+                className="w-36 md:w-48 h-auto mb-3 object-contain"
+              />
+              <div className="flex items-center">
+                <span className="text-2xl font-black tracking-tighter text-white">
+                  MB
+                </span>
+                <span className="text-2xl font-black tracking-tighter text-[#f25810] ml-1">
+                  INFRA
+                </span>
+              </div>
             </div>
             <p className="text-[13px] font-medium leading-relaxed mb-5">
               A premier EPC organization focused on constructing India's
@@ -41,18 +51,19 @@ export default function Footer() {
               excellence.
             </p>
 
-            {/* --- Real Contact Data Injected Here --- */}
             <div className="space-y-3 mb-6 text-[13px] font-medium">
               <div className="flex items-start gap-3">
                 <MapPin className="text-[#f25810] shrink-0 mt-0.5" size={18} />
                 <span>
-                  G-6, RS Platinum Building, Bhalej Road, Ganesh Colony, Anand, Gujarat, 388001
+                  G-6, RS Platinum Building, Bhalej Road, Ganesh Colony, Anand,
+                  Gujarat, 388001
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="text-[#f25810] shrink-0" size={18} />
                 <span>
-                  +91 99094 14001 <span className="text-gray-600 mx-1">|</span> 02692 269001
+                  +91 99094 14001 <span className="text-gray-600 mx-1">|</span>{" "}
+                  02692 269001
                 </span>
               </div>
               <div className="flex items-center gap-3">
@@ -65,10 +76,8 @@ export default function Footer() {
                 </a>
               </div>
             </div>
-            {/* --------------------------------------- */}
 
             <div className="flex gap-3">
-              {/* Social Icons Placeholder */}
               {["Facebook", "Twitter", "LinkedIn"].map((social, idx) => (
                 <a
                   key={idx}
@@ -109,7 +118,10 @@ export default function Footer() {
             <ul className="space-y-2.5 text-[13px] font-bold tracking-wider">
               {serviceLinks.map((link, idx) => (
                 <li key={idx}>
-                  <Link to={link.path} className="hover:text-[#f25810] transition-colors">
+                  <Link
+                    to={link.path}
+                    className="hover:text-[#f25810] transition-colors"
+                  >
                     {link.name}
                   </Link>
                 </li>
@@ -145,16 +157,24 @@ export default function Footer() {
             Reserved.
           </p>
           <div className="flex gap-6">
-            <Link to="/about/quality-policy" className="hover:text-white transition-colors">
+            <Link
+              to="/about/quality-policy"
+              className="hover:text-white transition-colors"
+            >
               Privacy Policy
             </Link>
-            <Link to="/about/company-profile" className="hover:text-white transition-colors">
+            <Link
+              to="/about/company-profile"
+              className="hover:text-white transition-colors"
+            >
               Terms of Use
             </Link>
           </div>
         </div>
         <div className="mt-4 flex flex-col items-center gap-1 text-[11px] font-semibold tracking-[0.2em] text-gray-500">
-          <span className="italic tracking-[0.25em] text-gray-400">Designed & Developed by ARM TECHNOLOGIES</span>
+          <span className="italic tracking-[0.25em] text-gray-400">
+            Designed & Developed by ARM TECHNOLOGIES
+          </span>
           <a
             href="https://www.thearmtechnologies.com"
             target="_blank"

@@ -7,6 +7,15 @@ body {
 	overflow-x: hidden;
 }
 
+:root {
+	--hero-section-height: clamp(360px, 55vh, 600px);
+}
+
+.hero-section {
+	height: var(--hero-section-height);
+	min-height: var(--hero-section-height);
+}
+
 .splash-fade {
 	animation: splashFade 1.5s ease forwards;
 }

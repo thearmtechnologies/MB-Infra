@@ -25,6 +25,7 @@ import ScrollToTopButton from "../components/layout/ScrollToTopButton";
 import ProjectDetails from "../pages/projects/ProjectDetails.jsx";
 import ClientsPage from "../pages/industries&clients/ClientsPage.jsx";
 import IndustriesPage from "../pages/industries&clients/IndustriesPage.jsx";
+import PanIndiaPresence from "../pages/about/PanIndiaPresence.jsx";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -36,6 +37,7 @@ export default function AppRoutes() {
         {/* About */}
         <Route path="/about/company-profile" element={<CompanyProfile />} />
         <Route path="/about/leadership" element={<LeadershipPage />} />
+        <Route path="/about/pan-india-presence" element={<PanIndiaPresence />} />
         <Route path="/about/vision-mission" element={<VisionMission />} />
         <Route path="/about/certifications" element={<CertificationsPage />} />
         <Route path="/about/quality-policy" element={<QualityPolicy />} />
@@ -45,7 +47,8 @@ export default function AppRoutes() {
         <Route path="/projects/completed" element={<CompletedProjects />} />
         <Route path="/projects/ongoing" element={<OngoingProjects />} />
         <Route path="/projects/gallery" element={<ProjectGallery />} />
-        <Route path="/projects/:id" element={<ProjectDetails />} />  
+        <Route path="/projects/:id" element={<ProjectDetails />} />
+
         {/* Services */}
         <Route path="/services/roads-highways" element={<RoadsHighways />} />
         <Route
@@ -57,9 +60,11 @@ export default function AppRoutes() {
           path="/services/industrial-railways"
           element={<IndustrialRailways />}
         />
-    {/* Industries & Clients */}
-        <Route path="/industries/clients" element={<ClientsPage />} />
-        <Route path ="/industries" element={<IndustriesPage />} />
+
+        {/* Industries & Clients */}
+        <Route path="/clients" element={<ClientsPage />} />
+        <Route path="/industries" element={<IndustriesPage />} />
+
         {/* Financials */}
         <Route path="/financials" element={<FinancialOverview />} />
 

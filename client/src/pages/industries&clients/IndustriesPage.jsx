@@ -54,7 +54,7 @@ export default function IndustriesPage() {
     <div className="bg-gray-50 min-h-screen font-sans antialiased text-gray-900">
       
       {/* 1. Hero Banner */}
-      <section className="relative h-[45vh] min-h-87.5 flex items-center justify-center overflow-hidden bg-black border-b-8 border-[#f25810]">
+      <section className="relative hero-section flex items-center justify-center overflow-hidden bg-black border-b-8 border-[#f25810]">
         <div className="absolute inset-0 z-0">
           <img
             src={IndustriesImage}

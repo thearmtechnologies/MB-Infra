@@ -53,7 +53,7 @@ export default function CompanyProfile() {
     <div className="w-full bg-white min-h-screen flex flex-col font-sans text-gray-900">
       
       {/* 1. Hero Section */}
-      <section className="relative w-full h-[55vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+      <section className="relative w-full hero-section flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
           <img
             src={CompanyProfileImage}
@@ -219,7 +219,7 @@ export default function CompanyProfile() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto">
+          <div className="flex bg-center grid-cols-1 md:grid-cols-2 gap-16 max-w-5xl mx-auto">
             {displayedLeaders.map((leader, idx) => (
               <motion.div 
                 key={idx}

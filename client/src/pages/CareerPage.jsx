@@ -39,7 +39,7 @@ export default function CareerPage() {
   return (
     <div className="w-full bg-gray-50 min-h-screen">
       {/* 1. Hero Section - Upgraded with Engineering Grid Overlay */}
-      <section className="relative w-full h-[65vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+      <section className="relative w-full hero-section flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
           <img
             src={CareerImage}

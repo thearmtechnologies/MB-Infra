@@ -17,12 +17,16 @@ export const navigationLinks = [
         name: "Leadership",
         path: "/about/leadership",
       },
+      {
+        name: "Pan India Presence",
+        path: "/about/pan-india-presence",
+      },
 
-      { 
+      {
         name: "Certifications",
         path: "/about/certifications",
       },
-      { 
+      {
         name: "Quality Policy ",
         path: "/about/quality-policy",
       },
@@ -81,31 +85,24 @@ export const navigationLinks = [
     dropdown: [
       {
         name: "Clients",
-        path: "/industries/clients",
+        path: "/clients",
       },
 
       {
         name: "Industries",
         path: "/industries",
       },
-
-      
     ],
   },
 
   {
     title: "Fleet",
-    path :"/fleet",
+    path: "/fleet",
   },
 
   {
     title: "Financials",
     path: "/financials",
-  
- 
-
-    
-  
   },
 
   {

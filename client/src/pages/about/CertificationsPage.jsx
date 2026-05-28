@@ -10,7 +10,7 @@ export default function CertificationsPage() {
     <div className="w-full bg-gray-50 min-h-screen flex flex-col font-sans text-gray-900">
       
       {/* 1. Hero Section */}
-      <section className="relative w-full min-h-[45vh] lg:min-h-[50vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+      <section className="relative w-full hero-section flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop"

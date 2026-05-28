@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   MapPin,
@@ -18,33 +18,57 @@ import AllProjectsImage from "../../assets/img/hero/all-project.jpg";
 export default function AllProjects() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [loadLimit, setLoadLimit] = useState(6);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const heroProjects = allProjectsData;
+
+  useEffect(() => {
+    if (!heroProjects.length) {
+      return undefined;
+    }
+
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroProjects.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [heroProjects.length]);
 
   // Filter Logic
   const filteredProjects =
     activeFilter === "all"
       ? allProjectsData
-      : allProjectsData.filter((project) => project.category === activeFilter);
+      : allProjectsData.filter((project) =>
+          activeFilter === "industrial-railways"
+            ? project.category === "industrial" || project.category === "railways"
+            : project.category === activeFilter
+        );
 
   // Filter Tabs Configuration
   const filterTabs = [
     { id: "all", label: "All Projects", icon: LayoutGrid },
     { id: "roads", label: "Roads & Highways", icon: Layers },
     { id: "bridges", label: "Bridges & Flyovers", icon: HardHat },
-    { id: "other", label: "Industrial & Railways", icon: Train },
+    { id: "industrial-railways", label: "Industrial & Railways", icon: Train },
   ];
 
   return (
     <div className="bg-white min-h-screen  font-sans antialiased text-gray-900">
       {/* 1. Hero Banner - Corporate Blueprint Aesthetic */}
-      <section className="relative h-[40vh] min-h-87.5 flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
+      <section className="relative hero-section flex items-center bg-gray-950 overflow-hidden border-b-8 border-gray-900">
         <div className="absolute inset-0">
-          <img
-            src={AllProjectsImage}
-            alt="Infrastructure Portfolio"
-            className="w-full h-full object-cover object-center"
-          />
-          {/* Engineering grid schematics mask */}
-        
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={heroProjects[currentSlide]?.id || "all-projects-hero"}
+              src={heroProjects[currentSlide]?.image || AllProjectsImage}
+              alt={heroProjects[currentSlide]?.title || "Infrastructure Portfolio"}
+              className="w-full h-full object-cover object-center"
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.8 }}
+            />
+          </AnimatePresence>
           <div className="absolute inset-0 bg-linear-to-t from-gray-950 via-gray-950/70 to-transparent" />
         </div>
 
@@ -52,14 +76,23 @@ export default function AllProjects() {
           <span className="inline-block py-1 px-3 rounded-sm bg-[#f25810] text-white text-xs font-bold tracking-widest uppercase mb-4 shadow-sm">
             Project Portfolio
           </span>
-          <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
-            Our Global Infrastructure Projects
-          </h1>
-          <p className="text-gray-400 text-sm md:text-base max-w-2xl font-medium">
-            Explore our audited registry of mega-structures, critical highways,
-            and industrial facilities delivered across India for top-tier EPC
-            clients.
-          </p>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={heroProjects[currentSlide]?.id || "all-projects-text"}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h1 className="text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight mb-4">
+                {heroProjects[currentSlide]?.title || "Our Global Infrastructure Projects"}
+              </h1>
+              <p className="text-gray-300 text-sm md:text-base max-w-2xl font-medium">
+                {heroProjects[currentSlide]?.desc ||
+                  "Explore our audited registry of mega-structures, critical highways, and industrial facilities delivered across India for top-tier EPC clients."}
+              </p>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 

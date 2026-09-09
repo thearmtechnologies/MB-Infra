@@ -45,7 +45,7 @@ export default function Footer() {
                     INFRA
                   </span>
                 </div>
-                <span className="text-[9px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-0.5">
+                <span className="text-[10px] tracking-[0.3em] font-bold text-gray-500 uppercase ">
                   Projects Pvt. Ltd.
                 </span>
               </div>

@@ -25,7 +25,7 @@ export const coreValues = [
 
 export const companyStats = [
   { value: "12+", label: "Years of Engineering Expertise " },
-  { value: "13+", label: "Major Projects Profiled " },
+  { value: "20+", label: "Major Projects Profiled " },
   { value: "90+", label: "Heavy Machinery Assets " },
   { value: "ISO", label: "9001:2008 Certified " },
 ];

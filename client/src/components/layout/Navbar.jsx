@@ -262,14 +262,14 @@ export default function Navbar() {
                 INFRA
               </span>
             </div>
-            <span className="text-[9px] min-[1000px]:text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-1 min-[1200px]:-mt-2">
+            <span className="text-[9px] min-[1000px]:text-[11px] min-[1200px]:text-[13px] min-[1800px]:text-[15px] tracking-[0.3em] font-bold text-gray-500 uppercase -mt-1 min-[1200px]:-mt-1">
               Projects Pvt. Ltd.
             </span>
           </Link>
 
           {/* 2. Middle Search Bar Section */}
           <div className="flex-1 hidden min-[700px]:flex justify-center px-2 xl:px-3 min-w-0">
-            <div className="relative group w-fullmax-w-70 min-[1200px]:max-w-85 min-[1600px]:max-w-105">
+            <div className="relative group w-full max-w-[420px] min-[1200px]:max-w-[520px] min-[1600px]:max-w-[650px]">
               {/* Search Icon */}
               <svg
                 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#f25810] transition-colors pointer-events-none"

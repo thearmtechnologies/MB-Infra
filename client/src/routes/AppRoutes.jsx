@@ -26,6 +26,10 @@ import ProjectDetails from "../pages/projects/ProjectDetails.jsx";
 import ClientsPage from "../pages/industries&clients/ClientsPage.jsx";
 import IndustriesPage from "../pages/industries&clients/IndustriesPage.jsx";
 import PanIndiaPresence from "../pages/about/PanIndiaPresence.jsx";
+import CraneRentals from "../pages/services/CraneRentals.jsx";
+import CrusherPlant from "../pages/services/CrusherPlant.jsx";
+import DumperTipperRentals from "../pages/services/DumperTipperRentals.jsx";
+import ExcavatorRentals from "../pages/services/ExcavatorRentals.jsx";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -55,6 +59,10 @@ export default function AppRoutes() {
           path="/services/bridges-flyovers"
           element={<BridgesFlyovers />}
         />
+        <Route path="/services/crane-rentals" element={<CraneRentals />} />
+        <Route path="/services/dumper-tipper-rentals" element={<DumperTipperRentals />} />
+        <Route path="/services/excavator-rentals" element={<ExcavatorRentals />} />
+        <Route path="/services/puzzolana-crusher-plant-rental" element={<CrusherPlant />} />
         <Route path="/fleet" element={<EquipementMachinary />} />
         <Route
           path="/services/industrial-railways"

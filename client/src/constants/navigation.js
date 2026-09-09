@@ -76,6 +76,26 @@ export const navigationLinks = [
         name: "Industrial Railways",
         path: "/services/industrial-railways",
       },
+
+      {
+        name: "Crane Rentals",
+        path: "/services/crane-rentals",
+      },
+
+      {
+        name: "Dumper & Tipper Rentals",
+        path: "/services/dumper-tipper-rentals",
+      },
+
+      {
+        name: "Excavator Rentals",
+        path: "/services/excavator-rentals",
+      },
+
+      {
+        name: "Puzzolana 250 TPH 4-Stage Fixed Crusher Plant",
+        path: "/services/puzzolana-crusher-plant-rental",
+      },
     ],
   },
 

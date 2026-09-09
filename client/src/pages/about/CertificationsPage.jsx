@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { complianceData, completionCertificatesData } from "../../data/CertificateData"; 
+import {
+  complianceData,
+  completionCertificatesData,
+} from "../../data/CertificateData";
 import { Lock, ShieldCheck, Eye, X, Award, Download } from "lucide-react";
 
 export default function CertificationsPage() {
@@ -8,7 +11,6 @@ export default function CertificationsPage() {
 
   return (
     <div className="w-full bg-gray-50 min-h-screen flex flex-col font-sans text-gray-900">
-      
       {/* 1. Hero Section */}
       <section className="relative w-full hero-section flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-0">
@@ -22,7 +24,11 @@ export default function CertificationsPage() {
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-12">
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="flex items-center justify-center gap-4 mb-5">
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
               <span className="text-[#f25810] font-bold tracking-wider text-xs md:text-sm uppercase">
@@ -31,10 +37,15 @@ export default function CertificationsPage() {
               <div className="h-0.5 w-12 bg-[#f25810]"></div>
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-5">
-              Corporate <span className="text-transparent pr-2 bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">Certifications</span>
+              Corporate{" "}
+              <span className="text-transparent pr-2 bg-clip-text bg-linear-to-r from-[#f25810] to-[#ff8c54]">
+                Certifications
+              </span>
             </h1>
             <p className="text-gray-300 text-sm md:text-base font-medium max-w-2xl mx-auto leading-relaxed">
-              MB Infraprojects Pvt. Ltd. maintains strict regulatory, financial, and industrial compliance standards through nationally recognized certifications and registrations.
+              MB Infraprojects Pvt. Ltd. maintains strict regulatory, financial,
+              and industrial compliance standards through nationally recognized
+              certifications and registrations.
             </p>
           </motion.div>
         </div>
@@ -42,7 +53,6 @@ export default function CertificationsPage() {
 
       <section className="py-20 md:py-24 bg-gray-50 relative z-20">
         <div className="max-w-300 mx-auto px-6 xl:px-12">
-          
           {/* --- SECTION A: OFFICIAL REGISTRY (NO VIEW BUTTON) --- */}
           <div className="mb-12 border-b-2 border-gray-900 pb-4 flex items-center justify-between">
             <h2 className="text-2xl md:text-3xl font-black tracking-tighter text-gray-900">
@@ -85,19 +95,25 @@ export default function CertificationsPage() {
                 <div className="w-full md:w-[60%] lg:w-[65%] p-6 md:p-8 flex flex-col justify-center">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-8 mb-5">
                     <div>
-                      <span className="block text-[11px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Registration No.</span>
+                      <span className="block text-[11px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                        Registration No.
+                      </span>
                       <span className="block text-sm font-black text-gray-900 font-mono tracking-wide bg-gray-100 px-2 py-1 rounded-sm w-fit border border-gray-200">
                         {cert.number}
                       </span>
                     </div>
                     <div>
-                      <span className="block text-[11px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Validity</span>
+                      <span className="block text-[11px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                        Validity
+                      </span>
                       <span className="block text-sm font-bold text-gray-800">
                         {cert.validity}
                       </span>
                     </div>
                     <div className="sm:col-span-2">
-                      <span className="block text-[11px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Issuing Authority</span>
+                      <span className="block text-[11px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                        Issuing Authority
+                      </span>
                       <span className="block text-sm font-bold text-gray-800">
                         {cert.authority}
                       </span>
@@ -106,6 +122,26 @@ export default function CertificationsPage() {
                   <p className="text-gray-600 text-sm leading-relaxed font-medium border-t border-gray-100 pt-5">
                     {cert.desc}
                   </p>
+
+                  {/* View & Download only for Incorporation Certificate */}
+                  {cert.id === "incorporationCertificate" && (
+                    <div className="mt-6 flex flex-wrap items-center gap-6">
+                      <button
+                        onClick={() => setSelectedCert(cert)}
+                        className="inline-flex items-center gap-2 text-xs font-bold text-[#f25810] hover:text-gray-900 transition-colors uppercase tracking-wider w-fit"
+                      >
+                        <Eye size={16} /> View Certificate
+                      </button>
+
+                      <a
+                        href={cert.image}
+                        download={`MB_Infra_${cert.title.replace(/\s+/g, "_")}`}
+                        className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-gray-900 transition-colors uppercase tracking-wider w-fit"
+                      >
+                        <Download size={16} /> Download
+                      </a>
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -133,26 +169,31 @@ export default function CertificationsPage() {
               >
                 {/* Left Side: Logo & Title Header */}
                 <div className="w-full md:w-[40%] lg:w-[35%] bg-gray-50 p-6 md:p-8 flex flex-col justify-center border-b md:border-b-0 md:border-r border-gray-100 relative overflow-hidden">
-                  
                   {/* Background Watermark */}
                   <div className="absolute -bottom-6 -right-6 text-gray-100 group-hover:text-[#f25810]/5 transition-colors duration-500">
                     <cert.icon size={120} strokeWidth={1} />
                   </div>
-                  
+
                   <div className="relative z-10">
                     {/* CLIENT LOGO RENDER BLOCK - DYNAMIC BACKGROUND */}
-                    <div className={`h-16 w-auto min-w-16 max-w-50 ${cert.darkLogoBg ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border flex items-center justify-center text-gray-900 mb-5 rounded-sm shadow-sm p-2 group-hover:border-[#f25810] group-hover:text-[#f25810] transition-colors self-start`}>
+                    <div
+                      className={`h-16 w-auto min-w-16 max-w-50 ${cert.darkLogoBg ? "bg-gray-900 border-gray-800" : "bg-white border-gray-200"} border flex items-center justify-center text-gray-900 mb-5 rounded-sm shadow-sm p-2 group-hover:border-[#f25810] group-hover:text-[#f25810] transition-colors self-start`}
+                    >
                       {cert.clientLogo ? (
-                        <img 
-                          src={cert.clientLogo} 
-                          alt={`${cert.authority} Logo`} 
-                          className="w-full h-full object-contain" 
+                        <img
+                          src={cert.clientLogo}
+                          alt={`${cert.authority} Logo`}
+                          className="w-full h-full object-contain"
                         />
                       ) : (
-                        <cert.icon size={28} strokeWidth={1.5} className={cert.darkLogoBg ? 'text-white' : ''} />
+                        <cert.icon
+                          size={28}
+                          strokeWidth={1.5}
+                          className={cert.darkLogoBg ? "text-white" : ""}
+                        />
                       )}
                     </div>
-                    
+
                     <h3 className="text-xl font-black tracking-tight text-gray-900 mb-3 mt-4">
                       {cert.title}
                     </h3>
@@ -164,36 +205,58 @@ export default function CertificationsPage() {
 
                 {/* Right Side: Verification Details */}
                 <div className="w-full md:w-[60%] lg:w-[65%] p-6 md:p-8 flex flex-col justify-center">
-                  
                   {cert.details ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-6 mb-5 bg-gray-50/50 p-5 border border-gray-100 rounded-sm">
                       <div className="sm:col-span-2">
-                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Project Details</span>
-                        <span className="block text-sm font-black text-gray-900">{cert.details.project}</span>
+                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                          Project Details
+                        </span>
+                        <span className="block text-sm font-black text-gray-900">
+                          {cert.details.project}
+                        </span>
                       </div>
-                      
+
                       <div className="sm:col-span-2">
-                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Scope of Work</span>
-                        <span className="block text-xs font-bold text-gray-700">{cert.details.scope}</span>
+                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                          Scope of Work
+                        </span>
+                        <span className="block text-xs font-bold text-gray-700">
+                          {cert.details.scope}
+                        </span>
                       </div>
 
                       <div>
-                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Client </span>
-                        <span className="block text-xs font-bold text-gray-800">{cert.authority}</span>
+                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                          Client{" "}
+                        </span>
+                        <span className="block text-xs font-bold text-gray-800">
+                          {cert.authority}
+                        </span>
                       </div>
 
                       <div>
-                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Execution Mode</span>
-                        <span className="block text-xs font-bold text-gray-800">{cert.details.executionMode}</span>
+                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                          Execution Mode
+                        </span>
+                        <span className="block text-xs font-bold text-gray-800">
+                          {cert.details.executionMode}
+                        </span>
                       </div>
 
                       <div>
-                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Timeline</span>
-                        <span className="block text-xs font-bold text-gray-800">{cert.details.startDate} - {cert.details.completionDate}</span>
+                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                          Timeline
+                        </span>
+                        <span className="block text-xs font-bold text-gray-800">
+                          {cert.details.startDate} -{" "}
+                          {cert.details.completionDate}
+                        </span>
                       </div>
 
                       <div>
-                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Completed Value</span>
+                        <span className="block text-[10px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                          Completed Value
+                        </span>
                         <span className="block text-xs font-black text-green-700 bg-green-50 px-2 py-1 rounded-sm w-fit border border-green-200">
                           {cert.details.completedValue}
                         </span>
@@ -202,13 +265,17 @@ export default function CertificationsPage() {
                   ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-8 mb-5">
                       <div>
-                        <span className="block text-[11px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Project / Package No.</span>
+                        <span className="block text-[11px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                          Project / Package No.
+                        </span>
                         <span className="block text-sm font-black text-gray-900 font-mono tracking-wide bg-gray-100 px-2 py-1 rounded-sm w-fit border border-gray-200">
                           {cert.number}
                         </span>
                       </div>
                       <div className="sm:col-span-2">
-                        <span className="block text-[11px] font-bold text-gray-400 mb-1 tracking-wider uppercase">Issuing Client / Authority</span>
+                        <span className="block text-[11px] font-bold text-gray-400 mb-1 tracking-wider uppercase">
+                          Issuing Client / Authority
+                        </span>
                         <span className="block text-sm font-bold text-gray-800">
                           {cert.authority}
                         </span>
@@ -219,7 +286,7 @@ export default function CertificationsPage() {
                   <p className="text-gray-600 text-sm leading-relaxed font-medium border-t border-gray-100 pt-5">
                     {cert.desc}
                   </p>
-                  
+
                   <div className="mt-6 flex flex-wrap items-center gap-6">
                     <button
                       onClick={() => setSelectedCert(cert)}
@@ -230,7 +297,7 @@ export default function CertificationsPage() {
 
                     <a
                       href={cert.image}
-                      download={`MB_Infra_${cert.authority.replace(/\s+/g, '_')}_Certificate`}
+                      download={`MB_Infra_${cert.authority.replace(/\s+/g, "_")}_Certificate`}
                       className="inline-flex items-center gap-2 text-xs font-bold text-gray-500 hover:text-gray-900 transition-colors uppercase tracking-wider w-fit"
                     >
                       <Download size={16} /> Download
@@ -264,10 +331,12 @@ export default function CertificationsPage() {
                 <div className="flex items-center gap-3">
                   {/* Dynamic Modal Logo Background */}
                   {selectedCert.clientLogo && (
-                    <div className={`flex items-center justify-center p-1.5 rounded-sm ${selectedCert.darkLogoBg ? 'bg-gray-900' : ''}`}>
-                      <img 
-                        src={selectedCert.clientLogo} 
-                        alt="Client Logo" 
+                    <div
+                      className={`flex items-center justify-center p-1.5 rounded-sm ${selectedCert.darkLogoBg ? "bg-gray-900" : ""}`}
+                    >
+                      <img
+                        src={selectedCert.clientLogo}
+                        alt="Client Logo"
                         className="h-6 w-auto object-contain"
                       />
                     </div>
@@ -276,11 +345,11 @@ export default function CertificationsPage() {
                     {selectedCert.authority} - {selectedCert.title}
                   </h3>
                 </div>
-                
+
                 <div className="flex items-center gap-2 sm:gap-3">
                   <a
                     href={selectedCert.image}
-                    download={`MB_Infra_${selectedCert.authority.replace(/\s+/g, '_')}_Certificate`}
+                    download={`MB_Infra_${selectedCert.authority.replace(/\s+/g, "_")}_Certificate`}
                     title="Download Certificate"
                     className="p-2 text-gray-500 hover:text-gray-900 transition-colors bg-white border border-gray-200 rounded-sm hover:border-gray-900"
                   >
@@ -302,7 +371,7 @@ export default function CertificationsPage() {
                   alt={selectedCert.title}
                   className="max-w-full max-h-[70vh] object-contain shadow-lg"
                 />
-                
+
                 <div className="absolute bottom-4 right-4 pointer-events-none opacity-50">
                   <p className="text-[10px] sm:text-xs font-bold text-gray-900 bg-white/80 px-2 py-1 rounded-sm uppercase tracking-widest">
                     MB Infraprojects Verification
@@ -313,7 +382,6 @@ export default function CertificationsPage() {
           </motion.div>
         )}
       </AnimatePresence>
-
     </div>
   );
 }

@@ -18,7 +18,7 @@ const slidesData = [
     description:
       "Founded in 2013, MB Infraprojects Pvt. Ltd. has evolved into a trusted name in India's infrastructure sector, specializing in critical road structures and major expressways.",
     stats: [
-      { number: "13", label: "Years of Excellence" },
+      { number: "20", label: "Years of Excellence" },
       { number: "13", label: "Mega Projects Executed" },
       { number: "75", label: "Cr+ Turnover (FY24)" },
     ],

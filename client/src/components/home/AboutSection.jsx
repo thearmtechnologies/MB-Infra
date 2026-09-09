@@ -23,7 +23,7 @@ export default function AboutSection() {
             </div>
             {/* Overlay Badge - Updated to real founded date (2013) */}
             <div className="absolute bottom-10 -left-5 md:-left-10 bg-[#f25810] text-white p-6 md:p-8 shadow-2xl rounded-sm">
-              <div className="text-4xl md:text-6xl font-black mb-1">13+</div>
+              <div className="text-4xl md:text-6xl font-black mb-1">20+</div>
               <div className="text-xs md:text-sm font-bold tracking-wider">
                 Years of <br /> Excellence
               </div>

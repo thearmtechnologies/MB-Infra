@@ -25,7 +25,7 @@ export default function App() {
             </div>
             <div className="h-9 w-9 rounded-full border-2 border-gray-200 border-t-[#f25810] animate-spin" />
             <div className="text-[11px] sm:text-xs text-gray-400 tracking-wide">
-           Building Tomorrow’s Infrastructure
+              Building Tomorrow’s Infrastructure
             </div>
           </div>
         </div>

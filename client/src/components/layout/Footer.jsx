@@ -30,11 +30,11 @@ export default function Footer() {
           {/* Brand Col & Contact Details */}
           <div>
             {/* UPDATED LOGO SECTION TO MATCH NAVBAR */}
-            <Link to="/" className="flex flex-col mb-6 cursor-pointer w-max">
+            <Link to="/" className="flex flex-col mb-6 cursor-pointer w-max group">
               <img
                 src={Logo}
                 alt="MB Infra Logo"
-                className="w-36 md:w-48 h-auto mb-3 object-contain"
+                className="w-48 sm:w-56 md:w-64 h-auto mb-3 object-contain brightness-0 invert transition-all duration-300 group-hover:opacity-90"
               />
               <div className="flex flex-col">
                 <div className="flex items-center">
@@ -45,7 +45,7 @@ export default function Footer() {
                     INFRA
                   </span>
                 </div>
-                <span className="text-[10px] tracking-[0.3em] font-bold text-gray-500 uppercase ">
+                <span className="text-[10px] tracking-[0.3em] font-bold text-gray-400 uppercase">
                   Projects Pvt. Ltd.
                 </span>
               </div>

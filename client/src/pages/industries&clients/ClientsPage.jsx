@@ -10,7 +10,8 @@ import hgLogo from "../../assets/img/client/hgiel-logo.png";
 import pncLogo from "../../assets/img/client/pnc-infra.png";
 import raviLogo from "../../assets/img/client/ravi-infra-blue-logo-LATEST-1.png";
 import ClientsImage from "../../assets/img/hero/client.jpg"
-
+import LandTLogo from "../../assets/img/client/landt-logo.png"
+import NJLogo from "../../assets/img/client/NJ.webp"
 // Client data extracted directly from the MBIPL C Profile 2025
 const clientsData = [
   {
@@ -87,6 +88,29 @@ const clientsData = [
     description: "Collaborated on Dedicated Freight Corridor (DFCCIL) detour construction, executing precision earthworks and track blanketing.",
     color: "bg-emerald-600",
     logo: apexLogo,
+    bgClass: "bg-gray-100 group-hover:bg-gray-200",
+    logoStyle: "max-h-16 max-w-[80%]"
+  },
+
+  {
+    id: "lt",
+    name: "Larsen & Toubro Limited",
+    shortName: "L&T",
+    role: "Mega Infrastructure & EPC Partner",
+    description: "Collaborated on mega infrastructure packages, critical structural foundations, heavy flyovers, and specialized expressway corridors across high-density logistics stretches.",
+    color: "bg-blue-700",
+    logo: LandTLogo,
+    bgClass: "bg-[#0c2340] group-hover:bg-[#07192e]", 
+    logoStyle: "max-h-20 max-w-[85%]"
+  },
+  {
+    id: "nj",
+    name: "N.J. Infra Projects.",
+    shortName: "NJIPL",
+    role: "Highways & Structural Engineering Partner",
+    description: "Partnered for national highway expansion, bridge substructures, high-precision earthmoving, and specialized civil construction contracts ensuring time-bound execution.",
+    color: "bg-red-600",
+    logo: NJLogo,
     bgClass: "bg-gray-100 group-hover:bg-gray-200",
     logoStyle: "max-h-16 max-w-[80%]"
   },

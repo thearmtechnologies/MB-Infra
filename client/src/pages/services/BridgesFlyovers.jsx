@@ -3,7 +3,7 @@ import { createGeneratorEasing, motion } from "framer-motion";
 import { MoveUp, Layers, TrainTrack, HardHat, ArrowRight, Truck } from "lucide-react";
 import { Link } from "react-router-dom";
 import CraneImage from "../../assets/img/vehicles/crane.png";
-import BridgeImage from "../../assets/img/vehicles/bridge.png";
+import BridgeImage from "../../assets/img/new_img/Bridge.jpeg"
 import BridgeConstructionImage from "../../assets/img/bridgeConstructionHero.png";
 // Data extracted directly from MBIPL C Profile (Page 4)
 const capabilities = [

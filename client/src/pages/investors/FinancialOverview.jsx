@@ -4,11 +4,12 @@ import { BarChart3, TrendingUp } from "lucide-react";
 import FinancialBg from "../../assets/img/hero/finance.jpg";
 export default function FinancialOverview() {
   const turnoverData = [
-    { year: "2019-20", value: 38.46 },
-    { year: "2020-21", value: 47.67 },
+   
     { year: "2021-22", value: 53.74 },
     { year: "2022-23", value: 43.67 },
     { year: "2023-24", value: 75.56 },
+    { year: "2024-25", value: 55.35 },
+    { year: "2025-26", value: 73.24 },
   ];
 
   const chartCeiling = 100;

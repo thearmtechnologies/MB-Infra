@@ -2,7 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Train, Ship, Truck, HardHat, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import RailwayHeroImage from "../../assets/img/railwayHero.png";
+import RailwayHeroImage from "../../assets/img/RailwayHero.avif";
+import RailwayImg from "../../assets/img/railwayimg.webp"
+import RailwayImg2 from "../../assets/img/railwayimg2.png"
 // Data extracted directly from MBIPL C Profile (Industrial & Railways capabilities)
 const capabilities = [
   {
@@ -86,8 +88,8 @@ export default function IndustrialRailways() {
               viewport={{ once: true }}
               className="grid grid-cols-2 gap-4"
             >
-              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop" alt="Port Logistics Infrastructure" className="w-full h-64 object-cover border-b-4 border-[#f25810]" />
-              <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?q=80&w=800&auto=format&fit=crop" alt="Railway Corridors" className="w-full h-64 object-cover mt-8 border-b-4 border-gray-900" />
+              <img src ={RailwayImg} alt="railway image" className="w-full h-64 object-cover border-b-4 border-[#f25810]" />
+              <img src ={RailwayImg2}  alt="Railway Corridors" className="w-full h-64 object-cover mt-8 border-b-4 border-gray-900" />
             </motion.div>
           </div>
         </div>

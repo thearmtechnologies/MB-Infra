@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BridgeImage from "../../assets/img/project/img7.png";
-import BridgeImage2 from "../../assets/img/project/img8.png"
+import BridgeImage from "../../assets/img/new_img/homecrane2.jpeg";
+import BridgeImage2 from "../../assets/img/new_img/homecrane.jpeg"
 export default function AboutSection() {
   return (
     <section className="py-20 md:py-32 bg-white w-full overflow-hidden">

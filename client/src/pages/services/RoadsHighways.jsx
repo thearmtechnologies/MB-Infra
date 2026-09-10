@@ -4,8 +4,8 @@ import { Truck, Shield, Map, Settings, ArrowRight, HardHat } from "lucide-react"
 import { Link } from "react-router-dom";
 import ServiceHeroImage from "../../assets/img/roadsHighwaysHero.png";
 import HeavyMachineryImage from "../../assets/img/heavyMachinery.png";
-import AsphaltPavingImage from "../../assets/img/asphaltPaving.png";
-import EarthworksImage from "../../assets/img/earthworks.png";
+import BulldozerImg from "../../assets/img/Bulldozer.jpg";
+import RoadConstruct from "../../assets/img/RoadConstruct.jpg";
 // Data extracted directly from MBIPL C Profile
 const capabilities = [
   {
@@ -99,8 +99,8 @@ export default function RoadsHighways() {
               viewport={{ once: true }}
               className="grid grid-cols-2 gap-4"
             >
-              <img src={AsphaltPavingImage} alt="Asphalt Paving" className="w-full h-64 object-cover border-b-4 border-[#f25810]" />
-              <img src={EarthworksImage} alt="Earthworks" className="w-full h-64 object-cover mt-8 border-b-4 border-gray-900" />
+              <img src={BulldozerImg} alt="Asphalt Paving" className="w-full h-64 object-cover border-b-4 border-[#f25810]" />
+              <img src={RoadConstruct} alt="Earthworks" className="w-full h-64 object-cover mt-8 border-b-4 border-gray-900" />
             </motion.div>
           </div>
         </div>

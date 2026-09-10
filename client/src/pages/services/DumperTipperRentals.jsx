@@ -30,6 +30,7 @@ import { Link } from "react-router-dom";
 import DumperHero from "../../assets/img/dumper-rental/gallery-6.jpg";
 
 // Gallery Images - Add your images here
+import TruckConvoy from "../../assets/img/new_img/TruckConvoy.png";
 import Gallery1 from "../../assets/img/dumper-rental/gallery-1.webp";
 import Gallery2 from "../../assets/img/dumper-rental/gallery-2.jpg";
 import Gallery3 from "../../assets/img/dumper-rental/gallery-3.webp";
@@ -139,51 +140,75 @@ const features = [
 const galleryImages = [
   {
     id: 1,
-    src: Gallery1,
-    alt: "Dumper in action at construction site",
-    title: "Construction Site Operations",
+    src: TruckConvoy,
+    alt: "MB Infraprojects Heavy Dumper & Tipper Fleet Convoy Lineup",
+    title: "MB Infra Fleet Deployment Lineup",
+    category: "Heavy Tipper Fleet",
+    description: "Lineup of heavy-duty multi-axle tippers and dumpers ready for site deployment.",
   },
   {
     id: 2,
-    src: Gallery2,
-    alt: "Tipper truck transporting materials",
-    title: "Material Transport",
+    src: Gallery1,
+    alt: "Heavy dumper in action at construction site",
+    title: "Construction Bulk Hauling",
+    category: "Site Operations",
+    description: "High-capacity dumper transporting excavated earth and rock materials.",
   },
   {
     id: 3,
-    src: Gallery3,
-    alt: "Heavy-duty dumper at mining site",
-    title: "Mining Operations",
+    src: Gallery2,
+    alt: "Tipper truck transporting materials",
+    title: "Highway & Aggregate Transport",
+    category: "Material Logistics",
+    description: "Heavy commercial tipper hauling aggregate and crushed stones for highway base.",
   },
   {
     id: 4,
-    src: Gallery4,
-    alt: "Fleet of tippers at work",
-    title: "Fleet in Action",
+    src: Gallery3,
+    alt: "Heavy-duty dumper at mining site",
+    title: "Mining & Quarry Haulage",
+    category: "Mining Operations",
+    description: "Rigid heavy dumper hauling minerals and overburden in open-cast mines.",
   },
   {
     id: 5,
-    src: Gallery5,
-    alt: "Dumper unloading at site",
-    title: "Unloading Operations",
+    src: Gallery4,
+    alt: "Fleet of tippers at work",
+    title: "Expressway Earthwork Fleet",
+    category: "Fleet in Action",
+    description: "Coordinated fleet of tippers supplying continuous materials for road formation.",
   },
   {
     id: 6,
-    src: Gallery6,
-    alt: "Tipper on highway transport",
-    title: "Highway Transport",
+    src: Gallery5,
+    alt: "Dumper unloading at site",
+    title: "Precision Site Unloading",
+    category: "Unloading Operations",
+    description: "Hydraulic rear-tipping mechanism in action discharging bulk materials accurately.",
   },
   {
     id: 7,
-    src: Gallery7,
-    alt: "Off-road dumper in challenging terrain",
-    title: "Off-Road Operations",
+    src: Gallery6,
+    alt: "Tipper on highway transport",
+    title: "Inter-Site Material Logistics",
+    category: "Highway Transport",
+    description: "Long-haul tipper fleet moving materials across national highway corridors.",
   },
   {
     id: 8,
+    src: Gallery7,
+    alt: "Off-road dumper in challenging terrain",
+    title: "Challenging Terrain Earthmoving",
+    category: "Off-Road Operations",
+    description: "All-terrain dump trucks navigating steep gradients and muddy terrain.",
+  },
+  {
+    id: 9,
     src: Gallery8,
     alt: "Dumper fleet at project site",
-    title: "Project Site Fleet",
+    title: "Infrastructure Site Deployment",
+    category: "Project Site Fleet",
+    description: "Dedicated fleet deployed on mega EPC and infrastructure projects.",
   },
 ];
 
@@ -371,7 +396,7 @@ export default function DumperTipperRentals() {
         </div>
       </div>
 
-      {/* 3. Gallery Section - NEW */}
+      {/* 3. Gallery Section */}
       <section
         id="gallery"
         className="py-12 sm:py-16 md:py-20 bg-gray-50 border-t border-gray-200 scroll-mt-20"
@@ -383,17 +408,20 @@ export default function DumperTipperRentals() {
             viewport={{ once: true }}
             className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
           >
+            <span className="inline-block py-1 px-3 bg-[#f25810]/10 text-[#f25810] text-xs sm:text-sm font-bold tracking-wider uppercase mb-3 rounded-full">
+              Project Portfolio & Fleet
+            </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3 sm:mb-4">
               Our Fleet in Action
             </h2>
             <p className="text-sm sm:text-base text-gray-600">
-              Browse through our extensive gallery showcasing our dumpers and
-              tippers at work across various project sites in India.
+              Browse through our extensive gallery showcasing our heavy dumpers and
+              tippers at work across infrastructure and mining project sites in India.
             </p>
           </motion.div>
 
-          {/* Gallery Masonry/Collage Grid */}
-          <div className="columns-2 md:columns-3 lg:columns-4 gap-4 [column-fill:_balance] space-y-4">
+          {/* Uniform Responsive Grid - 3x3 Zero Empty Space */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {galleryImages.map((image, index) => (
               <motion.div
                 key={image.id}
@@ -402,23 +430,34 @@ export default function DumperTipperRentals() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
                 onClick={() => openLightbox(index)}
-                className="relative group cursor-pointer overflow-hidden rounded-lg bg-gray-200 break-inside-avoid"
+                className="group relative h-72 w-full overflow-hidden rounded-xl bg-gray-900 cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-200"
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                    <p className="text-white text-xs sm:text-sm font-semibold">
-                      {image.title}
-                    </p>
-                  </div>
+
+                {/* Persistent Tag Badge */}
+                <div className="absolute top-3 left-3 z-10">
+                  <span className="inline-block bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded border border-white/20 shadow-sm group-hover:bg-[#f25810] group-hover:border-[#f25810] transition-colors">
+                    {image.category}
+                  </span>
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                    <ArrowRight className="w-5 h-5 text-white" />
+
+                {/* Hover Details Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/75 to-black/20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-5">
+                  <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-white text-base sm:text-lg font-bold leading-snug mb-1">
+                      {image.title}
+                    </h3>
+                    <p className="text-gray-300 text-xs leading-relaxed line-clamp-2 mb-3">
+                      {image.description}
+                    </p>
+                    <div className="inline-flex items-center gap-1.5 text-[#f25810] text-xs font-bold uppercase tracking-wider">
+                      <span>View Project</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -426,12 +465,12 @@ export default function DumperTipperRentals() {
           </div>
 
           {/* View All Button */}
-          <div className="text-center mt-10">
+          <div className="text-center mt-12">
             <button
               onClick={() => openLightbox(0)}
-              className="inline-flex items-center gap-2 bg-[#f25810] hover:bg-[#d44a0d] text-white px-8 py-3 font-bold transition-all shadow-lg shadow-orange-500/20 group rounded-lg"
+              className="inline-flex items-center gap-2 bg-[#f25810] hover:bg-[#d44a0d] text-white px-8 py-3.5 font-bold transition-all shadow-lg shadow-orange-500/20 group rounded-lg"
             >
-              View All Images
+              View All Images ({galleryImages.length})
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -665,14 +704,15 @@ export default function DumperTipperRentals() {
       {/* Lightbox Modal */}
       {lightboxOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
           onClick={closeLightbox}
         >
           <button
             onClick={closeLightbox}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+            className="absolute top-5 right-5 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all z-20"
+            title="Close (Esc)"
           >
-            <X className="w-8 h-8" />
+            <X className="w-6 h-6" />
           </button>
 
           <button
@@ -680,9 +720,10 @@ export default function DumperTipperRentals() {
               e.stopPropagation();
               prevImage();
             }}
-            className="absolute left-4 text-white hover:text-gray-300 transition-colors z-10 bg-black/50 rounded-full p-2 hover:bg-black/70"
+            className="absolute left-4 sm:left-6 text-white hover:text-white transition-all z-20 bg-black/60 hover:bg-[#f25810] p-3 rounded-full border border-white/10 shadow-lg"
+            title="Previous Image (Left Arrow)"
           >
-            <ChevronLeft className="w-8 h-8" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
 
           <button
@@ -690,27 +731,40 @@ export default function DumperTipperRentals() {
               e.stopPropagation();
               nextImage();
             }}
-            className="absolute right-4 text-white hover:text-gray-300 transition-colors z-10 bg-black/50 rounded-full p-2 hover:bg-black/70"
+            className="absolute right-4 sm:right-6 text-white hover:text-white transition-all z-20 bg-black/60 hover:bg-[#f25810] p-3 rounded-full border border-white/10 shadow-lg"
+            title="Next Image (Right Arrow)"
           >
-            <ChevronRight className="w-8 h-8" />
+            <ChevronRight className="w-6 h-6" />
           </button>
 
           <div
-            className="relative max-w-5xl w-full mx-4"
+            className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={galleryImages[currentImageIndex].src}
-              alt={galleryImages[currentImageIndex].alt}
-              className="w-full h-auto max-h-[85vh] object-contain"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-              <p className="text-white text-center text-sm sm:text-base font-medium">
-                {galleryImages[currentImageIndex].title}
-              </p>
-              <p className="text-gray-300 text-center text-xs sm:text-sm">
+            <div className="relative overflow-hidden rounded-xl border border-white/10 shadow-2xl bg-black max-h-[75vh]">
+              <img
+                src={galleryImages[currentImageIndex].src}
+                alt={galleryImages[currentImageIndex].alt}
+                className="w-full h-auto max-h-[75vh] object-contain mx-auto"
+              />
+            </div>
+
+            {/* Info Bar */}
+            <div className="w-full mt-4 bg-gray-900/90 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xl">
+              <div>
+                <span className="inline-block bg-[#f25810] text-white text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded mb-1.5">
+                  {galleryImages[currentImageIndex].category}
+                </span>
+                <h3 className="text-white text-base sm:text-lg font-bold">
+                  {galleryImages[currentImageIndex].title}
+                </h3>
+                <p className="text-gray-400 text-xs sm:text-sm mt-0.5">
+                  {galleryImages[currentImageIndex].description}
+                </p>
+              </div>
+              <div className="shrink-0 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10 text-xs text-gray-300 font-semibold self-end sm:self-center">
                 {currentImageIndex + 1} / {galleryImages.length}
-              </p>
+              </div>
             </div>
           </div>
         </div>

@@ -35,7 +35,7 @@ import Crane750T from "../../assets/img/crane-rental/750t-crane.png";
 const craneFleet = [
   { 
     capacity: "14 Ton", 
-    model: "Hydra / Mobile Crane", 
+    model: "Mobile Crane", 
     image: Crane14T, 
     specs: "Ideal for small-scale construction, material handling & utility work.",
     category: "Light Duty",
@@ -51,7 +51,7 @@ const craneFleet = [
   },
   { 
     capacity: "23 Ton", 
-    model: "Hydra / Mobile Crane", 
+    model: "Mobile Crane", 
     image: Crane23T, 
     specs: "Perfect for mid-sized projects, structural steel erection & equipment installation.",
     category: "Light Duty",
@@ -67,7 +67,7 @@ const craneFleet = [
   },
   { 
     capacity: "50 Ton", 
-    model: "Hydra / Mobile Crane", 
+    model: "Mobile Crane", 
     image: Crane50T, 
     specs: "Heavy lifting for bridges, industrial plants, and multi-story buildings.",
     category: "Medium Duty",
@@ -83,7 +83,7 @@ const craneFleet = [
   },
   { 
     capacity: "75 Ton", 
-    model: "Hydra / Mobile Crane", 
+    model: "Mobile Crane", 
     image: Crane75T, 
     specs: "High-capacity lifting for precast concrete, heavy machinery & infrastructure.",
     category: "Medium Duty",
@@ -99,7 +99,7 @@ const craneFleet = [
   },
   { 
     capacity: "100 Ton", 
-    model: "Hydra / Mobile Crane", 
+    model: "Mobile Crane", 
     image: Crane100T, 
     specs: "Large-scale projects: power plants, refineries, and major bridge components.",
     category: "Heavy Duty",
@@ -115,7 +115,7 @@ const craneFleet = [
   },
   { 
     capacity: "150 Ton", 
-    model: "Hydra / Mobile Crane", 
+    model: "Mobile Crane", 
     image: Crane150T, 
     specs: "Extreme heavy lifting for wind turbines, shipyards, and mega-structures.",
     category: "Heavy Duty",
@@ -131,7 +131,7 @@ const craneFleet = [
   },
   { 
     capacity: "250 Ton", 
-    model: "Hydra / Mobile Crane", 
+    model: "Mobile Crane", 
     image: Crane250T, 
     specs: "Ultra-heavy lift capacity for high-rise construction and industrial complexes.",
     category: "Ultra Heavy",
@@ -147,7 +147,7 @@ const craneFleet = [
   },
   { 
     capacity: "500 Ton", 
-    model: "Hydra / Mobile Crane", 
+    model: "Mobile Crane", 
     image: Crane500T, 
     specs: "Flagship capacity for the most demanding infrastructure & engineering feats.",
     category: "Ultra Heavy",
@@ -163,7 +163,7 @@ const craneFleet = [
   },
   { 
     capacity: "750 Ton", 
-    model: "Hydra / Mobile Crane", 
+    model: "Mobile Crane", 
     image: Crane750T, 
     specs: "Perfect for mid-sized projects, structural steel erection & equipment installation.",
     category: "Ultra Heavy",
@@ -339,9 +339,7 @@ export default function CraneRentals() {
                     <span className="text-[#f25810] font-bold text-sm">#{String(categoryIdx + 1).padStart(2, '0')}</span>
                     <h3 className="text-white font-bold text-xl">{category}</h3>
                   </div>
-                  <span className="text-gray-400 text-sm">
-                    {cranes.length} {cranes.length === 1 ? 'Crane' : 'Cranes'}
-                  </span>
+          
                 </div>
 
                 {/* Crane Cards in Row - LARGER IMAGES */}

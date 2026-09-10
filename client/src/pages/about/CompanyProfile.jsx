@@ -21,8 +21,8 @@ import {
   companyStats,
   corporateJourney,
 } from "../../data/companyData";
-import AboutImage1 from "../../assets/img/about1.jpg";
-import AboutImage2 from "../../assets/img/about2.jpg";
+import BridgeImg from "../../assets/img/new_img/Company.jpeg";
+import HotMixImage from "../../assets/img/new_img/HotMix2.jpg";
 export default function CompanyProfile() {
   const sliderRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -152,21 +152,21 @@ export default function CompanyProfile() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="lg:col-span-6 grid grid-cols-2 gap-4 relative"
+              className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4 relative items-start"
             >
               <div className="absolute -inset-4 bg-gray-50 -z-10 rounded-sm"></div>
-              <div className="h-64 sm:h-80 bg-gray-200 rounded-sm overflow-hidden shadow-sm">
+              <div className="bg-gray-100 rounded-md overflow-hidden shadow-md border border-gray-200 group">
                 <img
-                  src={AboutImage1}
-                  alt="Bridge Construction"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  src={BridgeImg}
+                  alt="Bridge & Infrastructure Construction"
+                  className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
-              <div className="h-64 sm:h-80 bg-gray-200 rounded-sm overflow-hidden shadow-sm mt-8">
+              <div className="bg-gray-100 rounded-md overflow-hidden shadow-md border border-gray-200 group sm:mt-8">
                 <img
-                  src={AboutImage2}
-                  alt="Industrial Machinery"
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  src={HotMixImage}
+                  alt="MBIPL Concrete & Batching Plant"
+                  className="w-full h-auto object-contain group-hover:scale-[1.02] transition-transform duration-500"
                 />
               </div>
             </motion.div>

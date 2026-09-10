@@ -22,6 +22,7 @@ import BulldozerImage from "../assets/img/vehicles/Bulldozer.jpg";
 import GeneratorSetImage from "../assets/img/vehicles/GeneratorSet.webp";
 import WeldingMachineImage from "../assets/img/vehicles/WeldingMachine.jpg";
 import TowerLightImage from "../assets/img/vehicles/TowerLight.jpg";
+import PuzzolanaImg from "../assets/img/new_img/Puzzolana.jpg";
 
 export const equipmentData = [
   {
@@ -186,5 +187,12 @@ export const equipmentData = [
     qty: 2,
     category: "Support Fleet",
     image: TowerLightImage,
+  },
+  {
+    id:26,
+    name :"Puzzolana 250 TPH 4-Stage Crusher Plant",
+    qty:1,
+    category:"Plant Equipment",
+    image: PuzzolanaImg,
   },
 ];

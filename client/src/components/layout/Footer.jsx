@@ -14,11 +14,14 @@ const quickLinks = [
 ];
 
 const serviceLinks = [
-  { name: "Highway Expansion", path: "/services/roads-highways" },
-  { name: "Bridge Construction", path: "/services/bridges-flyovers" },
-  { name: "Industrial Civil Works", path: "/services/industrial-railways" },
-  { name: "Earthmoving & Excavation", path: "/fleet" },
-  { name: "Heavy Machinery Leasing", path: "/fleet" },
+  { name: "Highways & Roads", path: "/services/roads-highways" },
+  { name: "Bridges & Flyovers", path: "/services/bridges-flyovers" },
+  { name: "Industrial Railways", path: "/services/industrial-railways" },
+  { name: "Crane Rentals", path: "/services/crane-rentals" },
+  { name: "Dumper & Tipper Rentals", path: "/services/dumper-tipper-rentals" },
+  { name: "Excavator Rentals", path: "/services/excavator-rentals" },
+  { name: "Puzzolana Crusher Plant", path: "/services/puzzolana-crusher-plant-rental" },
+  { name: "Heavy Machinery & Fleet", path: "/fleet" },
 ];
 
 export default function Footer() {

@@ -76,10 +76,10 @@ export default function FinancialOverview() {
 
               <div>
                 <p className="text-xs font-semibold tracking-wide text-gray-500 uppercase">
-                  Latest FY 2023-24
+                  Latest FY 2025-26
                 </p>
 
-                <p className="text-2xl font-bold text-black">₹ 75.56 Cr</p>
+                <p className="text-2xl font-bold text-black">₹ 73.24 Cr</p>
               </div>
             </div>
           </div>

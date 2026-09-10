@@ -287,7 +287,7 @@ export default function DumperTipperRentals() {
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                to="#gallery"
+                to="/fleet"
                 className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base border border-white/30 transition-all rounded-lg"
               >
                 View Gallery

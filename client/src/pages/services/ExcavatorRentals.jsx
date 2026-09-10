@@ -74,16 +74,72 @@ const features = [
     "Off-road excavators for challenging terrains"
 ];
 
-// Gallery Images Data
+// Gallery Images Data with accurate project titles matching actual image contents
 const galleryImages = [
-    { id: 1, src: Gallery1, alt: "Excavator digging at construction site", title: "Foundation Digging" },
-    { id: 2, src: Gallery2, alt: "Excavator lifting heavy materials", title: "Material Handling" },
-    { id: 3, src: Gallery3, alt: "Large excavator at mining site", title: "Mining Operations" },
-    { id: 4, src: Gallery4, alt: "Fleet of excavators at work", title: "Fleet in Action" },
-    { id: 5, src: Gallery5, alt: "Excavator loading a dump truck", title: "Loading Operations" },
-    { id: 6, src: Gallery6, alt: "Excavator on highway construction", title: "Highway Construction" },
-    { id: 7, src: Gallery7, alt: "Off-road excavator in challenging terrain", title: "Off-Road Operations" },
-    { id: 8, src: Gallery8, alt: "Excavator fleet at project site", title: "Project Site Fleet" }
+    { 
+        id: 1, 
+        src: Gallery1, 
+        alt: "CAT 350 Heavy Crawler Excavator Rock Cutting", 
+        title: "CAT 350 Quarry & Rock Excavation",
+        category: "Mining & Heavy Quarrying",
+        description: "Heavy crawler excavator deployed for rock breaking and overburden removal."
+    },
+    { 
+        id: 2, 
+        src: Gallery2, 
+        alt: "Tracked Excavator Site Grading and Earthmoving", 
+        title: "Site Grading & Soil Excavation",
+        category: "Land Development & Earthworks",
+        description: "Precision soil excavation, leveling, and foundation trench preparation."
+    },
+    { 
+        id: 3, 
+        src: Gallery3, 
+        alt: "Hyundai HX380L Excavator Handling Massive Stone Boulder", 
+        title: "Hyundai HX380L Stone Block Handling",
+        category: "Granite & Boulder Operations",
+        description: "Heavy excavator lifting and maneuvering massive stone blocks in a quarry."
+    },
+    { 
+        id: 4, 
+        src: Gallery4, 
+        alt: "Heavy Excavator High Embankment and Slope Earthmoving", 
+        title: "High-Slope Embankment Cutting",
+        category: "Highway & Slope Works",
+        description: "Heavy crawler excavator shaping elevated highway embankments."
+    },
+    { 
+        id: 5, 
+        src: Gallery5, 
+        alt: "Hitachi Excavator Deep Pit Shoring and Foundation Digging", 
+        title: "Deep Foundation & Shoring Excavation",
+        category: "Urban Civil & Deep Pits",
+        description: "Specialized excavator executing deep trenching inside structural shoring works."
+    },
+    { 
+        id: 6, 
+        src: Gallery6, 
+        alt: "Dual Hitachi Zaxis 300LC Excavators Bulk Earthworks", 
+        title: "Dual Hitachi Zaxis Mass Earthworks",
+        category: "Bulk Earthmoving & Infrastructure",
+        description: "Dual heavy excavators executing high-capacity mass earth excavation."
+    },
+    { 
+        id: 7, 
+        src: Gallery7, 
+        alt: "Heavy Crawler Excavator Bulk Digging in Harsh Terrain", 
+        title: "Heavy Terrain Leveling & Bulk Digging",
+        category: "Site Preparation & Quarrying",
+        description: "High-capacity bucket scooping tough terrain during industrial site preparation."
+    },
+    { 
+        id: 8, 
+        src: Gallery8, 
+        alt: "All-Terrain Wheeled Excavator at Aggregate Stockpile", 
+        title: "Wheeled Excavator Material Handling",
+        category: "Aggregate Handling & Roadworks",
+        description: "Mobile wheeled excavator loading aggregates and managing stockpiles on site."
+    }
 ];
 
 export default function ExcavatorRentals() {
@@ -178,7 +234,7 @@ export default function ExcavatorRentals() {
                                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                             </Link>
                             <Link
-                                to="#gallery"
+                                to="/fleet"
                                 className="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-6 sm:px-8 py-3 sm:py-4 font-bold text-sm sm:text-base border border-white/30 transition-all rounded-lg"
                             >
                                 View Gallery
@@ -251,7 +307,7 @@ export default function ExcavatorRentals() {
                 </div>
             </div>
 
-            {/* 3. Gallery Section - Collage Style */}
+            {/* 3. Gallery Section - High Impact Fleet Gallery */}
             <section id="gallery" className="py-12 sm:py-16 md:py-20 bg-gray-50 border-t border-gray-200 scroll-mt-20">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <motion.div
@@ -260,37 +316,53 @@ export default function ExcavatorRentals() {
                         viewport={{ once: true }}
                         className="text-center max-w-3xl mx-auto mb-12 sm:mb-16"
                     >
+                        <span className="inline-block py-1 px-3 bg-[#f25810]/10 text-[#f25810] text-xs sm:text-sm font-bold tracking-wider uppercase mb-3 rounded-full">
+                            Project Portfolio & Fleet
+                        </span>
                         <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-3 sm:mb-4">Our Fleet in Action</h2>
                         <p className="text-sm sm:text-base text-gray-600">
-                            Browse through our extensive gallery showcasing our excavators at work across various project sites in India.
+                            Explore our excavators on active civil, mining, and highway projects across India. Click on any image to view in high resolution.
                         </p>
                     </motion.div>
 
-                    {/* Gallery Masonry/Collage Grid */}
-                    <div className="columns-2 md:columns-3 lg:columns-4 gap-4 [column-fill:_balance] space-y-4">
+                    {/* Uniform Responsive Grid - Zero Empty Spaces */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {galleryImages.map((image, index) => (
                             <motion.div
                                 key={image.id}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ delay: index * 0.05 }}
+                                transition={{ delay: index * 0.06 }}
                                 onClick={() => openLightbox(index)}
-                                className="relative group cursor-pointer overflow-hidden rounded-lg bg-gray-200 break-inside-avoid"
+                                className="group relative h-72 w-full overflow-hidden rounded-xl bg-gray-900 cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-200"
                             >
                                 <img
                                     src={image.src}
                                     alt={image.alt}
-                                    className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-110"
+                                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                                        <p className="text-white text-xs sm:text-sm font-semibold">{image.title}</p>
-                                    </div>
+
+                                {/* Persistent Tag Badge */}
+                                <div className="absolute top-3 left-3 z-10">
+                                    <span className="inline-block bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded border border-white/20 shadow-sm group-hover:bg-[#f25810] group-hover:border-[#f25810] transition-colors">
+                                        {image.category}
+                                    </span>
                                 </div>
-                                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-2">
-                                        <ArrowRight className="w-5 h-5 text-white" />
+
+                                {/* Hover Details Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/75 to-black/20 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-5">
+                                    <div className="transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
+                                        <h3 className="text-white text-base sm:text-lg font-bold leading-snug mb-1">
+                                            {image.title}
+                                        </h3>
+                                        <p className="text-gray-300 text-xs leading-relaxed line-clamp-2 mb-3">
+                                            {image.description}
+                                        </p>
+                                        <div className="inline-flex items-center gap-1.5 text-[#f25810] text-xs font-bold uppercase tracking-wider">
+                                            <span>View Project</span>
+                                            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                                        </div>
                                     </div>
                                 </div>
                             </motion.div>
@@ -298,12 +370,12 @@ export default function ExcavatorRentals() {
                     </div>
 
                     {/* View All Button */}
-                    <div className="text-center mt-10">
+                    <div className="text-center mt-12">
                         <button
                             onClick={() => openLightbox(0)}
-                            className="inline-flex items-center gap-2 bg-[#f25810] hover:bg-[#d44a0d] text-white px-8 py-3 font-bold transition-all shadow-lg shadow-orange-500/20 group rounded-lg"
+                            className="inline-flex items-center gap-2 bg-[#f25810] hover:bg-[#d44a0d] text-white px-8 py-3.5 font-bold transition-all shadow-lg shadow-orange-500/20 group rounded-lg"
                         >
-                            View All Images
+                            View All Images ({galleryImages.length})
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </button>
                     </div>
@@ -501,46 +573,61 @@ export default function ExcavatorRentals() {
             {/* Lightbox Modal */}
             {lightboxOpen && (
                 <div 
-                    className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+                    className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
                     onClick={closeLightbox}
                 >
                     <button
                         onClick={closeLightbox}
-                        className="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors z-10"
+                        className="absolute top-5 right-5 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all z-20"
+                        title="Close (Esc)"
                     >
-                        <X className="w-8 h-8" />
+                        <X className="w-6 h-6" />
                     </button>
                     
                     <button
                         onClick={(e) => { e.stopPropagation(); prevImage(); }}
-                        className="absolute left-4 text-white hover:text-gray-300 transition-colors z-10 bg-black/50 rounded-full p-2 hover:bg-black/70"
+                        className="absolute left-4 sm:left-6 text-white hover:text-white transition-all z-20 bg-black/60 hover:bg-[#f25810] p-3 rounded-full border border-white/10 shadow-lg"
+                        title="Previous Image (Left Arrow)"
                     >
-                        <ChevronLeft className="w-8 h-8" />
+                        <ChevronLeft className="w-6 h-6" />
                     </button>
                     
                     <button
                         onClick={(e) => { e.stopPropagation(); nextImage(); }}
-                        className="absolute right-4 text-white hover:text-gray-300 transition-colors z-10 bg-black/50 rounded-full p-2 hover:bg-black/70"
+                        className="absolute right-4 sm:right-6 text-white hover:text-white transition-all z-20 bg-black/60 hover:bg-[#f25810] p-3 rounded-full border border-white/10 shadow-lg"
+                        title="Next Image (Right Arrow)"
                     >
-                        <ChevronRight className="w-8 h-8" />
+                        <ChevronRight className="w-6 h-6" />
                     </button>
 
                     <div 
-                        className="relative max-w-5xl w-full mx-4"
+                        className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <img
-                            src={galleryImages[currentImageIndex].src}
-                            alt={galleryImages[currentImageIndex].alt}
-                            className="w-full h-auto max-h-[85vh] object-contain"
-                        />
-                        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                            <p className="text-white text-center text-sm sm:text-base font-medium">
-                                {galleryImages[currentImageIndex].title}
-                            </p>
-                            <p className="text-gray-300 text-center text-xs sm:text-sm">
+                        <div className="relative overflow-hidden rounded-xl border border-white/10 shadow-2xl bg-black max-h-[75vh]">
+                            <img
+                                src={galleryImages[currentImageIndex].src}
+                                alt={galleryImages[currentImageIndex].alt}
+                                className="w-full h-auto max-h-[75vh] object-contain mx-auto"
+                            />
+                        </div>
+                        
+                        {/* Info Bar */}
+                        <div className="w-full mt-4 bg-gray-900/90 backdrop-blur-md border border-white/10 rounded-xl p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xl">
+                            <div>
+                                <span className="inline-block bg-[#f25810] text-white text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded mb-1.5">
+                                    {galleryImages[currentImageIndex].category}
+                                </span>
+                                <h3 className="text-white text-base sm:text-lg font-bold">
+                                    {galleryImages[currentImageIndex].title}
+                                </h3>
+                                <p className="text-gray-400 text-xs sm:text-sm mt-0.5">
+                                    {galleryImages[currentImageIndex].description}
+                                </p>
+                            </div>
+                            <div className="shrink-0 bg-white/10 px-3 py-1.5 rounded-lg border border-white/10 text-xs text-gray-300 font-semibold self-end sm:self-center">
                                 {currentImageIndex + 1} / {galleryImages.length}
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
